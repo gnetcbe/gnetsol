@@ -1,0 +1,28 @@
+import { Metadata } from "next";
+import Hero from "./components/Hero";
+import Service from "./components/Service";
+import Detail from "./components/Detail";
+
+
+import logo from "@/assets/img/logo/title2.svg";
+
+export const metadata: Metadata = {
+  title: "SEOX || Our Blog Details",
+  icons: {
+    icon: logo.src,
+  },
+};
+
+const BlogDetail = () => {
+  return (
+    <>
+      <main>
+        <Hero />
+        <Detail/>
+        <Service />
+      </main>
+    </>
+  );
+};
+
+export default BlogDetail;

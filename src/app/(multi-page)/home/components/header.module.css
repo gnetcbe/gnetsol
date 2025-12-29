@@ -1,0 +1,14 @@
+/* Fix the wrapper created by Next.js */
+.vl-logo a.header1-logo-block > span {
+  display: inline-block !important;
+  height: 80px !important;
+  width: auto !important;
+}
+
+/* Fix the actual logo image */
+.vl-logo a.header1-logo-block img {
+  height: 80px !important;
+  width: auto !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+}

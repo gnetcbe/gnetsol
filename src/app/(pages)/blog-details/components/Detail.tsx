@@ -1,0 +1,296 @@
+'use client'
+import detail from '@/assets/img/blog/blog-details-image.png'
+import detail1 from '@/assets/img/blog/blog-details-image2.png'
+import detail2 from '@/assets/img/blog/blog-details-image3.png'
+import detail4 from '@/assets/img/blog/blog-details-image4.png'
+import box1 from '@/assets/img/blog/comment-box-image1.png'
+import box2 from '@/assets/img/blog/comment-box-image2.png'
+import author from '@/assets/img/blog/details-author.png'
+import author1 from '@/assets/img/icons/author1.svg'
+import date from '@/assets/img/icons/date1.svg'
+import CustomNiceSelect from '@/components/CustomNiceSelect'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Col, Container, Row } from 'react-bootstrap'
+import { FaArrowRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaReply, FaXTwitter } from 'react-icons/fa6'
+
+const Detail = () => {
+  return (
+    <>
+      <div className="blog-details-area sp">
+        <Container>
+          <Row>
+            <Col lg={8} className="m-auto">
+              <div className="blog-details-content">
+                <article>
+                  <div className="details-content">
+                    <div className="image">
+                      <Image className="w-full" src={detail} alt="" height={550} />
+                    </div>
+                    <div className="vl-blog12-meta mt-24">
+                      <Link href="#" className="date">
+                        <Image src={date} alt="" /> 12/12/2025
+                      </Link>
+                      <Link href="#" className="author">
+                        <Image src={author1} alt="" /> John Doe
+                      </Link>
+                    </div>
+                    <div className="heading2 mt-24">
+                      <h3>Discover the emerging trends that are reshaping the startup ecosystem.</h3>
+                      <p className=" mt-16">
+                        In today’s fast-paced digital world, startups are no longer bound by traditional frameworks. The startup ecosystem is
+                        continuously evolving, fueled by advancements in technology, changes in consumer behavior, and innovative business models.
+                        This blog takes a deep dive into the emerging trends that are redefining how startups operate, grow, and thrive in a
+                        competitive landscape.
+                      </p>
+                    </div>
+                    <div className="heading2 mt-40">
+                      <h3>A Revolution in the Startup World</h3>
+                      <p className=" mt-16">
+                        The startup ecosystem has always been a hub for innovation, but the past few years have witnessed unprecedented shifts. From
+                        the rise of artificial intelligence to the growing importance of sustainability, startups are leveraging these trends to carve
+                        out unique niches. Whether you're an aspiring entrepreneur or an investor, understanding these trends is crucial to staying
+                        ahead of the curve.
+                      </p>
+                    </div>
+                    <div className="heading2 mt-40">
+                      <h3>Artificial Intelligence as the Cornerstone Innovation</h3>
+                      <p className=" mt-16">
+                        AI has become the backbone of modern startups. From automating repetitive tasks to providing deep customer insights, AI is
+                        enabling startups to achieve efficiency and scalability like never before. Startups in fields like health tech, fintech, and
+                        e-commerce are using AI-driven tools to disrupt traditional industries.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+                <article>
+                  <div className="details-content mt-40">
+                    <div className="heading2 mt-24">
+                      <h5>Key Takeway</h5>
+                      <p className="mt-10">Adopting green practices not only aligns with global values but also new market opportunities.</p>
+                    </div>
+                    <Row>
+                      <Col md={6}>
+                        <div className="image mt-30">
+                          <Image className="w-full" src={detail1} alt="" height={278} />
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="image mt-30">
+                          <Image className="w-full" src={detail2} alt="" height={278} />
+                        </div>
+                      </Col>
+                    </Row>
+                    <div className="heading2 mt-24">
+                      <h3>The Rise of Remote-First Business Models</h3>
+                      <p className=" mt-16">
+                        The global shift to remote work has reshaped the way startups build teams and operate. Remote-first models allow startups to
+                        access talent pools from around the world, reducing overhead costs and increasing flexibility. Tools like Slack, Zoom, and
+                        Asana are facilitating seamless collaboration across continents.
+                      </p>
+                    </div>
+                    <div className="heading2 mt-24">
+                      <h5>Key Takeway</h5>
+                      <p className="mt-10">Embracing remote work can help startups reduce operational costs and attract top-tier talent.</p>
+                    </div>
+                    <div className="heading2 mt-40">
+                      <h3>Niche Markets and Hyper-Personalization</h3>
+                      <p className=" mt-16">
+                        Startups are increasingly targeting niche markets with tailored solutions. Hyper-personalization, powered by big data and
+                        machine learning, allows businesses to create unique experiences for every customer. Whether it’s subscription boxes for niche
+                        hobbies or personalized health plans, startups are proving that specialization is key to success.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+                <article>
+                  <div className="details-content mt-40">
+                    <div className="heading2 mt-24">
+                      <h5>Key Takeway</h5>
+                      <p className="mt-10">Adopting green practices not only aligns with global values but also new market opportunities.</p>
+                    </div>
+                    <div className="image mt-30">
+                      <Image className="w-full" src={detail4} alt="" height={385} />
+                    </div>
+                    <div className="heading2 mt-24">
+                      <h3>The Future is Bright for Startups</h3>
+                      <p className=" mt-16">
+                        The startup ecosystem is evolving at an unprecedented pace, offering endless opportunities for those who can adapt and
+                        innovate. By embracing these emerging trends, startups can overcome challenges and build lasting success in their industries.
+                        Whether it’s through AI, sustainability, or niche markets, the future belongs to startups that dare to think differently.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+                <div className="details-author-area mt-40">
+                  <p>"The future belongs to those who embrace change, innovate with purpose, and build solutions that inspire progress."</p>
+                  <div className="author-info">
+                    <div className="thumb">
+                      <Image src={author} alt="" />
+                    </div>
+                    <div className="text">
+                      <Link href="#">Alex Carey</Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="details-border" />
+                <div className="details-content">
+                  <div className="details-social-tags">
+                    <div className="tags">
+                      <ul>
+                        <li className="text"> Tags:</li>
+                        <li className="tag">
+                          <Link href="#">#BusinessConsulting</Link>
+                        </li>
+                        <li className="tag">
+                          <Link href="#">#SalesStrategy</Link>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="social-icons">
+                      <ul>
+                        <li className="text">Share:</li>
+                        <li className="icon">
+                          <Link href="#">
+                            <FaFacebookF className="fa-brands " />
+                          </Link>
+                        </li>
+                        <li className="icon">
+                          <Link href="#">
+                            <FaInstagram className="fa-brands" />
+                          </Link>
+                        </li>
+                        <li className="icon">
+                          <Link href="#">
+                            <FaXTwitter className="fa-brands " />
+                          </Link>
+                        </li>
+                        <li className="icon">
+                          <Link href="#">
+                            <FaLinkedinIn className="fa-brands " />
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="details-border" />
+                <div className="comment-area heading2">
+                  <h3>Blog Comments (2)</h3>
+                  <div className="details-single-comment mt-30">
+                    <div className="top-area">
+                      <div className="author-area">
+                        <div className="author-image">
+                          <Image src={box1} alt="" />
+                        </div>
+                        <div className="text">
+                          <Link href="#" className="date">
+                            <Image src={date} alt="" /> 8 December 2025
+                          </Link>
+                          <h4>
+                            <Link href="#">Alex Robertson</Link>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="reply">
+                        <Link href="#">
+                          <FaReply className="fa-solid" /> Reply
+                        </Link>
+                      </div>
+                    </div>
+                    <p>
+                      In today’s dynamic business landscape, organizations face numerous challenges that require strategic thinking and expert
+                      guidance. Business consulting serves as a crucial resource, providing companies with the insights an tools necessary.
+                    </p>
+                  </div>
+                  <div className="details-single-comment mt-30 ml-30 sm:ml-0">
+                    <div className="top-area">
+                      <div className="author-area">
+                        <div className="author-image">
+                          <Image src={box2} alt="" />
+                        </div>
+                        <div className="text">
+                          <Link href="#" className="date">
+                            <Image src={date} alt="" /> 8 December 2025
+                          </Link>
+                          <h4>
+                            <Link href="#">Theo Hernandez</Link>
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="reply">
+                        <Link href="#">
+                          <FaReply className="fa-solid fa-reply" /> Reply
+                        </Link>
+                      </div>
+                    </div>
+                    <p>
+                      At Advicx, our consulting services are tailored to meet the unique needs of each client, focusing on areas such as operational
+                      efficiency, market expansion, and digital transformation. By leveraging data analytics and.
+                    </p>
+                  </div>
+                </div>
+                <div className="contact-details-form heading2 mt-40">
+                  <h3>Leave a Reply</h3>
+                  <p className="mt-12">Provide clear contact information, including phone number, email, and address.</p>
+                  <form action="#">
+                    <Row className="mt-16">
+                      <Col md={6}>
+                        <div className="single-input">
+                          <input type="text" placeholder="First Name" />
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="single-input">
+                          <input type="text" placeholder="Last Name" />
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="single-input">
+                          <input type="email" placeholder="Email Address" />
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="single-input">
+                          <input type="number" placeholder="Phone Number" />
+                        </div>
+                      </Col>
+                      <Col md={12}>
+                        <div className="single-input">
+                          <CustomNiceSelect className="wide">
+                            <option value={1}>Service Type</option>
+                            <option value={2}>Option 1</option>
+                            <option value={3}>Option 2</option>
+                            <option value={4}>Option 3</option>
+                          </CustomNiceSelect>
+                        </div>
+                      </Col>
+                      <Col md={12}>
+                        <div className="single-input">
+                          <textarea rows={5} placeholder="How can we help you?" defaultValue={''} />
+                        </div>
+                        <div className="button mt-30">
+                          <button className="theme-btn3" type="submit">
+                            Send{' '}
+                            <span className="arrow1">
+                              <FaArrowRight className="fa-solid" />
+                            </span>
+                            <span className="arrow2">
+                              <FaArrowRight className="fa-solid" />
+                            </span>
+                          </button>
+                        </div>
+                      </Col>
+                    </Row>
+                  </form>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </>
+  )
+}
+
+export default Detail

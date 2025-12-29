@@ -1,0 +1,9 @@
+.git_old/
+node_modules/
+.next/
+out/
+dist/
+build/
+tsconfig.tsbuildinfo
+*.zip
+.env*
