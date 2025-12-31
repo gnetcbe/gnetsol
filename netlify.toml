@@ -43,8 +43,27 @@
   status = 301
   force = true
 
+
+[[redirects]]
+  from = "/water_testing.html"
+  to = "/software-development"
+  status = 301
+  force = true  
+
 [[redirects]]
   from = "/promaterial.html"
+  to = "/software-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/question_paper_generation.html"
+  to = "/software-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/opensourcedevelopment.html"
   to = "/software-development"
   status = 301
   force = true
@@ -55,17 +74,33 @@
   status = 301
   force = true
 
+
 [[redirects]]
   from = "/materialproduct.html"
   to = "/software-development"
   status = 301
   force = true
 
+
+[[redirects]]
+  from = "/material_product.html"
+  to = "/software-development"
+  status = 301
+  force = true
+
+
 [[redirects]]
   from = "/toolroommanagement.html"
   to = "/software-development"
   status = 301
   force = true
+
+ 
+[[redirects]]
+  from = "/tool_room_management.html"
+  to = "/software-development"
+  status = 301
+  force = true 
 
 [[redirects]]
   from = "/goldtojewelry.html"
@@ -86,7 +121,26 @@
   force = true
 
 [[redirects]]
+  from = "/construction_inventory_software.html"
+  to = "/software-development"
+  status = 301
+  force = true  
+
+[[redirects]]
   from = "/elearning.html"
+  to = "/software-development"
+  status = 301
+  force = true 
+  
+[[redirects]]
+  from = "/e_learning.html"
+  to = "/software-development"
+  status = 301
+  force = true 
+    
+
+[[redirects]]
+  from = "/our-services.html"
   to = "/software-development"
   status = 301
   force = true
@@ -104,6 +158,12 @@
   force = true
 
 [[redirects]]
+  from = "/resume_management.html"
+  to = "/software-development"
+  status = 301
+  force = true  
+
+[[redirects]]
   from = "/water_testing.html"
   to = "/software-development"
   status = 301
@@ -114,6 +174,18 @@
   to = "/software-development"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/fees-collection.html"
+  to = "/software-development"
+  status = 301
+  force = true 
+
+[[redirects]]
+  from = "/applicationsoftware.html"
+  to = "/software-development"
+  status = 301
+  force = true  
 
 
 # ================================
@@ -150,11 +222,107 @@
   force = true
 
 [[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+
+[[redirects]]
   from = "/resume.html"
   to = "/careers"
   status = 301
   force = true
 
+
+[[redirects]]
+  from = "/coimbatore.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatore_colleges.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatore_flighttimings.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/aboutus.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatore_textiles.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatore_tidelpark.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatore_tourism.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatore_traintiming.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatorecolleges.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  [[redirects]]
+  from = "/coimbatoreflighttimings.html"
+  to = "/about"
+  status = 301
+  force = true
+
+
+  [[redirects]]
+  from = "/coimbatoretextiles.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  
+  [[redirects]]
+  from = "/coimbatoretidelpark.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  
+  [[redirects]]
+  from = "/coimbatoretourism.html"
+  to = "/about"
+  status = 301
+  force = true
+
+  
+  [[redirects]]
+  from = "/coimbatoretraintiming.html"
+  to = "/about"
+  status = 301
+  force = true
+ 
 
 # ================================
 # SERVICE PAGES
@@ -162,6 +330,12 @@
 
 [[redirects]]
   from = "/designing.html"
+  to = "/web-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/web-development-coimbatore.html"
   to = "/web-development"
   status = 301
   force = true
@@ -179,10 +353,30 @@
   force = true
 
 [[redirects]]
+  from = "/web-design-seo-hosting-coimbatore.html"
+  to = "/web-hosting"
+  status = 301
+  force = true  
+
+[[redirects]]
+  from = "/domain-name-hosting-servers.html"
+  to = "/web-hosting"
+  status = 301
+  force = true  
+
+[[redirects]]
   from = "/mailingsolutions.html"
   to = "/email-services"
   status = 301
   force = true
+
+
+[[redirects]]
+  from = "/email-servers.html"
+  to = "/email-services"
+  status = 301
+  force = true
+
 
 [[redirects]]
   from = "/submission.html"
@@ -206,3 +400,6 @@
   to = "/privacy"
   status = 301
   force = true
+
+
+ 
