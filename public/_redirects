@@ -1,0 +1,62 @@
+# ================================
+# PRODUCT / SOFTWARE PAGES
+# ================================
+
+/garments.html                        /software-development   301
+/medical.html                         /software-development   301
+/water-testing.html                   /software-development   301
+/promaterial.html                     /software-development   301
+/questionpapergeneration.html         /software-development   301
+/materialproduct.html                 /software-development   301
+/toolroommanagement.html              /software-development   301
+/goldtojewelry.html                   /software-development   301
+/inventory.html                       /software-development   301
+/construction-inventory-software.html /software-development   301
+/elearning.html                       /software-development   301
+/service.html                         /software-development   301
+/resumemanagement.html                /software-development   301
+/water_testing.html                   /software-development   301
+/fees_collection.html                 /software-development   301
+
+
+# ================================
+# COMPANY / INFORMATION PAGES
+# ================================
+
+/aboutus.html         /about           301
+/technology.html      /about           301
+/portfolio.html       /about           301
+
+
+# ================================
+# CONTACT / CAREERS
+# ================================
+
+/contactus.html       /contact         301
+/resume.html          /careers         301
+
+
+# ================================
+# SERVICE PAGES
+# ================================
+
+/designing.html            /web-development           301
+/ecommerce.html            /ecommerce-solutions       301
+/hosting.html              /web-hosting               301
+/mailingsolutions.html     /email-services            301
+/submission.html           /digital-marketing-seo     301
+
+
+# ================================
+# LEGAL PAGES
+# ================================
+
+/terms.html          /terms-of-service   301
+/privacy.html        /privacy            301
+
+
+# ================================
+# SPA FALLBACK (MUST BE LAST)
+# ================================
+
+/*   /index.html   200
