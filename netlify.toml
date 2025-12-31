@@ -1,5 +1,166 @@
 [build]
   command = "npm run build"
+  publish = "out"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+[build.environment]
+  NODE_VERSION = "18"
+
+
+# ================================
+# PRODUCT / SOFTWARE PAGES
+# ================================
+
+[[redirects]]
+  from = "/garments.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/medical.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/water-testing.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/promaterial.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/questionpapergeneration.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/materialproduct.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/toolroommanagement.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/goldtojewelry.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/inventory.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/construction-inventory-software.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/elearning.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/service.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/resumemanagement.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/water_testing.html"
+  to = "/software-development"
+  status = 301
+
+[[redirects]]
+  from = "/fees_collection.html"
+  to = "/software-development"
+  status = 301
+
+
+# ================================
+# COMPANY / INFO
+# ================================
+
+[[redirects]]
+  from = "/aboutus.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/technology.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/about"
+  status = 301
+
+
+# ================================
+# CONTACT / CAREERS
+# ================================
+
+[[redirects]]
+  from = "/contactus.html"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/resume.html"
+  to = "/careers"
+  status = 301
+
+
+# ================================
+# SERVICES
+# ================================
+
+[[redirects]]
+  from = "/designing.html"
+  to = "/web-development"
+  status = 301
+
+[[redirects]]
+  from = "/ecommerce.html"
+  to = "/ecommerce-solutions"
+  status = 301
+
+[[redirects]]
+  from = "/hosting.html"
+  to = "/web-hosting"
+  status = 301
+
+[[redirects]]
+  from = "/mailingsolutions.html"
+  to = "/email-services"
+  status = 301
+
+[[redirects]]
+  from = "/submission.html"
+  to = "/digital-marketing-seo"
+  status = 301
+
+
+# ================================
+# LEGAL
+# ================================
+
+[[redirects]]
+  from = "/terms.html"
+  to = "/terms-of-service"
+  status = 301
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
