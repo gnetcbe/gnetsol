@@ -98,7 +98,7 @@ export async function handler(event) {
     /* ===== SEND MAIL ===== */
     await transporter.sendMail({
       from: `"Website Contact" <${process.env.SMTP_USER}>`,
-      to: 'info@gnetsolutions.com',      // 🔁 receiving email
+      to: 'gnet.cbe@gmail.com',      // 🔁 receiving email
       replyTo: email,
       subject: `New Enquiry – ${service}`,
       html: htmlTemplate,
