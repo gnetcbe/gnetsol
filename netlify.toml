@@ -1,4 +1,13 @@
 # ================================
+# NETLIFY FUNCTIONS (DO NOT REDIRECT)
+# ================================
+
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# ================================
 # BUILD SETTINGS (NEXT.JS STATIC EXPORT)
 # ================================
 
