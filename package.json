@@ -18,6 +18,7 @@
     "next": "^15.5.9",
     "next-auth": "^4.24.11",
     "nice-select2": "^2.3.1",
+    "nodemailer": "^7.0.12",
     "react": "^19.2.3",
     "react-awesome-reveal": "^4.3.1",
     "react-bootstrap": "^2.10.9",

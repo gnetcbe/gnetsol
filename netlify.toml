@@ -402,4 +402,8 @@
   force = true
 
 
+[build]
+  functions = "netlify/functions"
+
+
  

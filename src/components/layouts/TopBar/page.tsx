@@ -20,7 +20,8 @@ const Header = () => {
     <>
       <header>
         <div id="vl-header-sticky" className={`vl-header-area8 header-tranperent header-${scrollY > 100 && 'sticky'}`}>
-          <Container className="header2-bg">
+          <div className="header2-bg ">
+             <div className="container"> 
             <Row className="align-items-center">
               <Col lg={3} md={6} xs={8}>
                 <div className="vl-logo">
@@ -121,7 +122,8 @@ const Header = () => {
                 </div>
               </Col>
             </Row>
-          </Container>
+            </div>
+           </div>
         </div>
       </header>
       <div className={`search__popup ${searchOpen && 'search-opened'}`}>

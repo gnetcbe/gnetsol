@@ -12,9 +12,14 @@
 
 /* 🖥 Laptop / Small Desktop */
 @media (min-width: 1200px) and (max-width: 1399px) {
+
+ 
   .container {
     max-width: 1240px !important;
   }
+   
+
+
 }
 
 /* 📱 Tablet */
@@ -256,6 +261,16 @@ img {
    font-weight:500 !important;   
 }
 
+
+.vl-header-area8 .header2-bg {
+    margin-top: 0px !important;   
+    border-radius: 0px !important;   
+    padding: 8px 14px !important;  
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(0, 0, 0, 0.06);
+     
+}
+
 .vl-header-area6 .vl-main-menu ul > li > a {
    padding: 0 6px !important;
    font-weight:600 !important;
@@ -300,10 +315,7 @@ img {
 
 
 }
-
-
-
-
+ 
 
 .theme-btn11 {
     

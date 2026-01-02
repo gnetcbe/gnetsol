@@ -118,14 +118,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   /* ===== SEND TO PHP ===== */
   try {
-    const res = await fetch(
-      'https://gnetsolutions.in/contact-mail.php', // 🔁 CHANGE DOMAIN
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      }
-    )
+  const res = await fetch(
+  '/.netlify/functions/contact-mail',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData),
+  }
+) 
 
     const result = await res.json()
 
