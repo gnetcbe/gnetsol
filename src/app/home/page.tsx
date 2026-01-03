@@ -26,9 +26,9 @@ const WorkProcess = dynamic(() => import('./components/WorkProcess'), {
 
 /* ✅ HOME PAGE SEO METADATA */
 export const metadata: Metadata = {
-  title: 'G-Net Solutions | Website Development & IT Services in Coimbatore',
+  title: 'G-Net Solutions | Web Development & IT Services in Coimbatore',
   description:
-    'G-Net Solutions is a leading IT services and website development company in Coimbatore offering web development, software solutions, digital marketing, hosting, and business IT services.',
+    'G-Net Solutions is a website development and IT services company in Coimbatore, offering web development, software solutions, digital marketing, and hosting services.',
   keywords: [
     'g-net solutions',
     'website development company in coimbatore',
@@ -56,6 +56,15 @@ export const metadata: Metadata = {
     description:
       'Leading IT services and website development company in Coimbatore.',
   },
+
+alternates: {
+    canonical: 'https://www.g-netsolutions.com/',
+    languages: {
+      'en-IN': 'https://www.g-netsolutions.com/',
+      'x-default': 'https://www.g-netsolutions.com/',
+    },
+  },
+
 }
 
 const Page = () => {

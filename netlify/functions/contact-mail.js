@@ -1,8 +1,11 @@
 import nodemailer from 'nodemailer'
 
 export async function handler(event) {
+  console.log('🔥 CONTACT FUNCTION HIT')
+
   /* 🔐 Allow only POST */
   if (event.httpMethod !== 'POST') {
+    console.log('❌ Not a POST request')
     return {
       statusCode: 405,
       body: JSON.stringify({ message: 'Method Not Allowed' }),
@@ -10,6 +13,14 @@ export async function handler(event) {
   }
 
   try {
+    if (!event.body) {
+      console.log('❌ Empty request body')
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ status: 'empty_body' }),
+      }
+    }
+
     /* ===== PARSE REQUEST ===== */
     const {
       name,
@@ -21,74 +32,76 @@ export async function handler(event) {
       company_website,
     } = JSON.parse(event.body)
 
-    /* 🔒 Honeypot (Silent CAPTCHA) */
+    console.log('📨 Form data received:', {
+      name,
+      email,
+      phone,
+      location,
+      service,
+    })
+
+    /* 🔒 Honeypot */
     if (company_website) {
+      console.log('🤖 Honeypot triggered')
       return {
         statusCode: 200,
         body: JSON.stringify({ status: 'ok' }),
       }
     }
 
-    /* ===== BASIC SAFETY CHECK ===== */
+    /* ===== BASIC CHECK ===== */
     if (!name || !email || !phone || !message) {
+      console.log('❌ Missing required fields')
       return {
         statusCode: 400,
         body: JSON.stringify({ status: 'invalid' }),
       }
     }
 
-    /* ===== SMTP CONFIG ===== */
+    /* ===== SMTP CONFIG (NETLIFY SAFE) ===== */
     const transporter = nodemailer.createTransport({
-      host: 'mail.gnetsolutions.com',   // 🔁 your SMTP host
-      port: 465,
-      secure: true,
+      host: '152.160.207.207',
+      port: 587,            // ✅ more reliable on Netlify
+      secure: false,        // ✅ must be false for 587
       auth: {
-        user: process.env.SMTP_USER,    // set in Netlify
-        pass: process.env.SMTP_PASS,    // set in Netlify
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false, // ✅ avoids cert issues
       },
     })
 
-    /* ===== STYLED EMAIL ===== */
+    /* ===== VERIFY SMTP ===== */
+    await transporter.verify()
+    console.log('✅ SMTP VERIFIED')
+
+    /* ===== EMAIL TEMPLATE ===== */
     const htmlTemplate = `
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f8;padding:30px;font-family:Arial,Helvetica,sans-serif">
   <tr>
     <td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08)">
-        
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:10px;overflow:hidden">
         <tr>
-          <td style="background:#2563eb;padding:20px 24px;color:#ffffff">
-            <h2 style="margin:0;font-size:20px;">📩 New Website Enquiry</h2>
-            <p style="margin:4px 0 0;font-size:13px;opacity:0.9">
-              G-Net Solutions Contact Form
-            </p>
+          <td style="background:#2563eb;padding:20px;color:#ffffff">
+            <h2 style="margin:0">📩 New Website Enquiry</h2>
           </td>
         </tr>
-
         <tr>
-          <td style="padding:24px">
-            <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#111827">
-              <tr><td style="padding:8px 0"><strong>Name</strong></td><td>${name}</td></tr>
-              <tr><td style="padding:8px 0"><strong>Email</strong></td><td>${email}</td></tr>
-              <tr><td style="padding:8px 0"><strong>Phone</strong></td><td>${phone}</td></tr>
-              <tr><td style="padding:8px 0"><strong>Location</strong></td><td>${location}</td></tr>
-              <tr><td style="padding:8px 0"><strong>Service</strong></td><td>${service}</td></tr>
-            </table>
-
-            <div style="margin-top:18px">
-              <p style="margin:0 0 6px;font-weight:bold">Message</p>
-              <div style="background:#f1f5f9;padding:14px;border-radius:8px;color:#334155;line-height:1.6">
-                ${message.replace(/\n/g, '<br/>')}
-              </div>
-            </div>
+          <td style="padding:24px;font-size:14px;color:#111">
+            <p><b>Name:</b> ${name}</p>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Phone:</b> ${phone}</p>
+            <p><b>Location:</b> ${location}</p>
+            <p><b>Service:</b> ${service}</p>
+            <p><b>Message:</b><br/>${message.replace(/\n/g, '<br/>')}</p>
           </td>
         </tr>
-
         <tr>
-          <td style="background:#f8fafc;padding:16px 24px;font-size:12px;color:#6b7280;text-align:center">
-            Submitted via <strong>g-netsolutions.com</strong>
+          <td style="background:#f1f5f9;padding:14px;font-size:12px;color:#555;text-align:center">
+            Submitted via g-netsolutions.com
           </td>
         </tr>
-
       </table>
     </td>
   </tr>
@@ -98,21 +111,27 @@ export async function handler(event) {
     /* ===== SEND MAIL ===== */
     await transporter.sendMail({
       from: `"Website Contact" <${process.env.SMTP_USER}>`,
-      to: 'gnet.cbe@gmail.com',      // 🔁 receiving email
+      to: 'gnet.cbe@gmail.com',
       replyTo: email,
-      subject: `New Enquiry – ${service}`,
+      subject: `New Enquiry – ${service || 'Website'}`,
       html: htmlTemplate,
     })
 
-    /* ===== SUCCESS ===== */
+    console.log('✅ MAIL SENT SUCCESSFULLY')
+
     return {
       statusCode: 200,
       body: JSON.stringify({ status: 'success' }),
     }
   } catch (error) {
+    console.error('🔥 MAIL ERROR:', error)
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ status: 'error' }),
+      body: JSON.stringify({
+        status: 'error',
+        message: error.message,
+      }),
     }
   }
 }
