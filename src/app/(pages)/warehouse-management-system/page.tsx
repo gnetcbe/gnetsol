@@ -13,18 +13,24 @@ const WarehouseManagementSystem = dynamic(
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Software Development Company in Coimbatore | G-Net Solutions',
-  description:
-    'G-Net Solutions is a trusted software development company in Coimbatore delivering custom software, application development, and scalable digital solutions for businesses.',
-  keywords: [
-    'software development company in coimbatore',
-    'custom software development',
-    'application software development',
-    'business software solutions',
-    'enterprise application development',
-    'software services coimbatore',
-    'g-net solutions',
-  ],
+  title: 'Bonded Warehouse Management System Software in Coimbatore | G-Net Solutions',
+
+description:
+  'Advanced bonded warehouse management system software for inventory control, customs compliance, in-bond and ex-bond operations, reporting, and secure warehouse management in Coimbatore.',
+
+keywords: [
+  'bonded warehouse management system',
+  'bonded warehouse software',
+  'customs bonded warehouse software',
+  'in bond ex bond management system',
+  'warehouse management system for customs',
+  'inventory control bonded warehouse',
+  'customs compliance software',
+  'bonded warehouse inventory system',
+  'warehouse software coimbatore',
+  'logistics management software',
+],
+
   icons: {
     icon: logo.src,
   },

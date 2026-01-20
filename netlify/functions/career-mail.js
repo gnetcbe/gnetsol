@@ -7,7 +7,6 @@ export async function handler(event) {
 
   /* 🔐 Allow only POST */
   if (event.httpMethod !== 'POST') {
-    console.log('❌ Not a POST request')
     return {
       statusCode: 405,
       body: JSON.stringify({ message: 'Method Not Allowed' }),
@@ -17,7 +16,21 @@ export async function handler(event) {
   return new Promise((resolve) => {
     const form = new multiparty.Form()
 
-    form.parse(event.body, async (err, fields, files) => {
+    // 🔥 Decode body correctly (Netlify sends base64 sometimes)
+    const body = event.isBase64Encoded
+      ? Buffer.from(event.body, 'base64')
+      : Buffer.from(event.body)
+
+    // 🔥 Create fake request object for multiparty
+    const fakeReq = {
+      headers: {
+        'content-type': event.headers['content-type'] || event.headers['Content-Type'],
+        'content-length': body.length,
+      },
+      on: () => {}, // dummy stream handler
+    }
+
+    form.parse(fakeReq, async (err, fields, files) => {
       if (err) {
         console.error('❌ Form parse error:', err)
         resolve({
@@ -81,8 +94,8 @@ export async function handler(event) {
       /* ===== SMTP CONFIG (SAME AS CONTACT) ===== */
       const transporter = nodemailer.createTransport({
         host: '152.160.207.207',
-        port: 587,            // ✅ reliable on Netlify
-        secure: false,        // ✅ must be false for 587
+        port: 587,
+        secure: false,
         auth: {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
@@ -143,7 +156,7 @@ export async function handler(event) {
       try {
         await transporter.sendMail({
           from: `"Career Applications" <${process.env.SMTP_USER}>`,
-          to: 'gnet.cbe@gmail.com',        // 🔁 HR / Admin mail
+          to: 'gnet.cbe@gmail.com',
           replyTo: email,
           subject: `New Job Application – ${position}`,
           html: htmlTemplate,
@@ -173,5 +186,9 @@ export async function handler(event) {
         })
       }
     })
+
+    // 🔥 FEED BODY INTO MULTIPARTY
+    form.write(body)
+    form.end()
   })
 }

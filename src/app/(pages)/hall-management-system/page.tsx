@@ -14,18 +14,23 @@ const HallManagementSystem = dynamic(
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Software Development Company in Coimbatore | G-Net Solutions',
+title: 'Hall Management Software in Coimbatore | G-Net Solutions',
   description:
-    'G-Net Solutions is a trusted software development company in Coimbatore delivering custom software, application development, and scalable digital solutions for businesses.',
-  keywords: [
-    'software development company in coimbatore',
-    'custom software development',
-    'application software development',
-    'business software solutions',
-    'enterprise application development',
-    'software services coimbatore',
-    'g-net solutions',
-  ],
+  'Hall management software for venue booking, stall management, event scheduling, billing, and operations in Coimbatore.',
+
+keywords: [
+  'exhibition hall management software',
+  'convention hall management system',
+  'venue management software coimbatore',
+  'trade fair management system',
+  'event venue booking software',
+  'stall management system',
+  'hall booking software',
+  'exhibition management solution',
+  'convention center software',
+  'venue operations management',
+],
+
   icons: {
     icon: logo.src,
   },
