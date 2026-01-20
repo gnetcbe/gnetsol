@@ -1,36 +1,35 @@
 import nodemailer from 'nodemailer'
 import multiparty from 'multiparty'
 import fs from 'fs'
+import { PassThrough } from 'stream'
 
 export async function handler(event) {
   console.log('🔥 CAREER FUNCTION HIT')
 
-  /* 🔐 Allow only POST */
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ message: 'Method Not Allowed' }),
-    }
+    return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
   return new Promise((resolve) => {
-    const form = new multiparty.Form()
 
-    // 🔥 Decode body correctly (Netlify sends base64 sometimes)
+    // Decode body
     const body = event.isBase64Encoded
       ? Buffer.from(event.body, 'base64')
       : Buffer.from(event.body)
 
-    // 🔥 Create fake request object for multiparty
-    const fakeReq = {
-      headers: {
-        'content-type': event.headers['content-type'] || event.headers['Content-Type'],
-        'content-length': body.length,
-      },
-      on: () => {}, // dummy stream handler
+    // 🔥 Create real stream for multiparty
+    const stream = new PassThrough()
+    stream.end(body)
+
+    // Attach headers to stream
+    stream.headers = {
+      'content-type': event.headers['content-type'] || event.headers['Content-Type'],
+      'content-length': body.length,
     }
 
-    form.parse(fakeReq, async (err, fields, files) => {
+    const form = new multiparty.Form()
+
+    form.parse(stream, async (err, fields, files) => {
       if (err) {
         console.error('❌ Form parse error:', err)
         resolve({
@@ -50,7 +49,6 @@ export async function handler(event) {
         return
       }
 
-      /* ===== COLLECT VALUES ===== */
       const name = fields.name?.[0]
       const email = fields.email?.[0]
       const phone = fields.phone?.[0]
@@ -60,19 +58,11 @@ export async function handler(event) {
       const location = fields.location?.[0]
       const message = fields.message?.[0]
 
-      console.log('📨 Career form data received:', {
-        name,
-        email,
-        phone,
-        position,
-        qualification,
-        experience,
-        location,
-      })
+      const resumeFile = files.resume?.[0]
 
-      /* ===== BASIC CHECK ===== */
-      if (!name || !email || !phone || !position) {
-        console.log('❌ Missing required fields')
+      console.log('📨 Career data:', { name, email, phone, position })
+
+      if (!name || !email || !phone || !position || !resumeFile) {
         resolve({
           statusCode: 400,
           body: JSON.stringify({ status: 'invalid' }),
@@ -80,18 +70,7 @@ export async function handler(event) {
         return
       }
 
-      const resumeFile = files.resume?.[0]
-
-      if (!resumeFile) {
-        console.log('❌ Resume missing')
-        resolve({
-          statusCode: 400,
-          body: JSON.stringify({ status: 'resume_missing' }),
-        })
-        return
-      }
-
-      /* ===== SMTP CONFIG (SAME AS CONTACT) ===== */
+      /* ===== SMTP CONFIG ===== */
       const transporter = nodemailer.createTransport({
         host: '152.160.207.207',
         port: 587,
@@ -100,17 +79,14 @@ export async function handler(event) {
           user: process.env.SMTP_USER,
           pass: process.env.SMTP_PASS,
         },
-        tls: {
-          rejectUnauthorized: false,
-        },
+        tls: { rejectUnauthorized: false },
       })
 
-      /* ===== VERIFY SMTP ===== */
       try {
         await transporter.verify()
         console.log('✅ SMTP VERIFIED')
       } catch (e) {
-        console.error('🔥 SMTP VERIFY FAILED:', e)
+        console.error('🔥 SMTP ERROR:', e)
         resolve({
           statusCode: 500,
           body: JSON.stringify({ status: 'smtp_error' }),
@@ -134,7 +110,7 @@ export async function handler(event) {
             <p><b>Name:</b> ${name}</p>
             <p><b>Email:</b> ${email}</p>
             <p><b>Phone:</b> ${phone}</p>
-            <p><b>Position Applied:</b> ${position}</p>
+            <p><b>Position:</b> ${position}</p>
             <p><b>Qualification:</b> ${qualification}</p>
             <p><b>Experience:</b> ${experience}</p>
             <p><b>Location:</b> ${location || '-'}</p>
@@ -168,7 +144,7 @@ export async function handler(event) {
           ],
         })
 
-        console.log('✅ CAREER MAIL SENT SUCCESSFULLY')
+        console.log('✅ CAREER MAIL SENT')
 
         resolve({
           statusCode: 200,
@@ -179,16 +155,9 @@ export async function handler(event) {
 
         resolve({
           statusCode: 500,
-          body: JSON.stringify({
-            status: 'error',
-            message: error.message,
-          }),
+          body: JSON.stringify({ status: 'error', message: error.message }),
         })
       }
     })
-
-    // 🔥 FEED BODY INTO MULTIPARTY
-    form.write(body)
-    form.end()
   })
 }
