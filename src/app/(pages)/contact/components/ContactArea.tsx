@@ -183,7 +183,7 @@ const ContactArea = () => {
 
                       <Col md={6}>
                         <div className="single-input">
-                          <input type="text" placeholder="Location" maxLength={100} required />
+                          <input type="text" placeholder="Location" maxLength={50} required />
                         </div>
                       </Col>
 

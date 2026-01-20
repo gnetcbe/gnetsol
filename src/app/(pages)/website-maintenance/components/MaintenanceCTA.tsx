@@ -1,9 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
 
 const MaintenanceCTA = () => {
+
+  /* 🔄 SUBMIT STATE */
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   /* PHONE: digits only */
   const handlePhoneInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,15 +19,14 @@ const MaintenanceCTA = () => {
     e.preventDefault()
 
     const form = e.currentTarget
+    if (isSubmitting) return
 
     // 🔒 Honeypot check (silent captcha)
     const honeypot = (form.querySelector(
       'input[name="company_website"]'
     ) as HTMLInputElement).value
 
-    if (honeypot) {
-      return // bot detected
-    }
+    if (honeypot) return
 
     // Email validation
     const email = (form.querySelector(
@@ -59,8 +62,10 @@ const MaintenanceCTA = () => {
     }
 
     try {
+      setIsSubmitting(true)
+
       const response = await fetch(
-        'https://gnetsolutions.in/maintenance-mail.php', // 🔁 CHANGE DOMAIN
+        '/.netlify/functions/maintenance-mail',   // ✅ NETLIFY FUNCTION
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -78,6 +83,8 @@ const MaintenanceCTA = () => {
       }
     } catch (error) {
       alert('Server error. Please try later.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -202,9 +209,20 @@ const MaintenanceCTA = () => {
 
           </div>
 
-          <button type="submit">Submit</button>
+          {/* 🔄 SUBMIT BUTTON WITH ANIMATION */}
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <span className="sending">
+                <span className="spinner" />
+                Sending...
+              </span>
+            ) : (
+              'Submit'
+            )}
+          </button>
         </form>
       </Container>
+
 
      {/* STYLES */}
       <style jsx>{`
@@ -420,7 +438,24 @@ const MaintenanceCTA = () => {
   }
 }
 
+ .sending {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+        }
 
+        .spinner {
+          width: 18px;
+          height: 18px;
+          border: 3px solid rgba(255,255,255,0.4);
+          border-top: 3px solid #fff;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
 
       `}</style>
     </section>
