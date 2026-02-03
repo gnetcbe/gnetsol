@@ -43,9 +43,12 @@ async function getRecentBlogs(): Promise<RecentBlog[]> {
 export default async function Page({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const blog = await getBlog(params.slug);
+  const { slug } = await params;
+  const blog = await getBlog(slug);
+
+
   const recentBlogs = await getRecentBlogs();
 
   return (

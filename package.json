@@ -23,7 +23,7 @@
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.561.0",
     "multiparty": "^4.2.3",
-    "next": "^15.5.9",
+    "next": "^16.1.6",
     "next-auth": "^4.24.11",
     "nice-select2": "^2.3.1",
     "nodemailer": "^7.0.12",
