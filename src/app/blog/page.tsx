@@ -1,7 +1,6 @@
 import Link from "next/link";
 import "./blog.css";
 
-
 type Blog = {
   id: number;
   title: string;
@@ -14,18 +13,17 @@ const API = process.env.NEXT_PUBLIC_API_URL!;
 const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 
 async function getBlogs(): Promise<Blog[]> {
-  const res = await fetch(`${API}/blogs.php`, { cache: "no-store" });
+  const res = await fetch(`${API}/blogs.php`, {
+    cache: "force-cache"
+  });
   return res.json();
 }
- 
+
 export default async function BlogPage() {
   const blogs = await getBlogs();
 
   return (
-    
     <section className="container blog-list">
-     
-
       <div className="blog-grid">
         {blogs.map((blog) => (
           <article key={blog.id} className="blog-card">
