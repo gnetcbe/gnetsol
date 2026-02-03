@@ -1,6 +1,8 @@
 import Link from "next/link";
 import "./blog.css";
 
+export const dynamic = "force-static";
+
 type Blog = {
   id: number;
   title: string;
@@ -14,7 +16,7 @@ const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 
 async function getBlogs(): Promise<Blog[]> {
   const res = await fetch(`${API}/blogs.php`, {
-    cache: "force-cache"
+    cache: "force-cache",
   });
   return res.json();
 }

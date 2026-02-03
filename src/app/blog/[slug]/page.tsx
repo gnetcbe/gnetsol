@@ -1,5 +1,7 @@
 import "./blogdet.css";
 
+export const dynamic = "force-static";
+
 type Blog = {
   title: string;
   content: string;
@@ -15,7 +17,6 @@ type RecentBlog = {
 const API = process.env.NEXT_PUBLIC_API_URL!;
 const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 
-/* ✅ REQUIRED for static export */
 export async function generateStaticParams() {
   const res = await fetch(`${API}/blogs.php`, {
     cache: "force-cache",
@@ -28,44 +29,32 @@ export async function generateStaticParams() {
   }));
 }
 
-/* ✅ Single blog (static-safe) */
 async function getBlog(slug: string): Promise<Blog> {
   const res = await fetch(`${API}/blog.php?slug=${slug}`, {
     cache: "force-cache",
   });
-
-  if (!res.ok) {
-    throw new Error("Blog not found");
-  }
-
   return res.json();
 }
 
-/* ✅ Recent blogs (static-safe) */
 async function getRecentBlogs(): Promise<RecentBlog[]> {
   const res = await fetch(`${API}/blogs.php`, {
     cache: "force-cache",
   });
-
   const blogs = await res.json();
   return blogs.slice(0, 5);
 }
 
-/* ✅ NEXT.JS 15 CORRECT PAGE SIGNATURE */
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
-
-  const blog = await getBlog(slug);
+  const blog = await getBlog(params.slug);
   const recentBlogs = await getRecentBlogs();
 
   return (
     <section className="container blog-single">
       <div className="blog-layout">
-        {/* LEFT CONTENT */}
         <article className="blog-main">
           <h1 className="blog-heading">{blog.title}</h1>
 
@@ -83,7 +72,6 @@ export default async function Page({
           />
         </article>
 
-        {/* RIGHT SIDEBAR */}
         <aside className="blog-sidebar">
           <a href="/blog" className="back-to-blog">
             ← Back to Blog
@@ -106,9 +94,7 @@ export default async function Page({
                   />
                 )}
 
-                <span className="latest-thumb-title">
-                  {item.title}
-                </span>
+                <span className="latest-thumb-title">{item.title}</span>
               </a>
             ))}
           </div>
