@@ -18,20 +18,20 @@ const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 /* ✅ REQUIRED for static export */
 export async function generateStaticParams() {
   const res = await fetch(`${API}/blogs.php`, {
-    cache: "force-cache"
+    cache: "force-cache",
   });
 
   const blogs = await res.json();
 
   return blogs.map((blog: { slug: string }) => ({
-    slug: blog.slug
+    slug: blog.slug,
   }));
 }
 
 /* ✅ Single blog (static-safe) */
 async function getBlog(slug: string): Promise<Blog> {
   const res = await fetch(`${API}/blog.php?slug=${slug}`, {
-    cache: "force-cache"
+    cache: "force-cache",
   });
 
   if (!res.ok) {
@@ -44,19 +44,20 @@ async function getBlog(slug: string): Promise<Blog> {
 /* ✅ Recent blogs (static-safe) */
 async function getRecentBlogs(): Promise<RecentBlog[]> {
   const res = await fetch(`${API}/blogs.php`, {
-    cache: "force-cache"
+    cache: "force-cache",
   });
 
   const blogs = await res.json();
   return blogs.slice(0, 5);
 }
 
+/* ✅ NEXT.JS 15 CORRECT PAGE SIGNATURE */
 export default async function Page({
-  params
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const blog = await getBlog(slug);
   const recentBlogs = await getRecentBlogs();
