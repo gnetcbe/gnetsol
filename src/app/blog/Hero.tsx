@@ -11,16 +11,17 @@ const Hero = () => {
           <Row>
             <Col lg={8} className="m-auto text-center">
               <div className="inner-main-heading">
-                <h1>Blog</h1>
+                <h1>Blogs</h1>
                 <div className="breadcrumbs-pages">
                   <ul>
                     <li>
                       <Link href="/">Home</Link>
                     </li>
+                    
                     <li className="angle">
                       <FaAngleRight className="fa-solid" />
                     </li>
-                    <li> Blog </li>
+                    <li>Blogs</li>
                   </ul>
                 </div>
               </div>
