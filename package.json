@@ -24,7 +24,7 @@
     "lucide-react": "^0.451.0",
     "multiparty": "^4.2.3",
 
-    "next": "14.2.35",
+    "next": "15.5.9",
     "next-auth": "^4.24.11",
 
     "nice-select2": "^2.3.1",
@@ -53,6 +53,6 @@
     "typescript": "^5.3.3"
   },
   "overrides": {
-    "next": "14.2.35"
+    "next": "15.5.9"
   }
 }
