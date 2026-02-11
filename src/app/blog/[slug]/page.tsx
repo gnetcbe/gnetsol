@@ -17,44 +17,78 @@ type RecentBlog = {
 const API = process.env.NEXT_PUBLIC_API_URL!;
 const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 
-export async function generateStaticParams() {
-  const res = await fetch(`${API}/blogs.php`, {
-    cache: "force-cache",
-  });
+/* ---------- SAFE FETCH HELPERS ---------- */
 
-  const blogs = await res.json();
+async function safeJsonFetch(url: string) {
+  try {
+    const res = await fetch(url, {
+      cache: "force-cache",
+    });
+
+    const text = await res.text();
+
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      console.error("Invalid JSON from:", url);
+      console.error("Response was:", text);
+      return null;
+    }
+  } catch (error) {
+    console.error("Fetch failed for:", url, error);
+    return null;
+  }
+}
+
+/* ---------- STATIC PARAMS ---------- */
+
+export async function generateStaticParams() {
+  const blogs = await safeJsonFetch(`${API}/blogs.php`);
+
+  if (!blogs || !Array.isArray(blogs)) {
+    return [];
+  }
 
   return blogs.map((blog: { slug: string }) => ({
     slug: blog.slug,
   }));
 }
 
-async function getBlog(slug: string): Promise<Blog> {
-  const res = await fetch(`${API}/blog.php?slug=${slug}`, {
-    cache: "force-cache",
-  });
-  return res.json();
+/* ---------- DATA FETCH ---------- */
+
+async function getBlog(slug: string): Promise<Blog | null> {
+  return await safeJsonFetch(`${API}/blog.php?slug=${slug}`);
 }
 
 async function getRecentBlogs(): Promise<RecentBlog[]> {
-  const res = await fetch(`${API}/blogs.php`, {
-    cache: "force-cache",
-  });
-  const blogs = await res.json();
+  const blogs = await safeJsonFetch(`${API}/blogs.php`);
+
+  if (!blogs || !Array.isArray(blogs)) {
+    return [];
+  }
+
   return blogs.slice(0, 5);
 }
 
-/* ✅ NEXT.JS 15 FIX STARTS HERE */
+/* ---------- NEXT 15 PARAM FIX ---------- */
+
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
-  /* ✅ NEXT.JS 15 FIX ENDS HERE */
 
   const blog = await getBlog(slug);
   const recentBlogs = await getRecentBlogs();
+
+  if (!blog) {
+    return (
+      <section className="container">
+        <h1>Blog not found</h1>
+      </section>
+    );
+  }
 
   return (
     <section className="container blog-single">
@@ -98,7 +132,9 @@ export default async function Page({ params }: PageProps) {
                   />
                 )}
 
-                <span className="latest-thumb-title">{item.title}</span>
+                <span className="latest-thumb-title">
+                  {item.title}
+                </span>
               </a>
             ))}
           </div>
