@@ -1,7 +1,8 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import "./blog.css";
-
-export const dynamic = "force-static";
 
 type Blog = {
   id: number;
@@ -14,15 +15,30 @@ type Blog = {
 const API = process.env.NEXT_PUBLIC_API_URL!;
 const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 
-async function getBlogs(): Promise<Blog[]> {
-  const res = await fetch(`${API}/blogs.php`, {
-    cache: "force-cache",
-  });
-  return res.json();
-}
+export default function BlogPage() {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function BlogPage() {
-  const blogs = await getBlogs();
+  useEffect(() => {
+    fetch(`${API}/blogs.php`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBlogs(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch blogs:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="container blog-list">
+        <p>Loading blogs...</p>
+      </section>
+    );
+  }
 
   return (
     <section className="container blog-list">
