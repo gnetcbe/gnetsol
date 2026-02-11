@@ -44,12 +44,16 @@ async function getRecentBlogs(): Promise<RecentBlog[]> {
   return blogs.slice(0, 5);
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const blog = await getBlog(params.slug);
+/* ✅ NEXT.JS 15 FIX STARTS HERE */
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
+  /* ✅ NEXT.JS 15 FIX ENDS HERE */
+
+  const blog = await getBlog(slug);
   const recentBlogs = await getRecentBlogs();
 
   return (
