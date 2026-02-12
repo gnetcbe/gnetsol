@@ -42,8 +42,8 @@
 
 
 .vl-header-area8 .vl-main-menu ul > li > a {
- 
-    padding: 0 10px !important;
+     font-size: 17px  !important;
+    padding: 0 8px !important;
 }
 .mt60{
     margin-top: 60px !important;
@@ -256,7 +256,7 @@ img {
     
 }
 .vl-header-area8 .vl-main-menu {
-   padding: 6px 14px !important;
+   padding: 2px 4px !important;
    font-weight:500 !important;   
 }
 

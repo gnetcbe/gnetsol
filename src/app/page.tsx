@@ -16,6 +16,8 @@ const Choose = dynamic(() => import('./home/components/Choose'), {
   loading: () => <div style={{ minHeight: 220 }} />,
 })
 
+ 
+
 const Service = dynamic(() => import('./home/components/Services2'), {
   loading: () => <div style={{ minHeight: 260 }} />,
 })
@@ -26,9 +28,9 @@ const WorkProcess = dynamic(() => import('./home/components/WorkProcess'), {
 
 /* ✅ HOME PAGE SEO METADATA */
 export const metadata: Metadata = {
-  title: 'G-Net Solutions | Website Development & IT Services in Coimbatore',
+  title: 'G-Net Solutions | Web Development & IT Services in Coimbatore',
   description:
-    'G-Net Solutions is a leading IT services and website development company in Coimbatore offering web development, software solutions, digital marketing, hosting, and business IT services.',
+    'G-Net Solutions is a website development and IT services company in Coimbatore, offering web development, software solutions, digital marketing, and hosting services.',
   keywords: [
     'g-net solutions',
     'website development company in coimbatore',
@@ -56,6 +58,15 @@ export const metadata: Metadata = {
     description:
       'Leading IT services and website development company in Coimbatore.',
   },
+
+alternates: {
+    canonical: 'https://www.g-netsolutions.com/',
+    languages: {
+      'en-IN': 'https://www.g-netsolutions.com/',
+      'x-default': 'https://www.g-netsolutions.com/',
+    },
+  },
+
 }
 
 const Page = () => {
@@ -93,13 +104,122 @@ const Page = () => {
         }}
       />
 
+
+       {/* 🔍 SERVICES SCHEMA */}
+  <Script
+    id="services-schema"
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'ItemList',
+          name: 'G-Net Solutions Web Services',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              item: {
+                '@type': 'Service',
+                name: 'Website Development',
+                url: 'https://g-netsolutions.com/web-development',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@type': 'Service',
+                name: 'CMS Website Development',
+                url: 'https://g-netsolutions.com/software-development',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              item: {
+                '@type': 'Service',
+                name: 'Ecommerce Website Development',
+                url: 'https://g-netsolutions.com/ecommerce-solutions',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              item: {
+                '@type': 'Service',
+                name: 'Search Engine Optimization',
+                url: 'https://g-netsolutions.com/digital-marketing-seo',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 5,
+              item: {
+                '@type': 'Service',
+                name: 'Ware house management',
+                url: 'https://g-netsolutions.com/warehouse-management-system',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 6,
+              item: {
+                '@type': 'Service',
+                name: 'Email Solutions',
+                url: 'https://g-netsolutions.com/email-services',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 7,
+              item: {
+                '@type': 'Service',
+                name: 'Domain Registration',
+                url: 'https://g-netsolutions.com/web-hosting',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 8,
+              item: {
+                '@type': 'Service',
+                name: 'Website Hosting',
+                url: 'https://g-netsolutions.com/web-hosting',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 9,
+              item: {
+                '@type': 'Service',
+                name: 'Website Maintenance & Support',
+                url: 'https://g-netsolutions.com/website-maintenance',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 10,
+              item: {
+                '@type': 'Service',
+                name: 'Hall Management System',
+                url: 'https://g-netsolutions.com/hall-management-system',
+              },
+            },
+          ],
+        },
+      }),
+    }}
+  />
+
       <Header />
       <main>
         <Hero />
         <About />
         <Choose />
         <Service />
-        <WorkProcess />
+        <WorkProcess />       
       </main>
        <CTA />
        <Footer />

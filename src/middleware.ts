@@ -1,17 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { withAuth } from 'next-auth/middleware'
 
-export function middleware(request: NextRequest) {
-  const response = NextResponse.next()
+// ✅ Wrap with NextAuth middleware so auth checks still apply
+export default withAuth(
+  function middleware(request: NextRequest) {
+    // If someone visits /home, redirect them to /
+    if (request.nextUrl.pathname === '/home') {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
 
-  if (request.nextUrl.pathname == '/') {
-    return NextResponse.redirect(new URL('/home', request.url))
+    // Otherwise, continue normally
+    return NextResponse.next()
   }
-  return response
-}
+)
 
-// See "Matching Paths" below to learn more
+// ✅ Configure matcher to apply only on /home (not /)
 export const config = {
-  matcher: '/',
+  matcher: ['/home'],
 }
-
-export { default } from 'next-auth/middleware'

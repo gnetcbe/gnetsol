@@ -21,6 +21,7 @@ const menuItems = [
   },
   { title: 'Email Solutions', path: '/email-services' },
   { title: 'Digital Marketing', path: '/digital-marketing-seo' },
+  { title: 'Blog', path: '/blog' },
   { title: 'Contact Us', path: '/contact' },
 ]
 
