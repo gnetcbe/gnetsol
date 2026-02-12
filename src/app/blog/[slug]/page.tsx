@@ -1,8 +1,6 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 import "./blogdet.css";
+
+export const dynamic = "force-dynamic";
 
 type Blog = {
   title: string;
@@ -19,39 +17,36 @@ type RecentBlog = {
 const API = process.env.NEXT_PUBLIC_API_URL!;
 const UPLOADS = process.env.NEXT_PUBLIC_UPLOADS_URL!;
 
-export default function BlogDetailPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
+async function getBlog(slug: string): Promise<Blog | null> {
+  const res = await fetch(`${API}/blog.php?slug=${slug}`, {
+    cache: "no-store",
+  });
 
-  const [blog, setBlog] = useState<Blog | null>(null);
-  const [recentBlogs, setRecentBlogs] = useState<RecentBlog[]>([]);
-  const [loading, setLoading] = useState(true);
+  if (!res.ok) return null;
+  return res.json();
+}
 
-  useEffect(() => {
-    if (!slug) return;
+async function getRecentBlogs(): Promise<RecentBlog[]> {
+  const res = await fetch(`${API}/blogs.php`, {
+    cache: "no-store",
+  });
 
-    Promise.all([
-      fetch(`${API}/blog.php?slug=${slug}`).then((res) => res.json()),
-      fetch(`${API}/blogs.php`).then((res) => res.json()),
-    ])
-      .then(([blogData, recentData]) => {
-        setBlog(blogData);
-        setRecentBlogs(recentData.slice(0, 5));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching blog:", err);
-        setLoading(false);
-      });
-  }, [slug]);
+  if (!res.ok) return [];
 
-  if (loading) {
-    return (
-      <section className="container">
-        <p>Loading blog...</p>
-      </section>
-    );
-  }
+  const blogs = await res.json();
+  return blogs.slice(0, 5);
+}
+
+/* 🔥 IMPORTANT CHANGE HERE */
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const blog = await getBlog(slug);
+  const recentBlogs = await getRecentBlogs();
 
   if (!blog) {
     return (

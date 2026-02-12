@@ -102,6 +102,115 @@ const Page = () => {
         }}
       />
 
+
+       {/* 🔍 SERVICES SCHEMA */}
+  <Script
+    id="services-schema"
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'ItemList',
+          name: 'G-Net Solutions Web Services',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              item: {
+                '@type': 'Service',
+                name: 'Website Development',
+                url: 'https://g-netsolutions.com/web-development',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@type': 'Service',
+                name: 'CMS Website Development',
+                url: 'https://g-netsolutions.com/software-development',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              item: {
+                '@type': 'Service',
+                name: 'Ecommerce Website Development',
+                url: 'https://g-netsolutions.com/ecommerce-solutions',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              item: {
+                '@type': 'Service',
+                name: 'Search Engine Optimization',
+                url: 'https://g-netsolutions.com/digital-marketing-seo',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 5,
+              item: {
+                '@type': 'Service',
+                name: 'Ware house management',
+                url: 'https://g-netsolutions.com/warehouse-management-system',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 6,
+              item: {
+                '@type': 'Service',
+                name: 'Email Solutions',
+                url: 'https://g-netsolutions.com/email-services',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 7,
+              item: {
+                '@type': 'Service',
+                name: 'Domain Registration',
+                url: 'https://g-netsolutions.com/web-hosting',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 8,
+              item: {
+                '@type': 'Service',
+                name: 'Website Hosting',
+                url: 'https://g-netsolutions.com/web-hosting',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 9,
+              item: {
+                '@type': 'Service',
+                name: 'Website Maintenance & Support',
+                url: 'https://g-netsolutions.com/website-maintenance',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 10,
+              item: {
+                '@type': 'Service',
+                name: 'Hall Management System',
+                url: 'https://g-netsolutions.com/hall-management-system',
+              },
+            },
+          ],
+        },
+      }),
+    }}
+  />
+
       <Header />
       <main>
         <Hero />
