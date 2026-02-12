@@ -16,6 +16,10 @@ const Choose = dynamic(() => import('./components/Choose'), {
   loading: () => <div style={{ minHeight: 220 }} />,
 })
 
+const HomeBlogSection = dynamic(() => import('./components/HomeBlogSection'), {
+  loading: () => <div style={{ minHeight: 220 }} />,
+})
+
 const Service = dynamic(() => import('./components/Services2'), {
   loading: () => <div style={{ minHeight: 260 }} />,
 })
@@ -217,7 +221,8 @@ const Page = () => {
         <About />
         <Choose />
         <Service />
-        <WorkProcess />
+        <WorkProcess />      
+        <HomeBlogSection />
       </main>
        <CTA />
        <Footer />

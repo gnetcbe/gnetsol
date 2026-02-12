@@ -12,13 +12,29 @@ const Blog = () => {
       <div className="blog6 sp">
         <Container>
           <Row>
-            <Col lg={6} className="m-auto text-center">
-              <div className="heading6 _mt-50">
-                <span className="sub-title">Our Blog</span>
-                <h2 className="text-anime-style-3">Maximizing Hiring Success Expert Advice</h2>
-              </div>
-            </Col>
-          </Row>
+                      <Col lg={6}>
+                        <div className="heading4">                         
+                          <h1 className="text-anime-style-3">
+                           Latest Blog
+                          </h1>
+                        </div>
+                      </Col>
+          
+                      <Col lg={6}>
+                        <div className="text-end button md:mt-20 sm:mt-20 md:text-start sm:text-start">
+                          <Link href="/blog" className="theme-btn8">
+                            <span className="theme-btn8__shape" />
+                            <span className="theme-btn8__shape" />
+                            <span className="theme-btn8__shape" />
+                            <span className="theme-btn8__shape" />
+                            <span className="theme-btn8__text">
+                              View All 
+                            </span>
+                          </Link>
+                        </div>
+                      </Col>
+                    </Row>
+                    
           <Row className=" mt-30">
             {blogData.map((item, idx) => (
               <Col lg={4} md={6} key={idx}>

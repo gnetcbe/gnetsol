@@ -29,6 +29,16 @@
   to = "https://www.g-netsolutions.com/:splat"
   status = 301
   force = true
+  
+# ================================
+# HOME PAGE
+# ================================
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
 
 
 # ================================
