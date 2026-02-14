@@ -35,7 +35,7 @@ const heroSlides = [
     title: "Technology That Drives Growth",
     desc: "Smart digital solutions that elevate your business."
   }
-];
+]
 
 const bottomTexts = [
   "⚙️ Custom Apps",
@@ -46,20 +46,25 @@ const bottomTexts = [
   "🔧 Site Upkeep",
   "✉️ Mail Solutions",
   "📈 Growth Marketing"
-];
-
-
+]
 
 const Hero = () => {
   return (
     <>
+      {/* ✅ SEO PRIMARY HEADING */}
+      <div style={{ textAlign: "center", padding: "20px 0" }}>
+        <h1 style={{ fontSize: "36px", fontWeight: 700 }}>
+          Web Development & IT Services Company in Coimbatore
+        </h1>
+      </div>
+
       {/* 🔥 TOP HERO SWIPER */}
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 3000 }}
         loop
         pagination={{ clickable: true }}
-        style={{ height: "100vh" }}
+        style={{ height: "90vh" }}
       >
         {heroSlides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -67,7 +72,7 @@ const Hero = () => {
               className="hero6"
               style={{
                 backgroundImage: `url(${slide.image.src})`,
-                height: "100vh",
+                height: "90vh",
                 display: "flex",
                 alignItems: "center",
                 backgroundSize: "cover",
@@ -80,21 +85,30 @@ const Hero = () => {
                     <Col lg={6}>
                       <div className="main-heading6">
                         <span className="sub-title">
-                          <Image src={span3} alt="g-net solutions -A global custom software development company" />
+                          <Image
+                            src={span3}
+                            alt="G-Net Solutions Icon"
+                          />
                           {slide.tag}
                         </span>
 
+                        {/* ✅ All slides now use H2 (H1 already above) */}
                         <h2>{slide.title}</h2>
+
                         <p>{slide.desc}</p>
 
                         <div className="buttons">
                           <Link href="/about" className="theme-btn11">
-                            <span className="theme-btn11__text">Get Started Today</span>
-                            <span className="arrow1"><FaArrowRight /></span>
-                            <span className="arrow2"><FaArrowRight /></span>
+                            <span className="theme-btn11__text">
+                              Get Started Today
+                            </span>
+                            <span className="arrow1">
+                              <FaArrowRight />
+                            </span>
+                            <span className="arrow2">
+                              <FaArrowRight />
+                            </span>
                           </Link>
-
-                           
                         </div>
                       </div>
                     </Col>
@@ -106,46 +120,43 @@ const Hero = () => {
         ))}
       </Swiper>
 
-        {/* 🔥 BOTTOM SLIDER (unchanged) */}
-     <div className="hero6-bottom-slider" style={{ padding: "10px 0" }}>
-  <Container fluid className="p-0">
-    <Swiper
-      modules={[Autoplay]}
-      autoplay={{ delay: 2000 }}
-      speed={900}
-      loop
-      slidesPerView={4}
-      spaceBetween={30}
-      breakpoints={{
-        320: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        1024: { slidesPerView: 5 }
-      }}
-      style={{ padding: "20px 0" }}
-    >
-      {bottomTexts.map((txt, i) => (
-        <SwiperSlide key={i}>
-          <div
-            style={{
-              background: "#005aa0",       // 🔥 BLUE COLOR YOU ASKED
-              padding: "14px 24px",
-              borderRadius: "12px",
-              textAlign: "center",
-              fontWeight: 600,
-              color: "#fff",               // 🔥 WHITE TEXT
-              boxShadow: "0 3px 12px rgba(0,0,0,0.08)"
+      {/* 🔥 BOTTOM SLIDER */}
+      <div className="hero6-bottom-slider" style={{ padding: "10px 0" }}>
+        <Container fluid className="p-0">
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 2000 }}
+            speed={900}
+            loop
+            slidesPerView={4}
+            spaceBetween={30}
+            breakpoints={{
+              320: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 5 }
             }}
+            style={{ padding: "20px 0" }}
           >
-           
-
-            {txt}
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </Container>
-</div>
-
+            {bottomTexts.map((txt, i) => (
+              <SwiperSlide key={i}>
+                <div
+                  style={{
+                    background: "#005aa0",
+                    padding: "14px 24px",
+                    borderRadius: "12px",
+                    textAlign: "center",
+                    fontWeight: 600,
+                    color: "#fff",
+                    boxShadow: "0 3px 12px rgba(0,0,0,0.08)"
+                  }}
+                >
+                  {txt}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Container>
+      </div>
     </>
   )
 }

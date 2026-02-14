@@ -9,21 +9,19 @@ import logo from '@/assets/img/logo/title3.svg'
  
 /* 🔥 LAZY-LOADED HOME SECTIONS */
 const About = dynamic(() => import('./home/components/About'), {
-  loading: () => <div style={{ minHeight: 240 }} />,
+  ssr: true,
 })
 
 const Choose = dynamic(() => import('./home/components/Choose'), {
-  loading: () => <div style={{ minHeight: 220 }} />,
+  ssr: true,
 })
 
- 
-
 const Service = dynamic(() => import('./home/components/Services2'), {
-  loading: () => <div style={{ minHeight: 260 }} />,
+  ssr: true,
 })
 
 const WorkProcess = dynamic(() => import('./home/components/WorkProcess'), {
-  loading: () => <div style={{ minHeight: 240 }} />,
+  ssr: true,
 })
 
 /* ✅ HOME PAGE SEO METADATA */
