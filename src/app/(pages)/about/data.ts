@@ -154,7 +154,7 @@ export const countData: CounterType[] = [
     title: 'Years of Industry Experience',
   },
   {
-    count: '500+',
+    count: '1000+',
     title: 'Websites & Digital Projects',
   },
   {

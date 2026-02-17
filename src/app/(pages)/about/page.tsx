@@ -35,6 +35,13 @@ const Works = dynamic(
   { loading: () => <div style={{ minHeight: 240 }} /> }
 )
 
+
+const RecentWorks = dynamic(
+  () => import('./components/RecentWorks'),
+  { loading: () => <div style={{ minHeight: 240 }} /> }
+)
+ 
+
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'About G-Net Solutions | IT & Web Development Company in Coimbatore',
@@ -105,6 +112,7 @@ const Page = () => {
         <WhyGnet />
         <Service />
         <Works />
+        <RecentWorks />          
       </main>
     </>
   )
