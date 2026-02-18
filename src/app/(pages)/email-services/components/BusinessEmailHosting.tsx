@@ -21,8 +21,7 @@ const BusinessEmailHosting = () => {
               <span className="section-tag">Email Services</span>
               <h1>Business Email Hosting</h1>
               <p>
-                Professional business email solutions that enhance communication,
-                improve productivity, and strengthen your brand identity.
+               At g-net solutions, we provide powerful mailing solutions that combine reliability, security, and performance — helping your business stay connected at all times.
               </p>
 
               <Link href="/contact" className="btn btn-sm btn-primary">

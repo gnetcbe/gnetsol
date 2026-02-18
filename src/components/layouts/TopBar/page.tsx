@@ -69,9 +69,7 @@ const Header = () => {
                         <li>
                           <Link href="/">Home</Link>
                         </li>
-                        <li>
-                          <Link href="/about">About Us</Link>
-                        </li>
+                       
 
                         <li className="has-dropdown">
                           <Link href="">
@@ -119,7 +117,53 @@ const Header = () => {
                             </li>
                           </ul>
                         </li>
-
+ <li className="has-dropdown">
+                          <Link href="">
+                            Web Hosting
+                            <span>
+                              <FaAngleDown
+                                className="fa-regular"
+                                style={{
+                                  marginBottom: '6px',
+                                  marginLeft: '2px',
+                                }}
+                              />
+                            </span>
+                          </Link>
+                          <ul className="sub-menu">
+                            <li>
+                              <Link href="/web-hosting">
+                                Shared Hosting
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/web-hosting">
+                                Business Hosting
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/web-hosting">
+                                VPS Hosting
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/web-hosting">
+                                Dedicated Servers
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/web-hosting">
+                                Cloud Hosting
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/web-hosting">
+                                Compare Plans
+                              </Link>
+                            </li>
+                            
+                          </ul>
+                        </li>
                         <li>
                           <Link href="/email-services">Email Solutions</Link>
                         </li>
@@ -129,11 +173,7 @@ const Header = () => {
                             Digital Marketing
                           </Link>
                         </li>
-                         <li>
-                          <Link href="/blog">
-                            Blog
-                          </Link>
-                        </li>
+                         
                       </ul>
                     </nav>
                   </div>

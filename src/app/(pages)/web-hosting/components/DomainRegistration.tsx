@@ -21,8 +21,8 @@ const DomainRegistration = () => {
             Domain Name <span>Registration</span>
           </h1>
           <p>
-            Secure your digital identity with reliable domain registration
-            services designed for businesses of all sizes.
+          Build your online presence with g-net solutions — offering trusted domain registration and powerful hosting servers.
+Comprehensive Hosting Solutions Tailored for You
           </p>
         </div>
 

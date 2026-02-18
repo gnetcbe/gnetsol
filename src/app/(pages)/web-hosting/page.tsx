@@ -15,6 +15,15 @@ const WebHostingShared = dynamic(
   { loading: () => <div style={{ minHeight: 200 }} /> }
 )
 
+const HostingTypesPage = dynamic(
+  () => import('./components/HostingTypesPage'),
+  { loading: () => <div style={{ minHeight: 200 }} /> }
+)
+
+const KeyTakeawaysPage = dynamic(
+  () => import('./components/KeyTakeawaysPage'),
+  { loading: () => <div style={{ minHeight: 200 }} /> }
+)
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'Domain Registration & Web Hosting Services in Coimbatore | G-Net Solutions',
@@ -83,6 +92,8 @@ const Page = () => {
         <Hero />
         <DomainRegistration />
         <WebHostingShared /> 
+          <HostingTypesPage /> 
+           <KeyTakeawaysPage />
       </main>
     </>
   )

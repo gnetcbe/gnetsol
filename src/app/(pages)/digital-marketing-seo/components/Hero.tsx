@@ -1,4 +1,4 @@
-import bg from '@/assets/img/bg/inner-hero-bg.jpg'
+import bg from '@/assets/img/bg/digital2.jpg'
 import Link from 'next/link'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaAngleRight } from 'react-icons/fa6'

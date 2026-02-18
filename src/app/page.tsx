@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
-import Header from './home/components/Header'
 import Hero from './home/components/Hero'
-import Footer from './home/components/Footer' 
-import CTA from './home/components/CTA'
+import Footer from '@/components/layouts/Footer/Footer'
+import CTA from '@/components/layouts/Footer/CTA'
+import TopBar from '@/components/layouts/TopBar/page'
 import logo from '@/assets/img/logo/title3.svg'
  
 /* 🔥 LAZY-LOADED HOME SECTIONS */
@@ -211,7 +211,7 @@ const Page = () => {
     }}
   />
 
-      <Header />
+      <TopBar />
       <main>
         <Hero />
         <About />
