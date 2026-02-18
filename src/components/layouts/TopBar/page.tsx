@@ -85,36 +85,39 @@ const Header = () => {
                             </span>
                           </Link>
                           <ul className="sub-menu">
-                            <li>
-                              <Link href="/software-development">
-                                Application Development
-                              </Link>
-                            </li>
-                            <li>
-                              <Link href="/web-hosting">
-                                Domain Names and Webhosting
-                              </Link>
-                            </li>
+                           
                             <li>
                               <Link href="/web-development">
-                                Website Design/Redesign
+                               Custom Website Design
                               </Link>
                             </li>
                             <li>
                               <Link href="/ecommerce-solutions">
-                                E-Commerce /Shopping Cart
+                                E‑commerce Solutions
                               </Link>
                             </li>
-                            <li>
+                             <li>
                               <Link href="/web-development">
-                                Content Management Systems (CMS)
+                               CMS Development
                               </Link>
                             </li>
+                              <li>
+                              <Link href="/software-development">
+                                Web Applications
+                              </Link>
+                            </li>
+                            
                             <li>
                               <Link href="/website-maintenance">
                                 Website Maintenance and Support
                               </Link>
                             </li>
+                            <li>
+                              <Link href="/web-portfolio">
+                                Portfolio
+                              </Link>
+                            </li>
+                            
                           </ul>
                         </li>
  <li className="has-dropdown">

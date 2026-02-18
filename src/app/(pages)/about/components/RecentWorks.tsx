@@ -25,7 +25,7 @@ const works = [
   { image: ind, link: '#', title: 'Indian Foundries' },
   { image: kas, link: '#', title: 'Kasthuri Machines' },
   { image: kms, link: '#', title: 'Kamma Maha Samajam' },
-  { image: tex, link: '#', title: 'Text Spares' },
+  { image: tex, link: '#', title: 'Tex Spares' },
 ]
 
 const RecentWorks = () => {
@@ -58,8 +58,7 @@ const RecentWorks = () => {
               <div className="work-card">
 
                 <a
-                  href={item.link}
-                  target="_blank"
+                  
                   rel="noopener noreferrer"
                   className="work-image-wrap"
                 >
@@ -75,11 +74,7 @@ const RecentWorks = () => {
                     className="work-image"
                   />
 
-                  <div className="work-overlay">
-                    <span className="icon">
-                      <FaLink />
-                    </span>
-                  </div>
+                   
                 </a>
 
                 {/* Title Below Image */}

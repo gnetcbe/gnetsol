@@ -23,6 +23,7 @@ const Footer = () => {
   <h4>Our Services</h4>
 
   <div className="footer-tags-wrap">
+    <Link href="/about">About Us</Link>
     <Link href="/web-development">Website Design / Redesign</Link>
     <Link href="/ecommerce-solutions">E-Commerce / Shopping Cart</Link>
     <Link href="/email-services">Email Solutions</Link>
@@ -127,7 +128,8 @@ const Footer = () => {
 
             <Col lg={6}>
               <div className="copyright-text right-side text-end sm:text-start md:text-start">
-                <Link href="/terms-of-service">Terms &amp; Conditions</Link>
+                <Link href="/about">About Us | </Link>
+               <Link href="/terms-of-service">Terms &amp; Conditions</Link>
                 <Link href="/privacy" className="add-before">Privacy Policy</Link>
               </div>
             </Col>

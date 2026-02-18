@@ -37,10 +37,7 @@ const Works = () => {
     <section className="works-image-slider">
       <Container>
 
-        {/* Heading */}
-        <div className="heading2 text-center mb-40">
-          <h2 className="text-anime-style-3">Some of Our Works</h2>
-        </div>
+       
 
         {/* Works Slider */}
         <Swiper
@@ -66,7 +63,7 @@ const Works = () => {
               <div className="work-card">
 
                 <a
-                 
+                  
                   rel="noopener noreferrer"
                   className="work-image-wrap"
                 >
