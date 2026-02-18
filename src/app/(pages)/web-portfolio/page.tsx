@@ -10,10 +10,7 @@ const Works = dynamic(
   { loading: () => <div style={{ minHeight: 200 }} /> }
 )
 
-const Works2 = dynamic(
-  () => import('./components/RecentWorks'),
-  { loading: () => <div style={{ minHeight: 200 }} /> }
-)
+ 
  
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
@@ -82,8 +79,7 @@ const Page = () => {
       <main>
         <Hero />
         <Works />
-        <Works2 /> 
- 
+       
       </main>
     </>
   )
