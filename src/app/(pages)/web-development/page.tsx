@@ -9,6 +9,11 @@ const WebDevelopmentNew = dynamic(
   () => import('./components/WebDevelopmentNew'),
   { loading: () => <div style={{ minHeight: 300 }} /> }
 )
+/* 🔥 LAZY-LOAD HEAVY SECTION */
+const DesignProcessPage = dynamic(
+  () => import('./components/DesignProcessPage'),
+  { loading: () => <div style={{ minHeight: 300 }} /> }
+)
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
@@ -79,6 +84,8 @@ const WebDevelopmentPage = () => {
       <main>
         <Hero />
         <WebDevelopmentNew />
+        <DesignProcessPage />
+        
       </main>
     </>
   )

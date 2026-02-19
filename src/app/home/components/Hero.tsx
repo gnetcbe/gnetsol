@@ -51,13 +51,7 @@ const bottomTexts = [
 const Hero = () => {
   return (
     <>
-      {/* ✅ SEO PRIMARY HEADING */}
-      <div style={{ textAlign: "center", padding: "20px 0" }}>
-        <h1 style={{ fontSize: "36px", fontWeight: 700 }}>
-          Web Development & IT Services Company in Coimbatore
-        </h1>
-      </div>
-
+       
       {/* 🔥 TOP HERO SWIPER */}
       <Swiper
         modules={[Autoplay, Pagination]}

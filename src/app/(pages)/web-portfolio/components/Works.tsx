@@ -46,8 +46,8 @@ const works = [
     { image: tex, link: '#', title: 'Tex Spares' },
     { image: aeon, link: '#', title: 'Aeon Systems' },
     { image: safe, link: '#', title: 'Safe Boxx' },
-    { image: ware, link: '#', title: 'Warehouse Management System' },
-    { image: hall, link: '#', title: 'Hall Management System' },
+    { image: ware, link: '#', title: 'Bonded  Warehouse Management' },
+    { image: hall, link: '#', title: 'Exhibition/Wedding Halls Management' },
     
 ];
 
