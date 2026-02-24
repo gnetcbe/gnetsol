@@ -60,7 +60,7 @@ export async function handler(event) {
 
     /* ===== SMTP CONFIG (NETLIFY SAFE) ===== */
     const transporter = nodemailer.createTransport({
-      host: '152.160.207.207',
+      host: 'smtp.mailssecured.com',
       port: 587,            // ✅ more reliable on Netlify
       secure: false,        // ✅ must be false for 587
       auth: {
