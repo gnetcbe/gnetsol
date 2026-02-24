@@ -72,7 +72,7 @@ export async function handler(event) {
 
       /* ===== SMTP CONFIG ===== */
       const transporter = nodemailer.createTransport({
-        host: '152.160.207.207',
+        host: 'smtp.mailssecured.com',
         port: 587,
         secure: false,
         auth: {
