@@ -17,10 +17,11 @@
 # ================================
 
 [[redirects]]
-  from = "https://g-netsolutions.com/*"
-  to = "https://www.g-netsolutions.com/:splat"
+  from = "http://g-netsolutions.com/*"
+  to   = "https://www.g-netsolutions.com/:splat"
   status = 301
   force = true
+
   
 # ================================
 # HOME PAGE
