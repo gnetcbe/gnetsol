@@ -1,26 +1,24 @@
-# ================================
+ # ================================
 # BUILD SETTINGS (NEXT.JS STATIC EXPORT)
 # ================================
 [build]
-  command = "npm run build"
-  functions = "netlify/functions"
+  command = "npm run build && next export"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "18"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-  
 # ================================
-# FORCE NON-WWW → WWW (VERY IMPORTANT)
+# REDIRECTS (OPTIONAL)
 # ================================
-
+# Keep only the redirects you actually need.
+# Example:
 [[redirects]]
-  from = "http://g-netsolutions.com/*"
-  to   = "https://www.g-netsolutions.com/:splat"
+  from = "/home"
+  to = "/"
   status = 301
   force = true
+
   
 # ================================
 # HOME PAGE

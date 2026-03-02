@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+   "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write src/**/*.{ts,tsx}"
@@ -38,7 +38,6 @@
     "swiper": "^11.1.14"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.8",
     "@types/aos": "^3.0.7",
     "@types/node": "18.19.41",
     "@types/react": "18.2.79",
