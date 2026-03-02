@@ -2,11 +2,12 @@
 # BUILD SETTINGS (NEXT.JS STATIC EXPORT)
 # ================================
 [build]
-  command = "npm run build && next export"
+  command = "npm run build"
   publish = "out"
 
 [build.environment]
   NODE_VERSION = "18"
+
 
 # ================================
 # REDIRECTS (OPTIONAL)
