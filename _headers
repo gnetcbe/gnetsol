@@ -1,0 +1,5 @@
+/_next/static/*
+  Content-Type: application/javascript
+
+/_next/static/css/*
+  Content-Type: text/css
