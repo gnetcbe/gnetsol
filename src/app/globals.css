@@ -40,6 +40,18 @@
   }
 }
 
+.service4  h3{
+        font-size: 1.5rem !important;
+}
+
+.heading4 h3 a {
+    font-size: 1.5rem !important;
+}
+
+
+.service4-box:hover .heading4 h3 a{
+    color:#fff !important;
+}
 
 .vl-header-area8 .vl-main-menu ul > li > a {
      font-size: 17px  !important;

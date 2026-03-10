@@ -213,12 +213,13 @@ const Page = () => {
 
       <TopBar />
       <main>
+        <h1>Web Development Company in Coimbatore</h1>
         <Hero />
         <About />
         <Choose />
         <Service />
-        <WorkProcess />       
-      </main>
+        <WorkProcess />  
+        </main>
        <CTA />
        <Footer />
     </>

@@ -60,9 +60,9 @@ const Services = () => {
                   </div>
 
                   <div className="heading4">
-                    <h4>
+                    <h3>
                      <Link href={item.link!}>{item.title}</Link> 
-                    </h4>
+                    </h3>
 
                     <p className="mt-16">{item.description}</p>
 
