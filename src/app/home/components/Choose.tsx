@@ -32,13 +32,13 @@ const Choose = () => {
           <Row className="align-items-center pad20">
             <Col lg={6}>
               <div className="choose7-image _relative overflow-hidden reveal">
-                <Image src={choose7} alt="g-net solutions -A global custom software development company" />
+                <Image src={choose7} alt="g-net solutions -A global custom software development company in coimbatore" />
               </div>
             </Col>
             <Col lg={6}>
               <div className="white-heading md:mt-20 sm:mt-20">
                 <span className="sub-title" data-aos="zoom-in-left" data-aos-duration={900}>
-                  <Image src={span1} alt="g-net solutions -A global custom software development company" /> WHY CHOOSE US
+                  <Image src={span1} alt="g-net solutions -A global custom software development company in coimbatore" /> WHY CHOOSE US
                 </span>
                 <h2 className="text-anime-style-3">Why Our Clients Trust Us</h2>
               </div>

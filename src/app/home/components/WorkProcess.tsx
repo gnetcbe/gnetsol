@@ -21,7 +21,7 @@ const WorkProcess = () => {
           <Row className=" mt-30">
             <Col lg={6}>
               <div className="image image-anime process reveal mt-30">
-                <Image src={work1} alt="g-net solutions -A global custom software development company"  />
+                <Image src={work1} alt="g-net solutions -A global custom software development company in coimbatore"  />
               </div>
             </Col>
             <Col lg={6}>

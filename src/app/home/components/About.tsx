@@ -35,7 +35,7 @@ const About = () => {
                   <div className="image image-anime reveal">
     <Image
       src={about1}
-      alt="g-net solutions -A global custom software development company"
+      alt="g-net solutions -A global custom software development company in coimbatore"
     
       height={550}
       style={{ width: "100%", height: "510px", objectFit: "cover" }}
@@ -46,7 +46,7 @@ const About = () => {
                   <div className="image image-anime reveal">
                     <Image
       src={about2}
-      alt="g-net solutions -A global custom software development company"
+      alt="g-net solutions -A global custom software development company in coimbatore"
      
       height={328}
       style={{ width: "100%", height: "328px", objectFit: "cover" }}
@@ -55,7 +55,7 @@ const About = () => {
                   <div className="count-text-box">
                     <h3>25+</h3>
                     <p>Experience</p>
-                    <Image src={shapes} alt="" className="count-shape" />
+                    <Image src={shapes} alt="g-net solutions -A global custom software development company in coimbatore" className="count-shape" />
                   </div>
                 </Col>
               </Row>
@@ -65,10 +65,10 @@ const About = () => {
                 <div key={idx} className="about6-content-box mt-20 ml-30 md:ml-0 sm:ml-0" data-aos="fade-left" data-aos-duration={item.duration}>
                   <div className="_relative">
                     <div className="icon">
-                      <Image src={item.image} alt="g-net solutions -A global custom software development company" />
+                      <Image src={item.image} alt="g-net solutions -A global custom software development company in coimbatore" />
                     </div>
                     <div className="icon-shape">
-                      <Image src={shape2} alt="g-net solutions -A global custom software development company" />
+                      <Image src={shape2} alt="g-net solutions -A global custom software development company in coimbatore"  />
                     </div>
                   </div>
                   <div className="text heading6">

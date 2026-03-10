@@ -213,7 +213,7 @@ const Page = () => {
 
       <TopBar />
       <main>
-        <h1>Web Development Company in Coimbatore</h1>
+        <h1>g-net solutions - Web Development Company in Coimbatore</h1>
         <Hero />
         <About />
         <Choose />

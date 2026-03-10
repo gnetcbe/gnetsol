@@ -21,9 +21,9 @@ const Services = () => {
                 >
                   <Image src={span5} alt="Our Services Icon" /> OUR SERVICES
                 </span>
-                <h1 className="text-anime-style-3">
+                <h2 className="text-anime-style-3">
                   Our Expertise Your Growth
-                </h1>
+                </h2>
               </div>
             </Col>
 
