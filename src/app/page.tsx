@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     'web hosting services',
   ],
   icons: {
-    icon: logo.src,
+    icon: 'https://g-netsolutions.com/logo.png',
   },
   openGraph: {
     title: 'G-Net Solutions | Web Development & IT Services',

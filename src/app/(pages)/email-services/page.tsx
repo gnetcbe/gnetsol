@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: 'Business Email Hosting Services | G-Net Solutions',
     description:
       'Secure and reliable business email hosting solutions including Google Workspace, Microsoft 365, and Zoho Mail.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/email-hosting',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -61,6 +61,9 @@ export const metadata: Metadata = {
     title: 'Business Email Hosting Services | G-Net Solutions',
     description:
       'Professional business email hosting and collaboration tools for growing businesses.',
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/email-hosting',
   },
 }
 
@@ -80,6 +83,7 @@ const Page = () => {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -92,6 +96,69 @@ const Page = () => {
               'Zoho Mail Services',
               'Secure Email Hosting',
               'Email Migration & Support',
+            ],
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/email-hosting',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Business Email Hosting',
+                item: 'https://g-netsolutions.com/email-hosting',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What business email hosting services do you provide?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We provide Google Workspace, Microsoft 365, Zoho Mail, secure email hosting, and migration support.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Do you offer support for email migration?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we provide full migration and ongoing support to ensure a smooth transition to business email hosting.',
+                },
+              },
             ],
           }),
         }}

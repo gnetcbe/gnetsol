@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'E-Commerce Website Development | G-Net Solutions',
     description:
       'Custom e-commerce website development and growth solutions by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/ecommerce',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     title: 'E-Commerce Development Services | G-Net Solutions',
     description:
       'Build and grow your online store with expert e-commerce solutions from G-Net Solutions.',
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/ecommerce',
   },
 }
 
@@ -65,6 +68,7 @@ const Page = () => {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -77,6 +81,69 @@ const Page = () => {
               'Shopping Cart Development',
               'E-Commerce Growth Optimization',
               'Maintenance & Support',
+            ],
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/ecommerce',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'E-Commerce',
+                item: 'https://g-netsolutions.com/ecommerce',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What e-commerce services do you provide?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We provide online store setup, payment gateway integration, shopping cart development, growth optimization, and ongoing support.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Do you offer maintenance for e-commerce websites?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we provide maintenance and support services to ensure your online store runs smoothly.',
+                },
+              },
             ],
           }),
         }}

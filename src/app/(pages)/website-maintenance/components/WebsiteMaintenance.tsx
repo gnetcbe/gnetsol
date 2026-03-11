@@ -26,7 +26,7 @@ const WebsiteMaintenance = () => {
                 Keep Your Website <span>Secure, Fast & Updated</span>
               </h1>
               <p className="desc">
-                At g-net solutions, we ensure your website runs smoothly with
+                At g-net solutions, Coimbatore - we ensure your website runs smoothly with
                 proactive maintenance, performance optimization, and security
                 monitoring — so you can focus on growing your business.
               </p>

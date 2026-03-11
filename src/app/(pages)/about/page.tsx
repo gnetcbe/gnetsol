@@ -5,42 +5,27 @@ import Hero from './components/Hero'
 import logo from '@/assets/img/logo/title2.svg'
 
 /* 🔥 LAZY-LOADED SECTIONS */
-const AboutUs = dynamic(
-  () => import('./components/AboutUs'),
-  { loading: () => <div style={{ minHeight: 260 }} /> }
-)
-
-const CounterArea = dynamic(
-  () => import('./components/CounterArea'),
-  { loading: () => <div style={{ minHeight: 200 }} /> }
-)
-
-const Choose = dynamic(
-  () => import('./components/Choose'),
-  { loading: () => <div style={{ minHeight: 240 }} /> }
-)
-
-const WhyGnet = dynamic(
-  () => import('./components/WhyGnet'),
-  { loading: () => <div style={{ minHeight: 240 }} /> }
-)
-
-const Service = dynamic(
-  () => import('./components/Service'),
-  { loading: () => <div style={{ minHeight: 260 }} /> }
-)
-
-const Works = dynamic(
-  () => import('./components/Works'),
-  { loading: () => <div style={{ minHeight: 240 }} /> }
-)
-
-
-const RecentWorks = dynamic(
-  () => import('./components/RecentWorks'),
-  { loading: () => <div style={{ minHeight: 240 }} /> }
-)
- 
+const AboutUs = dynamic(() => import('./components/AboutUs'), {
+  loading: () => <div style={{ minHeight: 260 }} />,
+})
+const CounterArea = dynamic(() => import('./components/CounterArea'), {
+  loading: () => <div style={{ minHeight: 200 }} />,
+})
+const Choose = dynamic(() => import('./components/Choose'), {
+  loading: () => <div style={{ minHeight: 240 }} />,
+})
+const WhyGnet = dynamic(() => import('./components/WhyGnet'), {
+  loading: () => <div style={{ minHeight: 240 }} />,
+})
+const Service = dynamic(() => import('./components/Service'), {
+  loading: () => <div style={{ minHeight: 260 }} />,
+})
+const Works = dynamic(() => import('./components/Works'), {
+  loading: () => <div style={{ minHeight: 240 }} />,
+})
+const RecentWorks = dynamic(() => import('./components/RecentWorks'), {
+  loading: () => <div style={{ minHeight: 240 }} />,
+})
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
@@ -73,6 +58,9 @@ export const metadata: Metadata = {
     description:
       'Know more about G-Net Solutions, a leading IT services company in Coimbatore.',
   },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/about',
+  },
 }
 
 const Page = () => {
@@ -88,6 +76,7 @@ const Page = () => {
             '@type': 'Organization',
             name: 'G-Net Solutions',
             url: 'https://g-netsolutions.com',
+            logo: 'https://g-netsolutions.com/logo.png',
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'Coimbatore',
@@ -104,6 +93,62 @@ const Page = () => {
         }}
       />
 
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'About',
+                item: 'https://g-netsolutions.com/about',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional, if About page has FAQs) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What services does G-Net Solutions provide?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We provide website development, software solutions, digital marketing, hosting, and IT services.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Where is G-Net Solutions located?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We are based in Coimbatore, Tamil Nadu, India.',
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
       <main>
         <Hero />
         <AboutUs />
@@ -112,7 +157,7 @@ const Page = () => {
         <WhyGnet />
         <Service />
         <Works />
-        <RecentWorks />          
+        <RecentWorks />
       </main>
     </>
   )

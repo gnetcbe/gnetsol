@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
- 
 import logo from '@/assets/img/logo/title2.svg'
 
 /* 🔥 LAZY-LOADED SECTIONS */
@@ -10,68 +9,92 @@ const PrivacyPolicyPage = dynamic(
   () => import('./components/PrivacyPolicyPage'),
   { loading: () => <div style={{ minHeight: 300 }} /> }
 )
- 
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Software Development Company in Coimbatore | G-Net Solutions',
+  title: 'Privacy Policy | G-Net Solutions',
   description:
-    'G-Net Solutions is a trusted software development company in Coimbatore delivering custom software, application development, and scalable digital solutions for businesses.',
+    'Read the privacy policy of G-Net Solutions. Learn how we collect, use, and protect your information when you use our website and IT services.',
   keywords: [
-    'software development company in coimbatore',
-    'custom software development',
-    'application software development',
-    'business software solutions',
-    'enterprise application development',
-    'software services coimbatore',
-    'g-net solutions',
+    'privacy policy g-net solutions',
+    'data protection policy',
+    'website privacy coimbatore',
+    'information security policy',
+    'g-net solutions privacy',
   ],
   icons: {
     icon: logo.src,
   },
   openGraph: {
-    title: 'Software Development Services | G-Net Solutions',
+    title: 'Privacy Policy | G-Net Solutions',
     description:
-      'Custom software and application development services tailored to business needs by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com',
+      'Understand how G-Net Solutions handles your personal data and ensures information security.',
+    url: 'https://g-netsolutions.com/privacy-policy',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Software Development Company | G-Net Solutions',
+    title: 'Privacy Policy | G-Net Solutions',
     description:
-      'Professional software and application development services in Coimbatore.',
+      'Learn about the privacy practices of G-Net Solutions, including data collection, usage, and protection.',
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/privacy-policy',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* 🔍 STRUCTURED DATA – WEBPAGE SCHEMA */}
       <Script
-        id="software-development-schema"
+        id="privacy-policy-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: 'Software Development Services',
-            provider: {
+            '@type': 'WebPage',
+            name: 'Privacy Policy',
+            description:
+              'Privacy Policy of G-Net Solutions explaining how we collect, use, and protect user data.',
+            url: 'https://g-netsolutions.com/privacy-policy',
+            about: 'Privacy Policy',
+            publisher: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
-            areaServed: {
-              '@type': 'Place',
-              name: 'Coimbatore, Tamil Nadu, India',
-            },
-            serviceType: [
-              'Custom Software Development',
-              'Application Software Development',
-              'Enterprise Software Solutions',
-              'Business Process Automation',
-              'Software Maintenance & Support',
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Privacy Policy',
+                item: 'https://g-netsolutions.com/privacy-policy',
+              },
             ],
           }),
         }}
@@ -79,7 +102,7 @@ const Page = () => {
 
       <main>
         <Hero />
-        <PrivacyPolicyPage/>
+        <PrivacyPolicyPage />
       </main>
     </>
   )

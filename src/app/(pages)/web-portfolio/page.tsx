@@ -10,68 +10,89 @@ const Works = dynamic(
   { loading: () => <div style={{ minHeight: 200 }} /> }
 )
 
- 
- 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Domain Registration & Web Hosting Services in Coimbatore | G-Net Solutions',
+  title: 'Notable Works & Portfolio | G-Net Solutions',
   description:
-    'G-Net Solutions provides domain registration, web hosting, email hosting, and web services in Coimbatore. Reliable, secure, and scalable solutions with expert support.',
+    'Explore the notable works and portfolio of G-Net Solutions. Showcasing successful projects in web development, software, digital marketing, and IT services.',
   keywords: [
-    'domain registration coimbatore',
-    'web hosting coimbatore',
-    'domain name services',
-    'shared hosting',
-    'business email hosting',
-    'website services coimbatore',
-    'g-net solutions',
+    'g-net solutions portfolio',
+    'notable works g-net',
+    'web development projects',
+    'software solutions case studies',
+    'digital marketing portfolio',
+    'it services portfolio coimbatore',
   ],
   icons: {
     icon: logo.src,
   },
   openGraph: {
-    title: 'Domain Registration & Web Hosting | G-Net Solutions',
+    title: 'Notable Works & Portfolio | G-Net Solutions',
     description:
-      'Secure domain registration and reliable web hosting services by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com',
+      'Discover G-Net Solutions portfolio of successful projects in web development, software, and IT services.',
+    url: 'https://g-netsolutions.com/works',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Domain & Hosting Services | G-Net Solutions',
+    title: 'Portfolio | G-Net Solutions',
     description:
-      'Professional domain registration and web hosting services in Coimbatore.',
+      'Showcasing notable works and successful projects by G-Net Solutions.',
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/works',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA FOR SEO */}
+      {/* 🔍 STRUCTURED DATA – PORTFOLIO PAGE */}
       <Script
-        id="seo-structured-data"
+        id="portfolio-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'G-Net Solutions',
-            url: 'https://g-netsolutions.com',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Coimbatore',
-              addressRegion: 'Tamil Nadu',
-              addressCountry: 'IN',
+            '@type': 'WebPage',
+            name: 'Notable Works & Portfolio',
+            description:
+              'Portfolio of G-Net Solutions showcasing successful projects in web development, software, and IT services.',
+            url: 'https://g-netsolutions.com/works',
+            about: 'Portfolio',
+            publisher: {
+              '@type': 'Organization',
+              name: 'G-Net Solutions',
+              url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
-            telephone: '+91-9751959300',
-            sameAs: [
-              'https://www.facebook.com/people/G-Net-Solutions-Coimbatore-Pvt-Ltd/100070495715164/',
-              'https://www.linkedin.com/in/gnetsolutions',
-              'https://x.com/gnetcoimbatore',
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Portfolio',
+                item: 'https://g-netsolutions.com/works',
+              },
             ],
-            areaServed: 'IN',
-            priceRange: '$$',
           }),
         }}
       />
@@ -79,7 +100,6 @@ const Page = () => {
       <main>
         <Hero />
         <Works />
-       
       </main>
     </>
   )

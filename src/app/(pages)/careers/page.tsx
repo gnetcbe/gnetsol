@@ -5,10 +5,9 @@ import Hero from './components/Hero'
 import logo from '@/assets/img/logo/title2.svg'
 
 /* 🔥 LAZY-LOADED SECTION */
-const CareerPage = dynamic(
-  () => import('./components/CareerPage'),
-  { loading: () => <div style={{ minHeight: 350 }} /> }
-)
+const CareerPage = dynamic(() => import('./components/CareerPage'), {
+  loading: () => <div style={{ minHeight: 350 }} />,
+})
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
@@ -41,14 +40,17 @@ export const metadata: Metadata = {
     description:
       'Apply for exciting IT and web development career opportunities at G-Net Solutions.',
   },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/careers',
+  },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – CAREER PAGE */}
+      {/* 🔍 STRUCTURED DATA – ORGANIZATION */}
       <Script
-        id="career-schema"
+        id="career-org-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -56,11 +58,71 @@ const Page = () => {
             '@type': 'Organization',
             name: 'G-Net Solutions',
             url: 'https://g-netsolutions.com',
+            logo: 'https://g-netsolutions.com/logo.png',
             sameAs: [
               'https://www.facebook.com/people/G-Net-Solutions-Coimbatore-Pvt-Ltd/100070495715164/',
               'https://www.linkedin.com/in/gnetsolutions',
               'https://x.com/gnetcoimbatore',
             ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="career-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Careers',
+                item: 'https://g-netsolutions.com/careers',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – JOB POSTING (example) */}
+      <Script
+        id="jobposting-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'JobPosting',
+            title: 'Web Developer',
+            description:
+              'We are looking for a skilled Web Developer to join our team in Coimbatore. Apply now to build modern websites and applications.',
+            hiringOrganization: {
+              '@type': 'Organization',
+              name: 'G-Net Solutions',
+              sameAs: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
+            },
+            jobLocation: {
+              '@type': 'Place',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Coimbatore',
+                addressRegion: 'Tamil Nadu',
+                addressCountry: 'IN',
+              },
+            },
+            employmentType: 'FULL_TIME',
+            datePosted: '2026-03-11',
+            validThrough: '2026-06-30',
           }),
         }}
       />

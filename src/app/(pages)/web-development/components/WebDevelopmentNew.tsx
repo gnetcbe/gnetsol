@@ -21,7 +21,7 @@ const WebDevelopmentNew = () => {
         <div className="top-text">
           <h1>Web development</h1>
           <p>
-            Our agency offers custom website and web application development services to ensure your project has functionality and performance you require.
+           At g-net solutions, Coimbatore, we deliver custom website and web application development services designed to give your project the functionality and performance it needs to succeed.
           </p>
           <p>
             We carefully build backend and frontend infrastructure simultaneously from the ground up, to make sure the final product is responsive, functional, and beautiful.

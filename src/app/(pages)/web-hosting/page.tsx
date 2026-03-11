@@ -24,6 +24,7 @@ const KeyTakeawaysPage = dynamic(
   () => import('./components/KeyTakeawaysPage'),
   { loading: () => <div style={{ minHeight: 200 }} /> }
 )
+
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'Domain Registration & Web Hosting Services in Coimbatore | G-Net Solutions',
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     title: 'Domain Registration & Web Hosting | G-Net Solutions',
     description:
       'Secure domain registration and reliable web hosting services by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/domain-hosting',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -55,35 +56,104 @@ export const metadata: Metadata = {
     description:
       'Professional domain registration and web hosting services in Coimbatore.',
   },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/domain-hosting',
+  },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA FOR SEO */}
+      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
       <Script
-        id="seo-structured-data"
+        id="domain-hosting-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'LocalBusiness',
-            name: 'G-Net Solutions',
-            url: 'https://g-netsolutions.com',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Coimbatore',
-              addressRegion: 'Tamil Nadu',
-              addressCountry: 'IN',
+            '@type': 'Service',
+            name: 'Domain Registration & Web Hosting Services',
+            provider: {
+              '@type': 'Organization',
+              name: 'G-Net Solutions',
+              url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
-            telephone: '+91-9751959300',
-            sameAs: [
-              'https://www.facebook.com/people/G-Net-Solutions-Coimbatore-Pvt-Ltd/100070495715164/',
-              'https://www.linkedin.com/in/gnetsolutions',
-              'https://x.com/gnetcoimbatore',
+            areaServed: {
+              '@type': 'Place',
+              name: 'Coimbatore, Tamil Nadu, India',
+            },
+            serviceType: [
+              'Domain Registration',
+              'Shared Web Hosting',
+              'Business Email Hosting',
+              'Dedicated Hosting',
+              'Cloud Hosting',
+              'Website Services',
             ],
-            areaServed: 'IN',
-            priceRange: '$$',
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/domain-hosting',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Domain & Hosting',
+                item: 'https://g-netsolutions.com/domain-hosting',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Do you provide business email hosting?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we provide secure business email hosting solutions including Google Workspace, Microsoft 365, and Zoho Mail.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What types of hosting do you offer?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We offer shared hosting, dedicated hosting, cloud hosting, and customized hosting solutions based on client needs.',
+                },
+              },
+            ],
           }),
         }}
       />
@@ -92,8 +162,8 @@ const Page = () => {
         <Hero />
         <DomainRegistration />
         <WebHostingShared /> 
-          <HostingTypesPage /> 
-           <KeyTakeawaysPage />
+        <HostingTypesPage /> 
+        <KeyTakeawaysPage />
       </main>
     </>
   )

@@ -75,9 +75,7 @@ const DigitalMarketing = () => {
           <div className="dm-hero-text">
             <h1>Digital Marketing Services</h1>
             <p>
-              Digital marketing encompasses a wide range of online strategies
-              including SEO, content marketing, social media, email marketing,
-              PPC, and analytics to help businesses grow online.
+             At g-net solutions, Coimbatore, digital marketing covers a wide range of online strategies — including SEO, content marketing, social media, email marketing, PPC, and analytics — all designed to help businesses grow online.
             </p>
           </div>
 

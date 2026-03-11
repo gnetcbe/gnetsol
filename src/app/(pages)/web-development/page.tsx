@@ -4,12 +4,12 @@ import Script from 'next/script'
 import Hero from './components/Hero'
 import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOAD HEAVY SECTION */
+/* 🔥 LAZY-LOAD HEAVY SECTIONS */
 const WebDevelopmentNew = dynamic(
   () => import('./components/WebDevelopmentNew'),
   { loading: () => <div style={{ minHeight: 300 }} /> }
 )
-/* 🔥 LAZY-LOAD HEAVY SECTION */
+
 const DesignProcessPage = dynamic(
   () => import('./components/DesignProcessPage'),
   { loading: () => <div style={{ minHeight: 300 }} /> }
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'Website Development Company in Coimbatore | G-Net Solutions',
     description:
       'Professional website development services including custom design, eCommerce, CMS, and responsive websites.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/web-development',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -47,12 +47,15 @@ export const metadata: Metadata = {
     description:
       'Custom website development and responsive web solutions by G-Net Solutions, Coimbatore.',
   },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/web-development',
+  },
 }
 
 const WebDevelopmentPage = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA FOR SEO */}
+      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
       <Script
         id="web-development-schema"
         type="application/ld+json"
@@ -65,6 +68,7 @@ const WebDevelopmentPage = () => {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -77,15 +81,77 @@ const WebDevelopmentPage = () => {
               'CMS Development',
               'Website Maintenance',
             ],
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/web-development',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
           }),
         }}
       />
-  
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Web Development',
+                item: 'https://g-netsolutions.com/web-development',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Do you build eCommerce websites?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we specialize in building scalable eCommerce websites with secure payment gateways and custom features.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can you develop CMS-based websites?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Absolutely, we provide CMS development services including WordPress, Drupal, and custom CMS solutions.',
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
       <main>
         <Hero />
         <WebDevelopmentNew />
         <DesignProcessPage />
-        
       </main>
     </>
   )

@@ -21,7 +21,7 @@ const DomainRegistration = () => {
             Domain Name <span>Registration</span>
           </h1>
           <p>
-          Build your online presence with g-net solutions — offering trusted domain registration and powerful hosting servers.
+          Build your online presence with g-net solutions, Coimbatore — offering trusted domain registration and powerful hosting servers.
 Comprehensive Hosting Solutions Tailored for You
           </p>
         </div>

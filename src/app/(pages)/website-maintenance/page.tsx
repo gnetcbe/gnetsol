@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'Website Maintenance Services | G-Net Solutions',
     description:
       'Reliable website maintenance and support services to keep your website secure, updated, and performing at its best.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/website-maintenance',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -47,12 +47,15 @@ export const metadata: Metadata = {
     description:
       'Professional website maintenance, updates, and support by G-Net Solutions, Coimbatore.',
   },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/website-maintenance',
+  },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA (SERVICE SCHEMA) */}
+      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
       <Script
         id="website-maintenance-schema"
         type="application/ld+json"
@@ -65,6 +68,7 @@ const Page = () => {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -77,6 +81,69 @@ const Page = () => {
               'Performance Optimization',
               'Backup & Recovery',
               'Technical Support',
+            ],
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/website-maintenance',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Website Maintenance',
+                item: 'https://g-netsolutions.com/website-maintenance',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Do you provide ongoing website support?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we provide continuous support including updates, monitoring, and technical assistance to keep your website running smoothly.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can you help with website security?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Absolutely, our maintenance services include proactive security monitoring, patching, and backup solutions.',
+                },
+              },
             ],
           }),
         }}

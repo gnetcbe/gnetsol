@@ -5,26 +5,83 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaAngleRight, FaArrowRight } from 'react-icons/fa6'
+import Script from 'next/script'
 
 import logo from '@/assets/img/logo/title2.svg'
 
+/* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'SEOX || Pricing Plan',
+  title: 'Page Not Found | G-Net Solutions',
+  description:
+    'Sorry, the page you are looking for does not exist or has been moved. Return to the G-Net Solutions homepage.',
   icons: {
     icon: logo.src,
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/',
+  },
+  robots: {
+    index: false, // prevent indexing of error page
+    follow: true,
   },
 }
 
 const Error = () => {
   return (
     <>
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Error',
+                item: 'https://g-netsolutions.com/error',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – WEBPAGE ERROR */}
+      <Script
+        id="errorpage-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'Error Page',
+            description:
+              'This is an error page indicating the requested content was not found.',
+            url: 'https://g-netsolutions.com/error',
+            specialty: 'ErrorPage',
+          }),
+        }}
+      />
+
       <main>
-        <div className="inner-hero" style={{ backgroundImage: `url(${bg.src})` }}>
+        <div
+          className="inner-hero"
+          style={{ backgroundImage: `url(${bg.src})` }}
+        >
           <Container>
             <Row>
               <Col lg={8} className="m-auto text-center">
                 <div className="inner-main-heading">
-                  <h1>Pricing Plan</h1>
+                  <h1>Page Not Found</h1>
                   <div className="breadcrumbs-pages">
                     <ul>
                       <li>
@@ -33,7 +90,7 @@ const Error = () => {
                       <li className="angle">
                         <FaAngleRight className="fa-solid" />
                       </li>
-                      <li>Pricing Plan</li>
+                      <li>Error</li>
                     </ul>
                   </div>
                 </div>
@@ -47,12 +104,13 @@ const Error = () => {
             <Row>
               <Col lg={7} className="m-auto text-center">
                 <div className="error-image">
-                  <Image src={errorimg} alt="" />
+                  <Image src={errorimg} alt="Error illustration" />
                 </div>
                 <div className="error-content-area mt-50 heading2">
-                  <h2> Sorry! Page Not Found!</h2>
+                  <h2>Sorry! Page Not Found!</h2>
                   <p className="mt-16">
-                    Sorry, the page you are looking for doesn’t exist or <br /> has been moved. Here are some helpful links.
+                    The page you are looking for doesn’t exist or has been moved.
+                    Please use the helpful link below.
                   </p>
                   <div className="button mt-30">
                     <Link className="theme-btn3" href="/">

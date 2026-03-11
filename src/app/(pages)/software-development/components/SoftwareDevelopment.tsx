@@ -52,8 +52,7 @@ export default function SoftwareDevelopmentJourney() {
           <span>Software Development</span>
           <h2>From Concept to Scalable Solution</h2>
           <p>
-            We don’t just build software — we craft digital solutions that evolve
-            with your business.
+           At g‑net solutions, Coimbatore, we don’t just build software — we craft digital solutions that grow and evolve with your business
           </p>
         </div>
 

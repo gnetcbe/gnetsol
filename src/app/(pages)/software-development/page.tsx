@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: 'Software Development Services | G-Net Solutions',
     description:
       'Custom software and application development services tailored to business needs by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/software-development',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     title: 'Software Development Company | G-Net Solutions',
     description:
       'Professional software and application development services in Coimbatore.',
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/software-development',
   },
 }
 
@@ -65,6 +68,7 @@ const Page = () => {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -77,6 +81,69 @@ const Page = () => {
               'Business Process Automation',
               'Software Maintenance & Support',
             ],
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/software-development',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Software Development',
+                item: 'https://g-netsolutions.com/software-development',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What types of software development services do you provide?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We provide custom software development, application software, enterprise solutions, business process automation, and ongoing support.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Do you offer scalable solutions for businesses?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, our software solutions are designed to scale with your business needs, ensuring long-term growth and efficiency.',
+                },
+              },
+            ],
           }),
         }}
       />
@@ -85,7 +152,7 @@ const Page = () => {
         <Hero />
         <SoftwareDevelopment />
         <ApplicationSoftware />
-          <ProductsPage />
+        <ProductsPage />
       </main>
     </>
   )

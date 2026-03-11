@@ -5,10 +5,9 @@ import Hero from './components/Hero'
 import logo from '@/assets/img/logo/title2.svg'
 
 /* 🔥 LAZY-LOADED SECTIONS */
-const DigitalMarketing = dynamic(
-  () => import('./components/DigitalMarketing'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+const DigitalMarketing = dynamic(() => import('./components/DigitalMarketing'), {
+  loading: () => <div style={{ minHeight: 300 }} />,
+})
 
 const DigitalMarketingBenefits = dynamic(
   () => import('./components/DigitalMarketingBenefits'),
@@ -37,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Digital Marketing Services | G-Net Solutions',
     description:
       'Grow your business online with expert digital marketing services including SEO, SMM, PPC, and content marketing.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://g-netsolutions.com/digital-marketing',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -46,6 +45,9 @@ export const metadata: Metadata = {
     title: 'Digital Marketing Company | G-Net Solutions',
     description:
       'Professional digital marketing and online growth services in Coimbatore.',
+  },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/digital-marketing',
   },
 }
 
@@ -65,6 +67,7 @@ const Page = () => {
               '@type': 'Organization',
               name: 'G-Net Solutions',
               url: 'https://g-netsolutions.com',
+              logo: 'https://g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -77,6 +80,69 @@ const Page = () => {
               'Content Marketing',
               'Online Branding',
               'Lead Generation',
+            ],
+            offers: {
+              '@type': 'Offer',
+              url: 'https://g-netsolutions.com/digital-marketing',
+              priceCurrency: 'INR',
+              price: 'Contact for pricing',
+              availability: 'https://schema.org/InStock',
+            },
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Digital Marketing',
+                item: 'https://g-netsolutions.com/digital-marketing',
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What digital marketing services do you offer?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We provide SEO, social media marketing, PPC advertising, content marketing, online branding, and lead generation services.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Where is G-Net Solutions located?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'We are based in Coimbatore, Tamil Nadu, India.',
+                },
+              },
             ],
           }),
         }}

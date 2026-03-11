@@ -51,8 +51,7 @@ export default function EcommerceJourney() {
           <span>eCommerce Solutions</span>
           <h2>From Store Setup to Scalable Online Growth</h2>
           <p>
-            We build powerful eCommerce platforms that help businesses sell
-            smarter, scale faster, and manage operations efficiently.
+          At g-net solutions, Coimbatore, we design and deliver powerful eCommerce platforms that empower businesses to sell smarter, scale faster, and streamline operations.
           </p>
         </div>
 

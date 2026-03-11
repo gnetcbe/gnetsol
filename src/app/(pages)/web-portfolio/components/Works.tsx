@@ -56,8 +56,26 @@ const Works = () => {
 
   return (
     <>
+
+      <section className="software-journey ecommerce-theme">
+          <Container>
+           <div className="journey-head">
+  <span>Our Notable Works</span>
+  <h2>Showcasing Success Across Digital Solutions</h2>
+  <p>
+    At g-net solutions, Coimbatore, we highlight the projects that define our journey —
+    powerful eCommerce platforms, innovative applications, and digital solutions that
+    help businesses sell smarter, scale faster, and manage operations efficiently.
+  </p>
+</div>
+
+             </Container>
+                </section>
+
       <section className="works-section">
         <Container>
+
+  
           <div className="works-grid">
             {works.map((item, index) => (
               <div
@@ -103,6 +121,48 @@ const Works = () => {
       )}
 
       <style jsx>{`
+
+
+ /* ===========================
+           ECOMMERCE JOURNEY THEME
+        ============================ */
+
+        .software-journey.ecommerce-theme {
+          padding: 30px 0;
+          background: radial-gradient(
+            circle at top,
+            #fff7ed,
+            #ffffff 65%
+          );
+        }
+
+        .journey-head {
+          text-align: center;
+          max-width: 720px;
+          margin: 0 auto 10px;
+        }
+
+        .journey-head span {
+          font-size: 14px;
+          font-weight: 600;
+          color: #ea580c; /* orange */
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        .journey-head h2 {
+          font-size: 42px;
+          font-weight: 800;
+          color: #0f172a;
+          margin-bottom: 14px;
+        }
+
+        .journey-head p {
+          font-size: 16px;
+          color: #475569;
+          line-height: 1.7;
+        }
+
         .works-section {
           padding: 70px 0;
           background: #f5f7fa;

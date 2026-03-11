@@ -5,15 +5,13 @@ import Hero from './components/Hero'
 import logo from '@/assets/img/logo/title2.svg'
 
 /* 🔥 LAZY-LOADED SECTIONS */
-const ContactArea = dynamic(
-  () => import('./components/ContactArea'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+const ContactArea = dynamic(() => import('./components/ContactArea'), {
+  loading: () => <div style={{ minHeight: 300 }} />,
+})
 
-const Map = dynamic(
-  () => import('./components/Map'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+const Map = dynamic(() => import('./components/Map'), {
+  loading: () => <div style={{ minHeight: 300 }} />,
+})
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
@@ -45,6 +43,9 @@ export const metadata: Metadata = {
     description:
       'Contact G-Net Solutions, Coimbatore for web development, software, and digital marketing services.',
   },
+  alternates: {
+    canonical: 'https://g-netsolutions.com/contact',
+  },
 }
 
 const Page = () => {
@@ -61,6 +62,7 @@ const Page = () => {
             name: 'G-Net Solutions',
             url: 'https://g-netsolutions.com',
             telephone: '+91-9751959300',
+            logo: 'https://g-netsolutions.com/logo.png',
             address: {
               '@type': 'PostalAddress',
               streetAddress:
@@ -70,11 +72,45 @@ const Page = () => {
               postalCode: '641004',
               addressCountry: 'IN',
             },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+91-9751959300',
+              contactType: 'customer support',
+              areaServed: 'IN',
+              availableLanguage: ['English', 'Tamil'],
+            },
+            openingHours: 'Mo-Fr 09:00-18:00',
             sameAs: [
               'https://www.facebook.com/people/G-Net-Solutions-Coimbatore-Pvt-Ltd/100070495715164/',
               'https://www.linkedin.com/in/gnetsolutions',
               'https://x.com/gnetcoimbatore',
               'https://www.youtube.com/@g-netsolutions5132',
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://g-netsolutions.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Contact',
+                item: 'https://g-netsolutions.com/contact',
+              },
             ],
           }),
         }}
