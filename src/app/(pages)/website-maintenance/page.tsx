@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     'website security maintenance',
     'website update services',
     'website performance optimization',
+    
     'g-net solutions',
   ],
   icons: {
