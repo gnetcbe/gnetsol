@@ -124,6 +124,54 @@ const Services = () => {
 
           </Row>
         </Container>
+
+<Container className="dm-hero" >
+    <Row className="align-items-center">
+       <Col lg={1} md={12} className="d-flex justify-content-center align-items-center">
+  <div className="dm-icon">
+    <svg
+      width="64"
+      height="64"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="white"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+      <circle cx="9" cy="10" r="1"></circle>
+      <circle cx="15" cy="10" r="1"></circle>
+    </svg>
+  </div>
+</Col>
+      {/* LEFT SIDE (80%) */}
+      <Col lg={9} md={12}>
+        <div className="dm-left">
+          <h2>
+            Transform Your Business with Smart Chatbots
+          </h2>
+          <p>
+            Welcome to the Future of Customer Engagement
+          </p>
+        </div>
+      </Col>
+
+      {/* RIGHT SIDE (20%) */}
+      <Col
+  lg={2}
+  md={12}
+  className="d-flex justify-content-center align-items-center mt-md-3 mt-3"
+>
+  <Link href="/chatbot" className="dm-btn">
+    View More <FaArrowRight />
+  </Link>
+</Col>
+
+    </Row>
+  </Container>
+
+        
       </div>
     </>
   )

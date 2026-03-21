@@ -176,7 +176,11 @@ const Header = () => {
                             Digital Marketing
                           </Link>
                         </li>
-                         
+                         <li>
+                          <Link href="/chatbot">
+                            Chatbot
+                          </Link>
+                        </li>
                       </ul>
                     </nav>
                   </div>

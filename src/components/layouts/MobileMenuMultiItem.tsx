@@ -34,6 +34,7 @@ const menuItems = [
 
   { title: 'Email Solutions', path: '/email-services' },
   { title: 'Digital Marketing', path: '/digital-marketing-seo' },
+  { title: 'Chatbot', path: '/chatbot' },
   { title: 'Contact Us', path: '/contact' },
 ]
 
