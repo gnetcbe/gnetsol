@@ -4,7 +4,7 @@ import Script from 'next/script'
 import Hero from './components/Hero'
 import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
+/* 🔥 LAZY LOAD */
 const Chatbot = dynamic(
   () => import('./components/Chatbot'),
   { loading: () => <div style={{ minHeight: 300 }} /> }
@@ -12,38 +12,44 @@ const Chatbot = dynamic(
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Bonded Warehouse Management System Software in Coimbatore | G-Net Solutions',
+  title: 'AI Chatbot Development Company in Coimbatore | WhatsApp & Website Chatbots',
   description:
-    'Advanced bonded warehouse management system software for inventory control, customs compliance, in-bond and ex-bond operations, reporting, and secure warehouse management in Coimbatore.',
+    'Top AI chatbot development company in Coimbatore. We build WhatsApp chatbots, website chatbots, and automation solutions to boost customer engagement, leads, and support.',
   keywords: [
-    'bonded warehouse management system',
-    'bonded warehouse software',
-    'customs bonded warehouse software',
-    'in bond ex bond management system',
-    'warehouse management system for customs',
-    'inventory control bonded warehouse',
-    'customs compliance software',
-    'bonded warehouse inventory system',
-    'warehouse software coimbatore',
-    'logistics management software',
+    'AI chatbot development company',
+    'chatbot development in coimbatore',
+    'whatsapp chatbot development',
+    'website chatbot integration',
+    'customer support chatbot',
+    'lead generation chatbot',
+    'business automation chatbot',
+    'conversational AI company india',
+    'chatbot for business growth',
+    'AI chatbot services',
   ],
   icons: {
     icon: logo.src,
   },
+
+  /* 🔥 OPEN GRAPH (SOCIAL SHARE) */
   openGraph: {
-    title: 'Bonded Warehouse Management Software | G-Net Solutions',
+    title: 'AI Chatbot Development Services | G-Net Solutions',
     description:
-      'Smart bonded warehouse management software for inventory control, customs compliance, and logistics operations in Coimbatore.',
+      'Build powerful AI chatbots for WhatsApp, websites, and automation. Improve customer support and generate leads 24/7.',
     url: 'https://g-netsolutions.com/chatbot',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
+
+  /* 🔥 TWITTER */
   twitter: {
     card: 'summary_large_image',
-    title: 'Bonded Warehouse Management Software | G-Net Solutions',
+    title: 'AI Chatbot Development Services | G-Net Solutions',
     description:
-      'Professional bonded warehouse management and logistics software solutions in Coimbatore.',
+      'Smart AI chatbot solutions for automation, customer support, and lead generation.',
   },
+
+  /* 🔥 CANONICAL */
   alternates: {
     canonical: 'https://g-netsolutions.com/chatbot',
   },
@@ -52,15 +58,15 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* 🔍 SERVICE SCHEMA */}
       <Script
-        id="warehouse-management-schema"
+        id="chatbot-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Service',
-            name: 'Bonded Warehouse Management System',
+            name: 'AI Chatbot Development Services',
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
@@ -72,16 +78,16 @@ const Page = () => {
               name: 'Coimbatore, Tamil Nadu, India',
             },
             serviceType: [
-              'Bonded Warehouse Management',
-              'Inventory Control',
-              'Customs Compliance',
-              'In-Bond and Ex-Bond Operations',
-              'Reporting & Analytics',
-              'Secure Warehouse Management',
+              'AI Chatbot Development',
+              'WhatsApp Chatbot',
+              'Website Chatbot Integration',
+              'Customer Support Automation',
+              'Lead Generation Chatbots',
+              'Conversational AI Solutions',
             ],
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/warehouse-management-system',
+              url: 'https://g-netsolutions.com/chatbot',
               priceCurrency: 'INR',
               price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
@@ -90,7 +96,7 @@ const Page = () => {
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* 🔍 BREADCRUMB SCHEMA */}
       <Script
         id="breadcrumb-schema"
         type="application/ld+json"
@@ -108,15 +114,15 @@ const Page = () => {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'Warehouse Management System',
-                item: 'https://g-netsolutions.com/warehouse-management-system',
+                name: 'Chatbot Development',
+                item: 'https://g-netsolutions.com/chatbot',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      {/* 🔍 FAQ SCHEMA */}
       <Script
         id="faq-schema"
         type="application/ld+json"
@@ -127,18 +133,34 @@ const Page = () => {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'What is a bonded warehouse management system?',
+                name: 'What is an AI chatbot?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'It is specialized software designed to manage bonded warehouses, ensuring customs compliance, inventory control, and smooth in-bond/ex-bond operations.',
+                  text: 'An AI chatbot is a smart software that automates conversations with users and helps businesses handle customer queries, leads, and support 24/7.',
                 },
               },
               {
                 '@type': 'Question',
-                name: 'Does the software support customs compliance?',
+                name: 'Do you provide WhatsApp chatbot development?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Yes, the system is built to handle customs regulations, documentation, and compliance for bonded warehouses.',
+                  text: 'Yes, we build WhatsApp chatbots for customer support, marketing automation, and instant communication with customers.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can chatbots increase business sales?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, chatbots help capture leads, engage visitors instantly, and improve conversions, resulting in higher sales.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can chatbots be integrated into my website?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, we can integrate chatbots into any website to automate customer interactions and improve user experience.',
                 },
               },
             ],
