@@ -4,8 +4,11 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaArrowRight } from 'react-icons/fa6'
-import CustomNiceSelect from '@/components/CustomNiceSelect'
+import dynamic from 'next/dynamic'
 import span3 from '@/assets/img/icons/span3.svg'
+
+// ✅ FIX — nice-select2 uses 'self' which is browser-only
+const CustomNiceSelect = dynamic(() => import('@/components/CustomNiceSelect'), { ssr: false })
 
 const CareerPage = () => {
 
@@ -107,7 +110,7 @@ const CareerPage = () => {
                   Build Your Career With G-Net Solutions
                 </h2>
                 <p className="mt-16">
-                  We’re always looking for talented individuals who are passionate
+                  We're always looking for talented individuals who are passionate
                   about technology, creativity, and growth.
                 </p>
               </div>
@@ -158,13 +161,13 @@ const CareerPage = () => {
 
                     <Col md={6}>
                       <div className="single-input">
-                        <input type="text" name="position" maxLength={50}  placeholder="Position Applied For *" required />
+                        <input type="text" name="position" maxLength={50} placeholder="Position Applied For *" required />
                       </div>
                     </Col>
 
                     <Col md={6}>
                       <div className="single-input">
-                        <input type="text" name="qualification" maxLength={50}  placeholder="Qualification *" required />
+                        <input type="text" name="qualification" maxLength={50} placeholder="Qualification *" required />
                       </div>
                     </Col>
 

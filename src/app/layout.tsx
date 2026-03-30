@@ -18,13 +18,13 @@ import { Nunito_Sans, Outfit } from 'next/font/google'
 const Nunito = Nunito_Sans({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['200','300','400','500','600','700','800','900'],
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
 })
 
 const Outfits = Outfit({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['100','200','300','400','500','600','700','800','900'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 })
 
 /* =====================
@@ -32,25 +32,26 @@ const Outfits = Outfit({
 ===================== */
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://g-netsolutions.com'),
+  metadataBase: new URL('https://www.g-netsolutions.com'),
+  
 
   title: {
-    default: 'G-Net Solutions | Website & Digital Marketing Company in Coimbatore',
+    default: 'Web Development Company in Coimbatore | G-Net Solutions',
     template: '%s | G-Net Solutions',
   },
 
   description:
-    'G-Net Solutions is a leading website development and digital marketing company in Coimbatore, offering SEO, web design, hosting, email services, and IT solutions.',
+    'G-Net Solutions is a leading web development company in Coimbatore offering website design, SEO, digital marketing, hosting, email services, and IT solutions across Tamil Nadu.',
 
   keywords: [
+    'web development company in coimbatore',
+    'website design company coimbatore',
+    'digital marketing company coimbatore',
+    'seo company coimbatore',
+    'it company coimbatore',
+    'web hosting coimbatore',
+    'software development coimbatore',
     'G-Net Solutions',
-    'Website Development Company in Coimbatore',
-    'Digital Marketing Company in Coimbatore',
-    'SEO Company in Coimbatore',
-    'Web Hosting Services',
-    'Email Hosting Services',
-    'IT Solutions Company',
-    'Website Design Company',
   ],
 
   authors: [{ name: 'G-Net Solutions' }],
@@ -64,23 +65,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'G-Net Solutions',
-    title: 'G-Net Solutions | Website & Digital Marketing Company in Coimbatore',
+    title: 'Web Development Company in Coimbatore | G-Net Solutions',
     description:
-      'G-Net Solutions provides professional website development, SEO, digital marketing, hosting, and IT services in Coimbatore.',
-    url: 'https://g-netsolutions.com',
+      'G-Net Solutions provides professional website development, SEO, digital marketing, hosting, and IT services in Coimbatore, Tamil Nadu.',
+    url: 'https://www.g-netsolutions.com',
     images: [
       {
-        url: '/og-image.png', // optional (1200x630)
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'G-Net Solutions Coimbatore',
+        alt: 'G-Net Solutions - Web Development Company in Coimbatore',
       },
     ],
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'G-Net Solutions | Digital Marketing & Web Development',
+    title: 'Web Development Company in Coimbatore | G-Net Solutions',
     description:
       'Professional website development, SEO, and digital marketing services by G-Net Solutions, Coimbatore.',
     images: ['/og-image.png'],
@@ -90,12 +91,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+
+  alternates: {
+     canonical: 'https://www.g-netsolutions.com/',
+  },
 }
 
 /* =====================
    ROOT LAYOUT
 ===================== */
- 
 
 export default function RootLayout({
   children,

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import span3 from '@/assets/img/icons/span3.svg'
-import CustomNiceSelect from '@/components/CustomNiceSelect'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -15,6 +15,9 @@ import {
 } from 'react-icons/fa6'
 import { contactData } from '../data'
 import type { ContactType } from '../data'
+
+// ✅ FIX — nice-select2 uses 'self' which is browser-only
+const CustomNiceSelect = dynamic(() => import('@/components/CustomNiceSelect'), { ssr: false })
 
 /* ✅ TYPE GUARD */
 const isContactItem = (

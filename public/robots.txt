@@ -1,14 +1,6 @@
-# *
 User-agent: *
 Allow: /
-
-# *
-User-agent: *
 Disallow: /admin
 Disallow: /internal
 
-# Host
-Host: https://g-netsolutions.com
-
-# Sitemaps
-Sitemap: https://g-netsolutions.com/sitemap.xml
+Sitemap: https://www.g-netsolutions.com/sitemap.xml

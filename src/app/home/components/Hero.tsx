@@ -1,6 +1,6 @@
 'use client'
 
-import GlightBox from '@/components/GlightBox'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Col, Container, Row } from 'react-bootstrap'
@@ -15,6 +15,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+
+// ✅ FIX — ssr:false prevents glightbox from running on server
+const GlightBox = dynamic(() => import('@/components/GlightBox'), { ssr: false })
 
 const heroSlides = [
   {
@@ -51,14 +54,14 @@ const bottomTexts = [
 const Hero = () => {
   return (
     <>
-       
+
       {/* 🔥 TOP HERO SWIPER */}
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 3000 }}
         loop
         pagination={{ clickable: true }}
-        style={{ height: "90vh" }}
+        style={{ height: "100vh" }}
       >
         {heroSlides.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -66,7 +69,7 @@ const Hero = () => {
               className="hero6"
               style={{
                 backgroundImage: `url(${slide.image.src})`,
-                height: "90vh",
+                height: "100vh",
                 display: "flex",
                 alignItems: "center",
                 backgroundSize: "cover",
@@ -86,8 +89,7 @@ const Hero = () => {
                           {slide.tag}
                         </span>
 
-                        {/* ✅ All slides now use H2 (H1 already above) */}
-                        <h2>{slide.title}</h2>
+                        <h1>{slide.title}</h1>
 
                         <p>{slide.desc}</p>
 

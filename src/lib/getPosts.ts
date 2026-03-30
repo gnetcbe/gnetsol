@@ -15,3 +15,4 @@ const query = encodeURIComponent(`*[_type == "post"]{
   const data = await res.json();
   return data.result;
 }
+

@@ -5,223 +5,138 @@ import Hero from './home/components/Hero'
 import Footer from '@/components/layouts/Footer/Footer'
 import CTA from '@/components/layouts/Footer/CTA'
 import TopBar from '@/components/layouts/TopBar/page'
-import logo from '@/assets/img/logo/title3.svg'
- 
+
 /* 🔥 LAZY-LOADED HOME SECTIONS */
-const About = dynamic(() => import('./home/components/About'), {
-  ssr: true,
-})
-
-const Choose = dynamic(() => import('./home/components/Choose'), {
-  ssr: true,
-})
-
-const Service = dynamic(() => import('./home/components/Services2'), {
-  ssr: true,
-})
-
-const WorkProcess = dynamic(() => import('./home/components/WorkProcess'), {
-  ssr: true,
-})
+const About = dynamic(() => import('./home/components/About'))
+const Choose = dynamic(() => import('./home/components/Choose'))
+const Service = dynamic(() => import('./home/components/Services2'))
+const WorkProcess = dynamic(() => import('./home/components/WorkProcess'))
 
 /* ✅ HOME PAGE SEO METADATA */
 export const metadata: Metadata = {
-  title:'G-Net Solutions-Web Development & IT Services in Coimbatore',
+  // ✅ Keyword first, then brand
+  title: 'Web Development Company in Coimbatore | G-Net Solutions',
   description:
-    'G-Net Solutions in Coimbatore offers expert web development, software solutions, digital marketing and hosting services to grow your business online.',
+    'G-Net Solutions is a leading web development company in Coimbatore offering website design, software development, SEO, and IT services across Tamil Nadu.',
   keywords: [
+    'web development company in coimbatore',
+    'website design company coimbatore',
+    'software development company coimbatore',
+    'it company coimbatore',
+    'digital marketing coimbatore',
+    'seo company coimbatore',
+    'web hosting coimbatore',
     'g-net solutions',
-    'website development company in coimbatore',
-    'it services company coimbatore',
-    'web design company',
-    'software development company',
-    'digital marketing company',
-    'business email hosting',
-    'web hosting services',
   ],
   icons: {
     icon: 'https://g-netsolutions.com/logo.png',
   },
   openGraph: {
-    title: 'G-Net Solutions | Web Development & IT Services',
+    title: 'Web Development Company in Coimbatore | G-Net Solutions',
     description:
       'Professional website development, software solutions, and digital marketing services by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com',
+    url: 'https://www.g-netsolutions.com',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: 'https://g-netsolutions.com/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'G-Net Solutions - Web Development Company in Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'G-Net Solutions | Web & IT Services',
+    title: 'Web Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Leading IT services and website development company in Coimbatore.',
+      'Leading web development and IT services company in Coimbatore, Tamil Nadu.',
   },
-
-alternates: {
+  alternates: {
     canonical: 'https://www.g-netsolutions.com/',
-    languages: {
-      'en-IN': 'https://www.g-netsolutions.com/',
-      'x-default': 'https://www.g-netsolutions.com/',
-    },
   },
-
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 ORGANIZATION SCHEMA – HOME PAGE */}
+      {/* ✅ LOCAL BUSINESS SCHEMA — Critical for local SEO */}
       <Script
-        id="organization-schema"
+        id="local-business-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Organization',
+            '@type': 'ProfessionalService',
             name: 'G-Net Solutions',
-            url: 'https://g-netsolutions.com',
+            url: 'https://www.g-netsolutions.com',
             logo: 'https://g-netsolutions.com/logo.png',
+            image: 'https://g-netsolutions.com/logo.png',
+            description:
+              'G-Net Solutions is a web development and IT services company based in Coimbatore, Tamil Nadu, offering website design, software development, SEO, and digital marketing.',
+            telephone: '+91-9751959300',
+            priceRange: '₹₹',
             address: {
               '@type': 'PostalAddress',
+              streetAddress: 'Your Street Address Here',
               addressLocality: 'Coimbatore',
               addressRegion: 'Tamil Nadu',
+              postalCode: 'Your PIN Code',
               addressCountry: 'IN',
             },
-            contactPoint: {
-              '@type': 'ContactPoint',
-              telephone: '+91-9751959300',
-              contactType: 'customer support',
-            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 11.03322,   // ✅ Replace with your exact lat
+              longitude: 77.01314,  // ✅ Replace with your exact lng
+            }, 
+            openingHours: 'Mo-Sa 09:00-18:00',
             sameAs: [
               'https://www.facebook.com/people/G-Net-Solutions-Coimbatore-Pvt-Ltd/100070495715164/',
               'https://www.linkedin.com/in/gnetsolutions',
               'https://x.com/gnetcoimbatore',
               'https://www.youtube.com/@g-netsolutions5132',
             ],
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Web & IT Services',
+              itemListElement: [
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website Development' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ecommerce Development' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SEO & Digital Marketing' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Hosting' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Software Development' } },
+              ],
+            },
           }),
         }}
       />
 
-
-       {/* 🔍 SERVICES SCHEMA */}
-  <Script
-    id="services-schema"
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'ItemList',
-          name: 'G-Net Solutions Web Services',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              item: {
-                '@type': 'Service',
-                name: 'Website Development',
-                url: 'https://g-netsolutions.com/web-development',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              item: {
-                '@type': 'Service',
-                name: 'CMS Website Development',
-                url: 'https://g-netsolutions.com/software-development',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              item: {
-                '@type': 'Service',
-                name: 'Ecommerce Website Development',
-                url: 'https://g-netsolutions.com/ecommerce-solutions',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 4,
-              item: {
-                '@type': 'Service',
-                name: 'Search Engine Optimization',
-                url: 'https://g-netsolutions.com/digital-marketing-seo',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 5,
-              item: {
-                '@type': 'Service',
-                name: 'Ware house management',
-                url: 'https://g-netsolutions.com/warehouse-management-system',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 6,
-              item: {
-                '@type': 'Service',
-                name: 'Email Solutions',
-                url: 'https://g-netsolutions.com/email-services',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 7,
-              item: {
-                '@type': 'Service',
-                name: 'Domain Registration',
-                url: 'https://g-netsolutions.com/web-hosting',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 8,
-              item: {
-                '@type': 'Service',
-                name: 'Website Hosting',
-                url: 'https://g-netsolutions.com/web-hosting',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 9,
-              item: {
-                '@type': 'Service',
-                name: 'Website Maintenance & Support',
-                url: 'https://g-netsolutions.com/website-maintenance',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 10,
-              item: {
-                '@type': 'Service',
-                name: 'Hall Management System',
-                url: 'https://g-netsolutions.com/hall-management-system',
-              },
-            },
-          ],
-        },
-      }),
-    }}
-  />
-
       <TopBar />
       <main>
-        <h1>g-net solutions - Web Development Company in Coimbatore</h1>
+        {/* ✅ H1 styled to be visually hidden but readable by Google */}
+        <h1
+          style={{
+            position: 'absolute',
+            width: '1px',
+            height: '1px',
+            padding: '0',
+            margin: '-1px',
+            overflow: 'hidden',
+            clip: 'rect(0,0,0,0)',
+            border: '0',
+          }}
+        >
+          Web Development Company in Coimbatore - G-Net Solutions
+        </h1>
         <Hero />
         <About />
         <Choose />
         <Service />
-        <WorkProcess />  
-        </main>
-       <CTA />
-       <Footer />
+        <WorkProcess />
+      </main>
+      <CTA />
+      <Footer />
     </>
   )
 }

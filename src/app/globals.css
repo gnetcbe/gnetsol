@@ -552,3 +552,10 @@ line-height:30px;
     padding-top: 10px;
       padding-bottom: 10px;
 }
+
+.main-heading6 h1 {
+    font-size: 35px!important;
+    font-weight: 700!important;
+    color: #fff!important;
+    line-height: 55px;
+}
