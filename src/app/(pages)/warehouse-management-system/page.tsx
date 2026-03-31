@@ -2,59 +2,64 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const WarehouseManagementSystem = dynamic(
-  () => import('./components/WarehouseManagementSystem'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const WarehouseManagementSystem = dynamic(() => import('./components/WarehouseManagementSystem'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Bonded Warehouse Management System Software in Coimbatore | G-Net Solutions',
+  title: 'Bonded Warehouse Management System in Coimbatore | G-Net Solutions',
   description:
-    'Advanced bonded warehouse management system software for inventory control, customs compliance, in-bond and ex-bond operations, reporting, and secure warehouse management in Coimbatore.',
+    'G-Net Solutions offers advanced bonded warehouse management system software in Coimbatore for inventory control, customs compliance, in-bond and ex-bond operations, reporting, and secure warehouse management.',
   keywords: [
-    'bonded warehouse management system',
-    'bonded warehouse software',
+    'bonded warehouse management system coimbatore',
+    'bonded warehouse software coimbatore',
     'customs bonded warehouse software',
     'in bond ex bond management system',
-    'warehouse management system for customs',
+    'warehouse management system coimbatore',
     'inventory control bonded warehouse',
-    'customs compliance software',
-    'bonded warehouse inventory system',
+    'customs compliance software coimbatore',
     'warehouse software coimbatore',
-    'logistics management software',
+    'logistics management software coimbatore',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Bonded Warehouse Management Software | G-Net Solutions',
+    title: 'Bonded Warehouse Management System in Coimbatore | G-Net Solutions',
     description:
       'Smart bonded warehouse management software for inventory control, customs compliance, and logistics operations in Coimbatore.',
-    url: 'https://g-netsolutions.com/warehouse-management-system',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/warehouse-management-system',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Bonded Warehouse Management System - G-Net Solutions Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bonded Warehouse Management Software | G-Net Solutions',
+    title: 'Bonded Warehouse Management System in Coimbatore | G-Net Solutions',
     description:
-      'Professional bonded warehouse management and logistics software solutions in Coimbatore.',
+      'Professional bonded warehouse management and logistics software solutions in Coimbatore by G-Net Solutions.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/warehouse-management-system',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/warehouse-management-system',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* ✅ SERVICE SCHEMA */}
       <Script
-        id="warehouse-management-schema"
+        id="warehouse-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -64,8 +69,9 @@ const Page = () => {
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              // ✅ www added
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -79,20 +85,20 @@ const Page = () => {
               'Reporting & Analytics',
               'Secure Warehouse Management',
             ],
+            // ✅ Removed invalid price string
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/warehouse-management-system',
+              url: 'https://www.g-netsolutions.com/warehouse-management-system',
               priceCurrency: 'INR',
-              price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="warehouse-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -103,22 +109,22 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Warehouse Management System',
-                item: 'https://g-netsolutions.com/warehouse-management-system',
+                item: 'https://www.g-netsolutions.com/warehouse-management-system',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      {/* ✅ FAQ SCHEMA — keep only if FAQ questions are visually on the page */}
       <Script
-        id="faq-schema"
+        id="warehouse-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -130,7 +136,7 @@ const Page = () => {
                 name: 'What is a bonded warehouse management system?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'It is specialized software designed to manage bonded warehouses, ensuring customs compliance, inventory control, and smooth in-bond/ex-bond operations.',
+                  text: 'It is specialized software designed to manage bonded warehouses in Coimbatore, ensuring customs compliance, inventory control, and smooth in-bond/ex-bond operations.',
                 },
               },
               {

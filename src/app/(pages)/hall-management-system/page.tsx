@@ -2,59 +2,65 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const HallManagementSystem = dynamic(
-  () => import('./components/HallManagementSystem'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const HallManagementSystem = dynamic(() => import('./components/HallManagementSystem'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'Hall Management Software in Coimbatore | G-Net Solutions',
   description:
-    'Hall management software for venue booking, stall management, event scheduling, billing, and operations in Coimbatore.',
+    'G-Net Solutions offers smart hall management software in Coimbatore for venue booking, stall management, event scheduling, billing, and operations for exhibition halls and convention centers.',
   keywords: [
+    'hall management software coimbatore',
     'exhibition hall management software',
     'convention hall management system',
     'venue management software coimbatore',
     'trade fair management system',
     'event venue booking software',
     'stall management system',
-    'hall booking software',
+    'hall booking software coimbatore',
     'exhibition management solution',
-    'convention center software',
     'venue operations management',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Hall Management Software | G-Net Solutions',
+    title: 'Hall Management Software in Coimbatore | G-Net Solutions',
     description:
       'Smart hall management software for venue booking, stall management, event scheduling, billing, and operations in Coimbatore.',
-    url: 'https://g-netsolutions.com/hall-management-system',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/hall-management-system',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hall Management Software - G-Net Solutions Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hall Management Software | G-Net Solutions',
+    title: 'Hall Management Software in Coimbatore | G-Net Solutions',
     description:
-      'Professional hall management and venue booking software solutions in Coimbatore.',
+      'Professional hall management and venue booking software solutions in Coimbatore by G-Net Solutions.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/hall-management-system',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/hall-management-system',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* ✅ SERVICE SCHEMA */}
       <Script
-        id="hall-management-schema"
+        id="hall-management-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -64,8 +70,9 @@ const Page = () => {
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              // ✅ www added
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -79,20 +86,20 @@ const Page = () => {
               'Convention Hall Operations',
               'Exhibition Management',
             ],
+            // ✅ Removed invalid price string
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/hall-management-system',
+              url: 'https://www.g-netsolutions.com/hall-management-system',
               priceCurrency: 'INR',
-              price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="hall-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -103,22 +110,22 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Hall Management Software',
-                item: 'https://g-netsolutions.com/hall-management-system',
+                item: 'https://www.g-netsolutions.com/hall-management-system',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      {/* ✅ FAQ SCHEMA — keep only if FAQ questions are visually on the page */}
       <Script
-        id="faq-schema"
+        id="hall-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -130,7 +137,7 @@ const Page = () => {
                 name: 'What features does the Hall Management Software include?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Our hall management software includes venue booking, stall management, event scheduling, billing, and operations management.',
+                  text: 'Our hall management software in Coimbatore includes venue booking, stall management, event scheduling, billing, and operations management for exhibition halls and convention centers.',
                 },
               },
               {
@@ -138,7 +145,7 @@ const Page = () => {
                 name: 'Is the Hall Management Software customizable?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Yes, the software can be tailored to meet the needs of exhibition halls, convention centers, and event venues.',
+                  text: 'Yes, the software can be tailored to meet the specific needs of exhibition halls, convention centers, and event venues.',
                 },
               },
             ],

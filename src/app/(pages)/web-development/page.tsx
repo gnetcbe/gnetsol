@@ -2,62 +2,64 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOAD HEAVY SECTIONS */
-const WebDevelopmentNew = dynamic(
-  () => import('./components/WebDevelopmentNew'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
-
-const DesignProcessPage = dynamic(
-  () => import('./components/DesignProcessPage'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const WebDevelopmentNew = dynamic(() => import('./components/WebDevelopmentNew'))
+const DesignProcessPage = dynamic(() => import('./components/DesignProcessPage'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'Website Development Company in Coimbatore | G-Net Solutions',
   description:
-    'G-Net Solutions is a leading website development company in Coimbatore offering custom web development, responsive design, eCommerce solutions, and CMS development.',
+    'G-Net Solutions is a leading website development company in Coimbatore offering custom web development, responsive design, eCommerce solutions, and CMS development across Tamil Nadu.',
   keywords: [
     'website development company in coimbatore',
-    'web development services',
-    'custom website development',
-    'responsive web design',
-    'ecommerce website development',
-    'cms development',
+    'web development services coimbatore',
+    'custom website development coimbatore',
+    'responsive web design coimbatore',
+    'ecommerce website development coimbatore',
+    'cms development coimbatore',
     'web design company coimbatore',
-    'g-net solutions',
+    'g-net solutions web development',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
     title: 'Website Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Professional website development services including custom design, eCommerce, CMS, and responsive websites.',
-    url: 'https://g-netsolutions.com/web-development',
+      'Professional website development services including custom design, eCommerce, CMS, and responsive websites in Coimbatore, Tamil Nadu.',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/web-development',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Website Development Company - G-Net Solutions Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Development Services | G-Net Solutions',
+    title: 'Website Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Custom website development and responsive web solutions by G-Net Solutions, Coimbatore.',
+      'Custom website development and responsive web solutions by G-Net Solutions in Coimbatore.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/web-development',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/web-development',
   },
 }
 
 const WebDevelopmentPage = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* ✅ SERVICE SCHEMA */}
       <Script
-        id="web-development-schema"
+        id="web-development-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -67,8 +69,9 @@ const WebDevelopmentPage = () => {
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              // ✅ www added
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -81,20 +84,20 @@ const WebDevelopmentPage = () => {
               'CMS Development',
               'Website Maintenance',
             ],
+            // ✅ Removed invalid price string
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/web-development',
+              url: 'https://www.g-netsolutions.com/web-development',
               priceCurrency: 'INR',
-              price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="web-development-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -105,22 +108,22 @@ const WebDevelopmentPage = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Web Development',
-                item: 'https://g-netsolutions.com/web-development',
+                item: 'https://www.g-netsolutions.com/web-development',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      {/* ✅ FAQ SCHEMA — keep only if FAQ questions are visually on the page */}
       <Script
-        id="faq-schema"
+        id="web-development-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -129,10 +132,10 @@ const WebDevelopmentPage = () => {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'Do you build eCommerce websites?',
+                name: 'Do you build eCommerce websites in Coimbatore?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Yes, we specialize in building scalable eCommerce websites with secure payment gateways and custom features.',
+                  text: 'Yes, G-Net Solutions specializes in building scalable eCommerce websites with secure payment gateways and custom features for businesses in Coimbatore, Tamil Nadu.',
                 },
               },
               {
@@ -140,7 +143,7 @@ const WebDevelopmentPage = () => {
                 name: 'Can you develop CMS-based websites?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Absolutely, we provide CMS development services including WordPress, Drupal, and custom CMS solutions.',
+                  text: 'Absolutely, we provide CMS development services including WordPress, Drupal, and custom CMS solutions for businesses in Coimbatore.',
                 },
               },
             ],

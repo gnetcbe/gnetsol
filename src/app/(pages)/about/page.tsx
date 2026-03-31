@@ -2,81 +2,77 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const AboutUs = dynamic(() => import('./components/AboutUs'), {
-  loading: () => <div style={{ minHeight: 260 }} />,
-})
-const CounterArea = dynamic(() => import('./components/CounterArea'), {
-  loading: () => <div style={{ minHeight: 200 }} />,
-})
-const Choose = dynamic(() => import('./components/Choose'), {
-  loading: () => <div style={{ minHeight: 240 }} />,
-})
-const WhyGnet = dynamic(() => import('./components/WhyGnet'), {
-  loading: () => <div style={{ minHeight: 240 }} />,
-})
-const Service = dynamic(() => import('./components/Service'), {
-  loading: () => <div style={{ minHeight: 260 }} />,
-})
-const Works = dynamic(() => import('./components/Works'), {
-  loading: () => <div style={{ minHeight: 240 }} />,
-})
-const RecentWorks = dynamic(() => import('./components/RecentWorks'), {
-  loading: () => <div style={{ minHeight: 240 }} />,
-})
+/* 🔥 LAZY-LOADED SECTIONS — no loading placeholders to avoid blocking SSR */
+const AboutUs = dynamic(() => import('./components/AboutUs'))
+const CounterArea = dynamic(() => import('./components/CounterArea'))
+const Choose = dynamic(() => import('./components/Choose'))
+const WhyGnet = dynamic(() => import('./components/WhyGnet'))
+const Service = dynamic(() => import('./components/Service'))
+const Works = dynamic(() => import('./components/Works'))
+const RecentWorks = dynamic(() => import('./components/RecentWorks'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'About G-Net Solutions | IT & Web Development Company in Coimbatore',
+  // ✅ Keyword first
+  title: 'IT & Web Development Company in Coimbatore | About G-Net Solutions',
   description:
-    'Learn about G-Net Solutions, a trusted IT and web development company in Coimbatore delivering website development, software solutions, digital marketing, and IT services.',
+    'G-Net Solutions is a trusted IT and web development company in Coimbatore with 25+ years of experience delivering website development, software solutions, digital marketing, and IT services across Tamil Nadu.',
   keywords: [
-    'about g-net solutions',
     'it company in coimbatore',
     'web development company coimbatore',
-    'software development company',
-    'digital marketing company',
-    'it services provider',
-    'g-net solutions',
+    'about g-net solutions',
+    'software development company coimbatore',
+    'digital marketing company coimbatore',
+    'it services coimbatore',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'About G-Net Solutions',
+    title: 'IT & Web Development Company in Coimbatore | About G-Net Solutions',
     description:
-      'Discover G-Net Solutions – your trusted partner for web development, software, and digital marketing services.',
-    url: 'https://g-netsolutions.com/about',
+      'Discover G-Net Solutions – your trusted partner for web development, software, and digital marketing services in Coimbatore, Tamil Nadu.',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/about',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'G-Net Solutions - IT & Web Development Company in Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About G-Net Solutions',
+    title: 'IT & Web Development Company in Coimbatore | About G-Net Solutions',
     description:
-      'Know more about G-Net Solutions, a leading IT services company in Coimbatore.',
+      'Know more about G-Net Solutions, a leading IT and web development company in Coimbatore with 25+ years of experience.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/about',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/about',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – ORGANIZATION */}
+      {/* ✅ ORGANIZATION SCHEMA */}
       <Script
-        id="about-schema"
+        id="about-org-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: 'G-Net Solutions',
-            url: 'https://g-netsolutions.com',
-            logo: 'https://g-netsolutions.com/logo.png',
+            // ✅ www added
+            url: 'https://www.g-netsolutions.com',
+            logo: 'https://www.g-netsolutions.com/logo.png',
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'Coimbatore',
@@ -93,9 +89,9 @@ const Page = () => {
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="about-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -106,48 +102,20 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'About',
-                item: 'https://g-netsolutions.com/about',
+                item: 'https://www.g-netsolutions.com/about',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional, if About page has FAQs) */}
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'What services does G-Net Solutions provide?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'We provide website development, software solutions, digital marketing, hosting, and IT services.',
-                },
-              },
-              {
-                '@type': 'Question',
-                name: 'Where is G-Net Solutions located?',
-                acceptedAnswer: {
-                  '@type': 'Answer',
-                  text: 'We are based in Coimbatore, Tamil Nadu, India.',
-                },
-              },
-            ],
-          }),
-        }}
-      />
+      {/* ❌ Removed FAQPage schema — About page has no visible FAQ section */}
 
       <main>
         <Hero />

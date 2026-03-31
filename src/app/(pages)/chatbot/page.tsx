@@ -2,63 +2,63 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY LOAD */
-const Chatbot = dynamic(
-  () => import('./components/Chatbot'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const Chatbot = dynamic(() => import('./components/Chatbot'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'AI Chatbot Development Company in Coimbatore | WhatsApp & Website Chatbots',
+  title: 'AI Chatbot Development Company in Coimbatore | G-Net Solutions',
   description:
-    'Top AI chatbot development company in Coimbatore. We build WhatsApp chatbots, website chatbots, and automation solutions to boost customer engagement, leads, and support.',
+    'Top AI chatbot development company in Coimbatore. We build WhatsApp chatbots, website chatbots, and automation solutions to boost customer engagement, leads, and support across Tamil Nadu.',
   keywords: [
-    'AI chatbot development company',
+    'ai chatbot development company coimbatore',
     'chatbot development in coimbatore',
     'whatsapp chatbot development',
     'website chatbot integration',
     'customer support chatbot',
     'lead generation chatbot',
     'business automation chatbot',
-    'conversational AI company india',
+    'conversational ai company india',
     'chatbot for business growth',
-    'AI chatbot services',
+    'ai chatbot services',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
-
-  /* 🔥 OPEN GRAPH (SOCIAL SHARE) */
   openGraph: {
-    title: 'AI Chatbot Development Services | G-Net Solutions',
+    title: 'AI Chatbot Development Company in Coimbatore | G-Net Solutions',
     description:
       'Build powerful AI chatbots for WhatsApp, websites, and automation. Improve customer support and generate leads 24/7.',
-    url: 'https://g-netsolutions.com/chatbot',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/chatbot',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI Chatbot Development Services - G-Net Solutions Coimbatore',
+      },
+    ],
   },
-
-  /* 🔥 TWITTER */
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Chatbot Development Services | G-Net Solutions',
+    title: 'AI Chatbot Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Smart AI chatbot solutions for automation, customer support, and lead generation.',
+      'Smart AI chatbot solutions for automation, customer support, and lead generation in Coimbatore.',
   },
-
-  /* 🔥 CANONICAL */
   alternates: {
-    canonical: 'https://g-netsolutions.com/chatbot',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/chatbot',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 SERVICE SCHEMA */}
+      {/* ✅ SERVICE SCHEMA */}
       <Script
         id="chatbot-service-schema"
         type="application/ld+json"
@@ -70,8 +70,9 @@ const Page = () => {
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              // ✅ www added
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -85,20 +86,20 @@ const Page = () => {
               'Lead Generation Chatbots',
               'Conversational AI Solutions',
             ],
+            // ✅ Removed invalid price string
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/chatbot',
+              url: 'https://www.g-netsolutions.com/chatbot',
               priceCurrency: 'INR',
-              price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
             },
           }),
         }}
       />
 
-      {/* 🔍 BREADCRUMB SCHEMA */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="chatbot-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -109,22 +110,22 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Chatbot Development',
-                item: 'https://g-netsolutions.com/chatbot',
+                item: 'https://www.g-netsolutions.com/chatbot',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 FAQ SCHEMA */}
+      {/* ✅ FAQ SCHEMA — keep only if FAQ questions are visually on the page */}
       <Script
-        id="faq-schema"
+        id="chatbot-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

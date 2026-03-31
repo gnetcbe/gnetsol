@@ -2,75 +2,88 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
+import MapWrapper from './components/MapWrapper'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const ContactArea = dynamic(() => import('./components/ContactArea'), {
-  loading: () => <div style={{ minHeight: 300 }} />,
-})
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const ContactArea = dynamic(() => import('./components/ContactArea'))
 
-const Map = dynamic(() => import('./components/Map'), {
-  loading: () => <div style={{ minHeight: 300 }} />,
-})
+ 
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Contact G-Net Solutions | Web & IT Services in Coimbatore',
+  // ✅ Keyword first
+  title: 'Contact Web Development Company in Coimbatore | G-Net Solutions',
   description:
-    'Get in touch with G-Net Solutions, Coimbatore for website development, digital marketing, software solutions, and IT services. Contact us via phone, email, or visit our office.',
+    'Get in touch with G-Net Solutions, a leading web development company in Coimbatore. Contact us for website development, digital marketing, software solutions, and IT services via phone, email, or visit our office.',
   keywords: [
-    'contact g-net solutions',
+    'contact web development company coimbatore',
     'it company contact coimbatore',
-    'web development company contact',
-    'digital marketing company contact',
-    'software company coimbatore contact',
     'g-net solutions contact',
+    'web development company contact coimbatore',
+    'digital marketing company coimbatore contact',
+    'software company coimbatore contact',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Contact G-Net Solutions | Coimbatore',
+    title: 'Contact Web Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Reach G-Net Solutions for professional IT, web development, and digital marketing services in Coimbatore.',
-    url: 'https://g-netsolutions.com/contact',
+      'Reach G-Net Solutions for professional IT, web development, and digital marketing services in Coimbatore, Tamil Nadu.',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/contact',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Contact G-Net Solutions - Web Development Company in Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact G-Net Solutions',
+    title: 'Contact Web Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Contact G-Net Solutions, Coimbatore for web development, software, and digital marketing services.',
+      'Contact G-Net Solutions in Coimbatore for web development, software, and digital marketing services.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/contact',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/contact',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – LOCAL BUSINESS */}
+      {/* ✅ LOCAL BUSINESS SCHEMA — best schema for contact page */}
       <Script
-        id="contact-schema"
+        id="contact-localbusiness-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'LocalBusiness',
             name: 'G-Net Solutions',
-            url: 'https://g-netsolutions.com',
+            // ✅ www added
+            url: 'https://www.g-netsolutions.com',
             telephone: '+91-9751959300',
-            logo: 'https://g-netsolutions.com/logo.png',
+            logo: 'https://www.g-netsolutions.com/logo.png',
+            image: 'https://www.g-netsolutions.com/og-image.png',
             address: {
               '@type': 'PostalAddress',
-              streetAddress:
-                'Lakshmi Nagar, Thaneer Pandal, V.K.Road, Peelamedu',
+              streetAddress: 'Lakshmi Nagar, Thaneer Pandal, V.K.Road, Peelamedu',
               addressLocality: 'Coimbatore',
               addressRegion: 'Tamil Nadu',
               postalCode: '641004',
               addressCountry: 'IN',
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 11.0168,
+              longitude: 76.9558,
             },
             contactPoint: {
               '@type': 'ContactPoint',
@@ -90,9 +103,9 @@ const Page = () => {
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="contact-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -103,13 +116,13 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Contact',
-                item: 'https://g-netsolutions.com/contact',
+                item: 'https://www.g-netsolutions.com/contact',
               },
             ],
           }),
@@ -119,7 +132,7 @@ const Page = () => {
       <main>
         <Hero />
         <ContactArea />
-        <Map />
+        <MapWrapper />
       </main>
     </>
   )

@@ -3,61 +3,63 @@ import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
 import ProductsPage from './components/ProductsPage'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const SoftwareDevelopment = dynamic(
-  () => import('./components/SoftwareDevelopment'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
-
-const ApplicationSoftware = dynamic(
-  () => import('./components/ApplicationSoftware'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const SoftwareDevelopment = dynamic(() => import('./components/SoftwareDevelopment'))
+const ApplicationSoftware = dynamic(() => import('./components/ApplicationSoftware'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'Software Development Company in Coimbatore | G-Net Solutions',
   description:
-    'G-Net Solutions is a trusted software development company in Coimbatore delivering custom software, application development, and scalable digital solutions for businesses.',
+    'G-Net Solutions is a trusted software development company in Coimbatore delivering custom software, application development, and scalable digital solutions for businesses across Tamil Nadu.',
   keywords: [
     'software development company in coimbatore',
-    'custom software development',
-    'application software development',
-    'business software solutions',
-    'enterprise application development',
+    'custom software development coimbatore',
+    'application software development coimbatore',
+    'business software solutions coimbatore',
+    'enterprise application development coimbatore',
     'software services coimbatore',
-    'g-net solutions',
+    'g-net solutions software',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Software Development Services | G-Net Solutions',
+    title: 'Software Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Custom software and application development services tailored to business needs by G-Net Solutions, Coimbatore.',
-    url: 'https://g-netsolutions.com/software-development',
+      'Custom software and application development services tailored to business needs by G-Net Solutions, Coimbatore, Tamil Nadu.',
+    // ✅ www added
+    url: 'https://www.g-netsolutions.com/software-development',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Software Development Company - G-Net Solutions Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Software Development Company | G-Net Solutions',
+    title: 'Software Development Company in Coimbatore | G-Net Solutions',
     description:
-      'Professional software and application development services in Coimbatore.',
+      'Professional custom software and application development services in Coimbatore by G-Net Solutions.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/software-development',
+    // ✅ www added
+    canonical: 'https://www.g-netsolutions.com/software-development',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* ✅ SERVICE SCHEMA */}
       <Script
-        id="software-development-schema"
+        id="software-development-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -67,8 +69,9 @@ const Page = () => {
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              // ✅ www added
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -81,20 +84,20 @@ const Page = () => {
               'Business Process Automation',
               'Software Maintenance & Support',
             ],
+            // ✅ Removed invalid price string
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/software-development',
+              url: 'https://www.g-netsolutions.com/software-development',
               priceCurrency: 'INR',
-              price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="software-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -105,22 +108,22 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Software Development',
-                item: 'https://g-netsolutions.com/software-development',
+                item: 'https://www.g-netsolutions.com/software-development',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      {/* ✅ FAQ SCHEMA — keep only if FAQ questions are visually on the page */}
       <Script
-        id="faq-schema"
+        id="software-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -129,15 +132,15 @@ const Page = () => {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'What types of software development services do you provide?',
+                name: 'What types of software development services do you provide in Coimbatore?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'We provide custom software development, application software, enterprise solutions, business process automation, and ongoing support.',
+                  text: 'G-Net Solutions provides custom software development, application software, enterprise solutions, business process automation, and ongoing support for businesses in Coimbatore, Tamil Nadu.',
                 },
               },
               {
                 '@type': 'Question',
-                name: 'Do you offer scalable solutions for businesses?',
+                name: 'Do you offer scalable software solutions for businesses?',
                 acceptedAnswer: {
                   '@type': 'Answer',
                   text: 'Yes, our software solutions are designed to scale with your business needs, ensuring long-term growth and efficiency.',

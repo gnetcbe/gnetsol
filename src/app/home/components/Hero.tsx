@@ -89,7 +89,7 @@ const Hero = () => {
                           {slide.tag}
                         </span>
 
-                        <h1>{slide.title}</h1>
+                        <h2>{slide.title}</h2>
 
                         <p>{slide.desc}</p>
 

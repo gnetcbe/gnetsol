@@ -2,77 +2,67 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const BusinessEmailHosting = dynamic(
-  () => import('./components/BusinessEmailHosting'),
-  { loading: () => <div style={{ minHeight: 280 }} /> }
-)
-
-const GoogleWorkspace = dynamic(
-  () => import('./components/GoogleWorkspace'),
-  { loading: () => <div style={{ minHeight: 280 }} /> }
-)
-
-const Microsoft365 = dynamic(
-  () => import('./components/Microsoft365'),
-  { loading: () => <div style={{ minHeight: 280 }} /> }
-)
-
-const ZohoEmailServices = dynamic(
-  () => import('./components/ZohoEmailServices'),
-  { loading: () => <div style={{ minHeight: 280 }} /> }
-)
-
-const EmailHostingServices = dynamic(
-  () => import('./components/EmailHostingServices'),
-  { loading: () => <div style={{ minHeight: 280 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const BusinessEmailHosting = dynamic(() => import('./components/BusinessEmailHosting'))
+const GoogleWorkspace = dynamic(() => import('./components/GoogleWorkspace'))
+const Microsoft365 = dynamic(() => import('./components/Microsoft365'))
+const ZohoEmailServices = dynamic(() => import('./components/ZohoEmailServices'))
+const EmailHostingServices = dynamic(() => import('./components/EmailHostingServices'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   title: 'Business Email Hosting Services in Coimbatore | G-Net Solutions',
   description:
-    'G-Net Solutions offers professional business email hosting services in Coimbatore including Google Workspace, Microsoft 365, Zoho Mail, and secure email solutions for businesses.',
+    'G-Net Solutions offers professional business email hosting services in Coimbatore including Google Workspace, Microsoft 365, Zoho Mail, and secure email solutions for businesses across Tamil Nadu.',
   keywords: [
     'business email hosting coimbatore',
-    'google workspace services',
-    'microsoft 365 business',
-    'zoho mail services',
-    'email hosting solutions',
-    'professional business email',
-    'corporate email services',
-    'g-net solutions',
+    'google workspace coimbatore',
+    'microsoft 365 coimbatore',
+    'zoho mail services coimbatore',
+    'email hosting solutions coimbatore',
+    'professional business email coimbatore',
+    'corporate email services coimbatore',
+    'g-net solutions email hosting',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Business Email Hosting Services | G-Net Solutions',
+    title: 'Business Email Hosting Services in Coimbatore | G-Net Solutions',
     description:
-      'Secure and reliable business email hosting solutions including Google Workspace, Microsoft 365, and Zoho Mail.',
-    url: 'https://g-netsolutions.com/email-hosting',
+      'Secure and reliable business email hosting solutions including Google Workspace, Microsoft 365, and Zoho Mail in Coimbatore.',
+    // ✅ correct slug + www
+    url: 'https://www.g-netsolutions.com/email-services',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Business Email Hosting Services - G-Net Solutions Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Business Email Hosting Services | G-Net Solutions',
+    title: 'Business Email Hosting Services in Coimbatore | G-Net Solutions',
     description:
-      'Professional business email hosting and collaboration tools for growing businesses.',
+      'Professional business email hosting and collaboration tools for growing businesses in Coimbatore.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/email-hosting',
+    // ✅ correct slug + www
+    canonical: 'https://www.g-netsolutions.com/email-services',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – SERVICE SCHEMA */}
+      {/* ✅ SERVICE SCHEMA */}
       <Script
-        id="business-email-schema"
+        id="email-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -82,8 +72,8 @@ const Page = () => {
             provider: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
             areaServed: {
               '@type': 'Place',
@@ -99,18 +89,17 @@ const Page = () => {
             ],
             offers: {
               '@type': 'Offer',
-              url: 'https://g-netsolutions.com/email-hosting',
+              url: 'https://www.g-netsolutions.com/email-services',
               priceCurrency: 'INR',
-              price: 'Contact for pricing',
               availability: 'https://schema.org/InStock',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="email-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -121,22 +110,22 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'Business Email Hosting',
-                item: 'https://g-netsolutions.com/email-hosting',
+                name: 'Email Services',
+                item: 'https://www.g-netsolutions.com/email-services',
               },
             ],
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – FAQ (optional) */}
+      {/* ✅ FAQ SCHEMA — keep only if FAQ questions are visually on the page */}
       <Script
-        id="faq-schema"
+        id="email-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -145,10 +134,10 @@ const Page = () => {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'What business email hosting services do you provide?',
+                name: 'What business email hosting services do you provide in Coimbatore?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'We provide Google Workspace, Microsoft 365, Zoho Mail, secure email hosting, and migration support.',
+                  text: 'G-Net Solutions provides Google Workspace, Microsoft 365, Zoho Mail, secure email hosting, and migration support for businesses in Coimbatore, Tamil Nadu.',
                 },
               },
               {

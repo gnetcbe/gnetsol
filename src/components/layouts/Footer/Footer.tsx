@@ -58,6 +58,16 @@ const Footer = () => {
 
                   <div className="single-contact-item">
                     <div className="icon">
+                      <Image src={contact2} alt="g-net solutions -A global custom software development company" />
+                    </div>
+                    <div className="text">
+                        Lakshmi Nagar, Thaneer Pandal, <br /> V.K. Road,  Peelamedu,
+      Coimbatore - 641004, <br />Tamil Nadu, India. 
+      (Near TIDEL Park)
+                    </div>
+                  </div>
+               <div className="single-contact-item">
+                    <div className="icon">
                       <Image src={contact1} alt="g-net solutions -A global custom software development company" />
                     </div>
                     <div className="text">
@@ -124,7 +134,7 @@ const Footer = () => {
           <Row className="vl-copyright6 _dv-top align-items-center">
             <Col lg={6}>
               <div className="copyright-text left-side">
-                <p> © 2025 g-net solutions. All rights reserved.</p>
+                <p> © 2026 g-net solutions. All rights reserved.</p>
               </div>
             </Col>
 

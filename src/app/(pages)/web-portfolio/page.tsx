@@ -1,79 +1,87 @@
 import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
-import Hero from './components/Hero' 
-import logo from '@/assets/img/logo/title2.svg'
+import Hero from './components/Hero'
 
-/* 🔥 LAZY-LOADED HEAVY SECTIONS */
-const Works = dynamic(
-  () => import('./components/Works'),
-  { loading: () => <div style={{ minHeight: 200 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const Works = dynamic(() => import('./components/Works'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Notable Works & Portfolio | G-Net Solutions',
+  title: 'Web Development Portfolio | G-Net Solutions Coimbatore',
   description:
-    'Explore the notable works and portfolio of G-Net Solutions. Showcasing successful projects in web development, software, digital marketing, and IT services.',
+    'Explore the web development portfolio of G-Net Solutions in Coimbatore. Showcasing successful projects in website development, software, digital marketing, and IT services across Tamil Nadu.',
   keywords: [
+    'web development portfolio coimbatore',
     'g-net solutions portfolio',
-    'notable works g-net',
-    'web development projects',
-    'software solutions case studies',
-    'digital marketing portfolio',
+    'website projects coimbatore',
+    'software solutions portfolio',
+    'digital marketing portfolio coimbatore',
     'it services portfolio coimbatore',
+    'g-net solutions works',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Notable Works & Portfolio | G-Net Solutions',
+    title: 'Web Development Portfolio | G-Net Solutions Coimbatore',
     description:
-      'Discover G-Net Solutions portfolio of successful projects in web development, software, and IT services.',
-    url: 'https://g-netsolutions.com/works',
+      'Discover G-Net Solutions portfolio of successful web development, software, and IT service projects in Coimbatore.',
+    // ✅ correct slug + www
+    url: 'https://www.g-netsolutions.com/web-portfolio',
     siteName: 'G-Net Solutions',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Web Development Portfolio - G-Net Solutions Coimbatore',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio | G-Net Solutions',
+    title: 'Web Development Portfolio | G-Net Solutions Coimbatore',
     description:
-      'Showcasing notable works and successful projects by G-Net Solutions.',
+      'Showcasing notable web development works and successful projects by G-Net Solutions in Coimbatore.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/works',
+    // ✅ correct slug + www
+    canonical: 'https://www.g-netsolutions.com/web-portfolio',
   },
 }
 
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – PORTFOLIO PAGE */}
+      {/* ✅ WEBPAGE SCHEMA */}
       <Script
-        id="portfolio-schema"
+        id="portfolio-webpage-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebPage',
-            name: 'Notable Works & Portfolio',
+            name: 'Web Development Portfolio',
             description:
-              'Portfolio of G-Net Solutions showcasing successful projects in web development, software, and IT services.',
-            url: 'https://g-netsolutions.com/works',
-            about: 'Portfolio',
+              'Portfolio of G-Net Solutions showcasing successful projects in web development, software, and IT services in Coimbatore.',
+            // ✅ correct slug + www
+            url: 'https://www.g-netsolutions.com/web-portfolio',
+            about: 'Web Development Portfolio',
             publisher: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="portfolio-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -84,13 +92,13 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Portfolio',
-                item: 'https://g-netsolutions.com/works',
+                item: 'https://www.g-netsolutions.com/web-portfolio',
               },
             ],
           }),

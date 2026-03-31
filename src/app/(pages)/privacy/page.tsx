@@ -2,13 +2,9 @@ import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import Hero from './components/Hero'
-import logo from '@/assets/img/logo/title2.svg'
 
-/* 🔥 LAZY-LOADED SECTIONS */
-const PrivacyPolicyPage = dynamic(
-  () => import('./components/PrivacyPolicyPage'),
-  { loading: () => <div style={{ minHeight: 300 }} /> }
-)
+/* 🔥 LAZY LOAD — no loading placeholder to avoid blocking SSR */
+const PrivacyPolicyPage = dynamic(() => import('./components/PrivacyPolicyPage'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
@@ -18,18 +14,18 @@ export const metadata: Metadata = {
   keywords: [
     'privacy policy g-net solutions',
     'data protection policy',
-    'website privacy coimbatore',
     'information security policy',
     'g-net solutions privacy',
   ],
   icons: {
-    icon: logo.src,
+    icon: '/favicon.ico',
   },
   openGraph: {
     title: 'Privacy Policy | G-Net Solutions',
     description:
       'Understand how G-Net Solutions handles your personal data and ensures information security.',
-    url: 'https://g-netsolutions.com/privacy-policy',
+    // ✅ correct slug + www (sitemap uses /privacy not /privacy-policy)
+    url: 'https://www.g-netsolutions.com/privacy',
     siteName: 'G-Net Solutions',
     type: 'website',
   },
@@ -40,7 +36,8 @@ export const metadata: Metadata = {
       'Learn about the privacy practices of G-Net Solutions, including data collection, usage, and protection.',
   },
   alternates: {
-    canonical: 'https://g-netsolutions.com/privacy-policy',
+    // ✅ correct slug + www
+    canonical: 'https://www.g-netsolutions.com/privacy',
   },
   robots: {
     index: true,
@@ -51,9 +48,9 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      {/* 🔍 STRUCTURED DATA – WEBPAGE SCHEMA */}
+      {/* ✅ WEBPAGE SCHEMA */}
       <Script
-        id="privacy-policy-schema"
+        id="privacy-webpage-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -62,21 +59,22 @@ const Page = () => {
             name: 'Privacy Policy',
             description:
               'Privacy Policy of G-Net Solutions explaining how we collect, use, and protect user data.',
-            url: 'https://g-netsolutions.com/privacy-policy',
+            // ✅ www added + correct slug
+            url: 'https://www.g-netsolutions.com/privacy',
             about: 'Privacy Policy',
             publisher: {
               '@type': 'Organization',
               name: 'G-Net Solutions',
-              url: 'https://g-netsolutions.com',
-              logo: 'https://g-netsolutions.com/logo.png',
+              url: 'https://www.g-netsolutions.com',
+              logo: 'https://www.g-netsolutions.com/logo.png',
             },
           }),
         }}
       />
 
-      {/* 🔍 STRUCTURED DATA – BREADCRUMB */}
+      {/* ✅ BREADCRUMB SCHEMA */}
       <Script
-        id="breadcrumb-schema"
+        id="privacy-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -87,13 +85,13 @@ const Page = () => {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: 'https://g-netsolutions.com',
+                item: 'https://www.g-netsolutions.com',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Privacy Policy',
-                item: 'https://g-netsolutions.com/privacy-policy',
+                item: 'https://www.g-netsolutions.com/privacy',
               },
             ],
           }),
