@@ -56,6 +56,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.g-netsolutions.com/',
   },
+    // ✅ Add this
+  verification: {
+    other: {
+      'msvalidate.01': 'EFED9E668B623DC54BEA5CB56D54BF0B',
+    },
+  },
+
 }
 
 const Page = () => {
