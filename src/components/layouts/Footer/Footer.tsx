@@ -35,6 +35,7 @@ const Footer = () => {
     <Link href="/web-hosting">Web Hosting and Domain Names</Link>
     <Link href="/blog">Blog</Link>
     <Link href="/chatbot">Chatbot</Link>
+     <Link href="/faq">FAQ</Link>
   </div>
 
   {/* ⭐ CAREERS – SEPARATE & HIGHLIGHTED (LIKE OLD SITE) */}
