@@ -47,11 +47,7 @@ const Footer = () => {
   </div>
 </div>
 
-</Col>
-
-
-
-
+</Col> 
               {/* CONTACT INFORMATION */}
               <Col lg={4} md={8} sm={6}>
                 <div className="vl-footer-contact6 vl-footer-widget-black6 mb-50 sm:ml-0 md:ml-0">
