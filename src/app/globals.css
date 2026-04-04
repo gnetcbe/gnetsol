@@ -493,7 +493,7 @@ img {
 }
 
 .blog-card img {
-  height: 200px;
+   width:100%;
   object-fit: cover;
 }
 
@@ -559,3 +559,4 @@ line-height:30px;
     color: #fff!important;
     line-height: 55px;
 }
+ 
