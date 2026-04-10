@@ -34,6 +34,9 @@ const Outfits = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.g-netsolutions.com'),
   
+  verification: {
+    google: "h7TLFkSSKDHBPjP2OkeIwneV-YMs3599lTHVx9UqZDI",
+  },
 
   title: {
     default: 'Web Development Company in Coimbatore | G-Net Solutions',
