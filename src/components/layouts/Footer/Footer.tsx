@@ -4,6 +4,7 @@ import contact3 from '@/assets/img/icons/footer-contact-icon3.svg'
 import logo from '@/assets/img/logo/black-logo.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import ChatBot from "@/components/ChatBot";
 import { Col, Container, Row } from 'react-bootstrap'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
 
@@ -135,7 +136,7 @@ const Footer = () => {
           </svg>
         </a>
       </div>
-
+    <ChatBot />
       <style>{`
         .wa-wrapper {
           position: fixed;
