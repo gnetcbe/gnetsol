@@ -35,7 +35,7 @@ const SUB_TOPICS: Record<string, string[]> = {
 const LEAD_TRIGGERS = ["contact", "call me", "email me", "quote", "pricing", "cost", "how much", "get started", "speak to", "consultant", "reach you"];
 
 // ─── System prompt builder ─────────────────────────────────────────────
-function buildSystemPrompt(service: string, subtopic: string): string {
+ function buildSystemPrompt(service: string, subtopic: string): string {
   return `You are a friendly and knowledgeable sales/support assistant for G-Net Solutions, an IT company based in Coimbatore, Tamil Nadu, India.
 
 PERSONALITY:
@@ -45,10 +45,13 @@ PERSONALITY:
 - Show enthusiasm for helping the customer
 - Keep responses concise (3-5 lines max), then ask a follow-up question
 - Never paste long bullet lists — explain naturally like a human would
+- NEVER mention your name or introduce yourself by name
+- Do NOT use placeholder text like [Your Name] or [Assistant Name]
+- Just greet warmly and get straight to helping
 
 CURRENT CONTEXT:
-- Customer selected service: ${service}
-- Customer selected topic: ${subtopic}
+${service && service !== "General" ? `- Customer selected service: ${service}` : "- Customer is asking a general question"}
+${subtopic && subtopic !== "General" ? `- Customer selected topic: ${subtopic}` : ""}
 
 STRICT RULES:
 1. ONLY discuss topics related to G-Net Solutions services
@@ -73,97 +76,6 @@ CONTACT:
 - Email: info@g-netsolutions.com
 - Address: Peelamedu, Coimbatore - 641004, Tamil Nadu (Near TIDEL Park)
 - Hours: Mon–Sat, 9 AM – 6 PM IST`;
-}
-
-
-// ─── Predefined Openers ───────────────────────────────────────────────
-const OPENERS: Record<string, Record<string, string>> = {
-  "Domain": {
-    "Registration": "Let's get your domain registered! 🌐 Do you already have a name in mind, or would you like some tips on choosing the right one?",
-    "Renewal": "Good thinking on renewing early! ⏰ Renewing before expiry avoids any service interruption. Do you know when your domain is due for renewal?",
-    "Expired": "Don't worry — expired domains can usually be recovered! ⚠️ How long ago did your domain expire? That'll help me guide you on the next steps.",
-    "Transfer": "Moving your domain to us? Great decision! 🔄 To start a transfer, your domain needs to be at least 60 days old. Do you have your EPP/authorization code ready?",
-    "Price": "Domain pricing depends on the extension you choose — like .com, .in, .net etc. 💰 Which extension are you looking at? I can give you a better idea of the cost.",
-    "Duration": "Domains can be registered for 1 to 10 years at a time! 📅 Are you looking to register a new domain or extend an existing one?",
-    "Point": "Pointing your domain is straightforward! 🎯 Are you trying to point it to a website, hosting server, or a third-party platform?",
-    "Whois": "WHOIS lets you look up who owns a domain and its registration details. 🔍 Are you checking ownership of an existing domain or looking to register one?",
-    "Cancel Domain": "I understand you'd like to cancel a domain. 😟 Before we proceed, can I ask — is there anything we can help resolve? Sometimes issues can be fixed without cancellation!",
-  },
-  "Web Hosting": {
-    "Shared Hosting": "Shared hosting is a great and affordable way to get started! 🚀 Is this for a new website or are you looking to move from another host?",
-    "VPS Hosting": "VPS is perfect for growing businesses that need more control and performance! ⚡ What kind of website or application are you planning to host?",
-    "Dedicated Server": "A dedicated server gives you maximum power and security! 🖥️ Are you handling high traffic or running resource-intensive applications?",
-    "Cloud Hosting": "Cloud hosting is our most scalable and reliable option! ☁️ Are you expecting traffic spikes or looking for high availability for your business?",
-    "Uptime": "We guarantee 99.9% uptime for all our hosting plans! ✅ Are you currently experiencing downtime issues with your existing host?",
-    "Backup": "Regular backups are crucial for any website! 💾 Are you looking for automated daily backups or a specific backup schedule?",
-    "Security": "Security is our top priority! 🔒 Are you looking for general hosting security or do you have specific concerns like malware or DDoS protection?",
-    "cPanel": "cPanel makes managing your hosting super easy! 🎛️ Have you used cPanel before, or is this your first time? I can walk you through what you can do with it.",
-    "Support": "Our support team is available 24/7 for hosting issues! 🛟 Are you facing a specific issue right now, or just want to know what support options are available?",
-  },
-  "Web Development": {
-    "Custom Website": "A custom website really sets your business apart! 🎨 What kind of business are you in? That'll help me suggest the best approach for your site.",
-    "CMS": "A CMS like WordPress makes it easy to manage your website without any technical knowledge! 📝 Do you want to update your own content regularly, or would you prefer we handle it?",
-    "Web Application": "Web applications can really streamline your business processes! 💻 What kind of functionality are you looking for — a portal, dashboard, or something custom?",
-    "Technologies": "We work with the latest technologies to build fast, scalable websites! ⚙️ Do you have a preferred technology, or would you like us to recommend the best fit for your project?",
-    "Timeline": "Great question! Timelines vary based on complexity. ⏱️ Can you tell me a bit about your project — is it a simple website or something more complex?",
-    "Process": "Our development process is smooth and transparent! 🔄 We keep you involved at every stage. Would you like to know how we go from your idea to a live website?",
-    "Pricing": "Website pricing depends on your specific requirements. 💰 Can you tell me what type of website you need? That'll help me give you a better estimate.",
-    "Mobile Friendly": "Absolutely, all our websites are fully responsive! 📱 Were you concerned about how your current site looks on mobile, or is this for a new project?",
-    "SEO": "SEO is built into every website we develop! 🔍 Are you looking for basic on-page SEO or a full digital marketing strategy alongside your website?",
-  },
-  "Shopping Cart": {
-    "E-Commerce Setup": "Exciting — let's build your online store! 🛍️ Do you have products ready to sell, or are you still in the planning stage?",
-    "Payment Gateway": "We integrate all major payment options — UPI, cards, net banking and more! 💳 Which payment methods are most important for your customers?",
-    "Product Management": "Managing products should be simple and efficient! 📦 How many products are you planning to list — a few dozen or a large catalog?",
-    "Order Tracking": "Order tracking improves customer trust a lot! 📬 Do you need basic order status updates or full tracking with shipping integration?",
-    "Shipping": "Shipping setup is key for any e-commerce store! 🚚 Are you shipping locally, across India, or internationally?",
-    "Security": "Security is critical for any online store! 🔐 We implement SSL, secure payments, and fraud protection. Do you have specific security concerns?",
-    "Platforms": "We work with Magento, Shopify, WooCommerce and custom solutions! 🛒 Do you have a platform preference, or would you like me to suggest the best one for your business?",
-    "Pricing": "E-commerce pricing depends on the platform and features needed. 💰 What's your rough budget? I can suggest the most cost-effective solution for you.",
-  },
-  "Business Email": {
-    "Google Workspace": "Google Workspace gives you Gmail, Drive, Meet and more — all with your business domain! 📧 How many email accounts do you need for your team?",
-    "Microsoft 365": "Microsoft 365 is perfect for businesses already using Word, Excel and Outlook! 💼 Are you looking to migrate from another email service or setting up fresh?",
-    "Zoho Mail": "Zoho Mail is a great cost-effective option for businesses! 📬 Are you a small team looking for professional email without the high cost?",
-    "Migration": "Email migration can be tricky, but we handle it without any data loss! 🔄 Which email service are you currently using, and where would you like to move?",
-    "Security": "Business email security is more important than ever! 🔒 Are you looking for spam protection, 2FA, or full enterprise-level email security?",
-    "Storage": "Storage needs vary by team size and usage. 💾 Are you running out of storage on your current email, or planning ahead for a new setup?",
-    "Multiple Users": "Managing multiple email accounts is easy with our admin panel! 👥 How many users are you looking to set up email for?",
-    "Setup": "Getting your business email set up is quick and easy! ⚡ Do you already have a domain name, or do you need that too?",
-    "Support": "We provide full technical support for all email-related issues! 🛟 Are you facing a specific email problem right now, or just exploring options?",
-  },
-  "Digital Marketing": {
-    "SEO": "SEO is the best long-term investment for your online visibility! 🔍 Do you have an existing website we can work with, or is this for a new one?",
-    "Social Media": "Social media can really grow your brand! 📱 Which platforms are most relevant for your business — Facebook, Instagram, LinkedIn?",
-    "PPC / Google Ads": "Google Ads gets you instant visibility and targeted traffic! 🎯 Do you have a specific budget in mind, or would you like us to recommend one based on your goals?",
-    "Email Marketing": "Email marketing has one of the highest ROIs of any channel! 📧 Do you already have a customer email list, or are you starting from scratch?",
-    "Content Marketing": "Great content builds trust and brings organic traffic! ✍️ Are you looking for blog posts, articles, social media content, or all of the above?",
-    "Analytics": "Tracking your marketing performance is key to growth! 📊 Are you looking to set up analytics from scratch or improve your existing tracking?",
-    "Pricing": "Digital marketing pricing is customized based on your goals and channels. 💰 What's your primary objective — more website traffic, leads, or brand awareness?",
-    "Timeline": "Great question! SEO takes 3–6 months for results, while PPC is immediate. ⏱️ Are you looking for quick results or a long-term strategy?",
-  },
-  "SSL": {
-    "What is SSL": "SSL (Secure Sockets Layer) is what makes your website secure with HTTPS! 🔒 It encrypts data between your website and visitors. Does your website currently have SSL installed?",
-    "Types of SSL": "There are different types of SSL based on your needs! 🛡️ Are you looking for a basic single-domain SSL, or do you need to cover multiple domains or subdomains?",
-    "Installation": "SSL installation is quick and we handle the whole process! ⚡ Which hosting provider are you currently using? That'll help me guide you through the setup.",
-    "Renewal": "SSL certificates need to be renewed annually — good that you're thinking ahead! 🔄 Do you know when your current SSL is expiring?",
-    "Pricing": "SSL pricing varies based on the type and validation level. 💰 Is this for a personal website, business site, or e-commerce store?",
-    "Why SSL": "Great question! SSL is essential for every website today. 🔐 Without it, browsers show a 'Not Secure' warning that drives visitors away. Does your site currently show that warning?",
-    "Support": "We provide full SSL support — installation, renewal, and troubleshooting! 🛟 Are you facing a specific SSL issue right now?",
-  },
-  "DNS": {
-    "What is DNS": "DNS is like the phone book of the internet! 📖 It connects your domain name to your website and email servers. Are you trying to understand DNS for a specific reason?",
-    "DNS Records": "DNS records control where your domain points! 🎯 Are you looking to set up A records, MX records, or something else? I can walk you through each one.",
-    "Domain Pointing": "Pointing your domain is straightforward! 🌐 Are you trying to point it to a website hosting server or a third-party platform like Shopify or WordPress.com?",
-    "MX Records": "MX records are what direct your emails to the right server! 📧 Are you setting up email for the first time, or troubleshooting an existing email issue?",
-    "TTL": "TTL (Time To Live) controls how quickly DNS changes propagate across the internet! ⏱️ Are you about to make DNS changes and wondering how long they'll take to go live?",
-    "DNS Propagation": "DNS propagation usually takes 24–48 hours globally! 🌍 Are you waiting for recent DNS changes to take effect, or planning ahead for an upcoming change?",
-    "Support": "We provide full DNS management support! 🛟 Are you facing a specific DNS issue, or need help configuring records for your domain?",
-  },
-};
-
-function getOpener(service: string, subtopic: string): string {
-  return OPENERS[service]?.[subtopic] || `Sure! I'd love to help you with ${subtopic}. What would you like to know? 😊`;
 }
 
 // ─── Main Component ────────────────────────────────────────────────────
@@ -237,7 +149,7 @@ export default function ChatBot() {
   };
 
   // ─── Subtopic selected ──────────────────────────────────────────────
-  const handleSubtopicClick = (subtopic: string) => {
+  const handleSubtopicClick = async (subtopic: string) => {
     setCurrentSubtopic(subtopic);
     setBreadcrumbs([
       { label: currentService, level: "service" },
@@ -247,9 +159,34 @@ export default function ChatBot() {
     setChatHistory([]);
     setLeadStep("idle");
 
-    // Use predefined opener — instant, no API call needed
-    const opener = getOpener(currentService, subtopic);
-    setTimeout(() => addMessage("bot", opener), 100);
+    // Ask Gemini to start the conversation naturally
+    setLoading(true);
+    try {
+      const systemPrompt = buildSystemPrompt(currentService, subtopic);
+      const userMsg = `The customer has selected "${currentService}" > "${subtopic}". Start the conversation naturally and helpfully. Ask a relevant opening question to understand their needs. Be friendly and conversational — don't list everything at once.`;
+
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMsg,
+          systemPrompt,
+          history: [],
+          isOpener: true,
+        }),
+      });
+      const data = await res.json();
+      const botReply = data.reply || `Sure! I'd love to help you with ${subtopic} for ${currentService}. What would you like to know?`;
+      addMessage("bot", botReply);
+      setChatHistory([
+        { role: "user", parts: [{ text: userMsg }] },
+        { role: "model", parts: [{ text: botReply }] },
+      ]);
+    } catch {
+      addMessage("bot", `Sure! I'd love to help you with ${subtopic}. What would you like to know?`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // ─── Send message ───────────────────────────────────────────────────
