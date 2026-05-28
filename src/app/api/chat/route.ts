@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
-function getTransporter() {
+ function getTransporter() {
   return nodemailer.createTransport({
     host: process.env.CHAT_SMTP_HOST || "mail.gnet.in",
     port: Number(process.env.CHAT_SMTP_PORT) || 465,
@@ -16,7 +16,7 @@ function getTransporter() {
     tls: {
       rejectUnauthorized: false,
     },
-  });
+  } as nodemailer.TransportOptions);
 }
 
 export async function POST(req: NextRequest) {
