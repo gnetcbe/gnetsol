@@ -390,7 +390,7 @@ export default function ChatBot() {
     const lowerMsg = trimmed.toLowerCase();
     const endingPhrases = ["ok thanks", "okay thanks", "thank you", "thanks", "bye", "goodbye", "ok bye", "okay bye", "got it", "noted", "alright", "ok ok", "okay", "that's all", "thats all", "no thanks", "i'm good", "im good"];
     const isEnding = endingPhrases.some((p) => lowerMsg.trim() === p || lowerMsg.trim() === p + "!" || lowerMsg.trim() === p + ".");
-    if (isEnding && leadStep !== "ask_name" && leadStep !== "ask_email" && leadStep !== "ask_phone") {
+    if (isEnding && leadStep === "idle" || isEnding && leadStep === "done") {
       addMessage("bot", "Glad I could help! 😊 What would you like to do next?");
       setShowEndOptions(true);
       return;
