@@ -205,12 +205,32 @@ export default function ChatBot() {
   const [feedbackHover, setFeedbackHover] = useState(0);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
   const [showEndOptions, setShowEndOptions] = useState(false);
+  const [showIdlePrompt, setShowIdlePrompt] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
+
+  // ─── Idle timer — 1 minute ──────────────────────────────────────────
+  const resetIdleTimer = () => {
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    setShowIdlePrompt(false);
+    idleTimerRef.current = setTimeout(() => {
+      setShowIdlePrompt(true);
+    }, 60000); // 1 minute
+  };
+
+  useEffect(() => {
+    if (showChat && messages.length > 0 && !showFeedback) {
+      resetIdleTimer();
+    }
+    return () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, [messages, showChat, showFeedback]);
 
   const addMessage = (role: "user" | "bot", text: string) => {
     setMessages((prev) => [...prev, { role, text }]);
@@ -231,6 +251,8 @@ export default function ChatBot() {
     setFeedbackStars(0);
     setFeedbackSubmitted(false);
     setShowEndOptions(false);
+    setShowIdlePrompt(false);
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
   };
 
   // ─── End Chat → show feedback ───────────────────────────────────────
@@ -320,6 +342,8 @@ export default function ChatBot() {
     const trimmed = input.trim();
     if (!trimmed || loading) return;
     setInput("");
+    setShowIdlePrompt(false);
+    resetIdleTimer();
 
     if (!currentService) {
       setCurrentService("General");
@@ -599,6 +623,20 @@ export default function ChatBot() {
                     </button>
                   </div>
                 )}
+                {/* Idle Prompt */}
+                {showIdlePrompt && (
+                  <div className="gnet-idle-prompt">
+                    <div className="gnet-idle-text">Still there? 👋 Would you like to continue or end the chat?</div>
+                    <div className="gnet-idle-actions">
+                      <button className="gnet-end-opt-btn continue" onClick={() => { setShowIdlePrompt(false); resetIdleTimer(); }}>
+                        💬 Continue
+                      </button>
+                      <button className="gnet-end-opt-btn end" onClick={() => { setShowIdlePrompt(false); handleEndChat(); }}>
+                        ⭐ End & Rate
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <div ref={bottomRef} />
               </div>
             )}
@@ -807,6 +845,15 @@ export default function ChatBot() {
         .gnet-chat-footer {
           text-align: center; padding: 6px; font-size: 11px; color: #aaa; background: #fff;
         }
+        /* Idle Prompt */
+        .gnet-idle-prompt {
+          background: #fff7ed; border: 1.5px solid #fed7aa;
+          border-radius: 12px; padding: 12px 14px; margin: 4px 0;
+        }
+        .gnet-idle-text { font-size: 13px; color: #92400e; margin-bottom: 10px; line-height: 1.5; }
+        .gnet-idle-actions { display: flex; gap: 8px; }
+        .gnet-idle-actions .gnet-end-opt-btn { flex: 1; text-align: center; padding: 8px; font-size: 12.5px; }
+
         /* End Options */
         .gnet-end-options {
           display: flex; flex-direction: column; gap: 7px;
