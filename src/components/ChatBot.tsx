@@ -224,13 +224,13 @@ export default function ChatBot() {
   };
 
   useEffect(() => {
-    if (showChat && messages.length > 0 && !showFeedback) {
+   if (breadcrumbs.length >= 1 && messages.length > 0 && !showFeedback) {
       resetIdleTimer();
     }
     return () => {
       if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
     };
-  }, [messages, showChat, showFeedback]);
+}, [messages, breadcrumbs.length, showFeedback]);
 
   const addMessage = (role: "user" | "bot", text: string) => {
     setMessages((prev) => [...prev, { role, text }]);
