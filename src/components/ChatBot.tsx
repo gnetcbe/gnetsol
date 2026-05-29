@@ -204,6 +204,7 @@ export default function ChatBot() {
   const [feedbackStars, setFeedbackStars] = useState(0);
   const [feedbackHover, setFeedbackHover] = useState(0);
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [showEndOptions, setShowEndOptions] = useState(false);
 
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -229,6 +230,7 @@ export default function ChatBot() {
     setShowFeedback(false);
     setFeedbackStars(0);
     setFeedbackSubmitted(false);
+    setShowEndOptions(false);
   };
 
   // ─── End Chat → show feedback ───────────────────────────────────────
@@ -360,8 +362,17 @@ export default function ChatBot() {
       return;
     }
 
-    // Check intent signals — trigger lead collection naturally
+    // Check ending phrases
     const lowerMsg = trimmed.toLowerCase();
+    const endingPhrases = ["ok thanks", "okay thanks", "thank you", "thanks", "bye", "goodbye", "ok bye", "okay bye", "got it", "noted", "alright", "ok ok", "okay", "that's all", "thats all", "no thanks", "i'm good", "im good"];
+    const isEnding = endingPhrases.some((p) => lowerMsg.trim() === p || lowerMsg.trim() === p + "!" || lowerMsg.trim() === p + ".");
+    if (isEnding && leadStep !== "ask_name" && leadStep !== "ask_email" && leadStep !== "ask_phone") {
+      addMessage("bot", "Glad I could help! 😊 What would you like to do next?");
+      setShowEndOptions(true);
+      return;
+    }
+
+    // Check intent signals — trigger lead collection naturally
     const hasIntent = INTENT_SIGNALS.some((s) => lowerMsg.includes(s));
     if (leadStep === "idle" && hasIntent) {
       setLeadStep("ask_name");
@@ -574,6 +585,20 @@ export default function ChatBot() {
                     </div>
                   </div>
                 )}
+                {/* End Options */}
+                {showEndOptions && (
+                  <div className="gnet-end-options">
+                    <button className="gnet-end-opt-btn continue" onClick={() => setShowEndOptions(false)}>
+                      💬 Continue Chatting
+                    </button>
+                    <button className="gnet-end-opt-btn menu" onClick={() => { setShowEndOptions(false); handleClear(); }}>
+                      🏠 Go to Menu
+                    </button>
+                    <button className="gnet-end-opt-btn end" onClick={() => { setShowEndOptions(false); handleEndChat(); }}>
+                      ⭐ End & Rate Chat
+                    </button>
+                  </div>
+                )}
                 <div ref={bottomRef} />
               </div>
             )}
@@ -620,7 +645,7 @@ export default function ChatBot() {
         .gnet-chat-toggle:hover { transform: scale(1.1); }
         .gnet-chat-window {
           position: fixed; bottom: 96px; right: 24px; z-index: 9998;
-          width: 360px; max-height: 580px;
+          width: 360px; max-height: 480px;
           border-radius: 16px;
           box-shadow: 0 8px 40px rgba(0,0,0,0.18);
           display: flex; flex-direction: column; overflow: hidden;
@@ -782,6 +807,22 @@ export default function ChatBot() {
         .gnet-chat-footer {
           text-align: center; padding: 6px; font-size: 11px; color: #aaa; background: #fff;
         }
+        /* End Options */
+        .gnet-end-options {
+          display: flex; flex-direction: column; gap: 7px;
+          margin: 4px 0 8px 0;
+        }
+        .gnet-end-opt-btn {
+          padding: 9px 14px; border-radius: 24px;
+          border: none; cursor: pointer;
+          font-size: 13px; font-weight: 500;
+          text-align: left; transition: opacity 0.2s;
+        }
+        .gnet-end-opt-btn:hover { opacity: 0.85; }
+        .gnet-end-opt-btn.continue { background: #e8f0fe; color: #1a73e8; }
+        .gnet-end-opt-btn.menu { background: #f0fdf4; color: #16a34a; }
+        .gnet-end-opt-btn.end { background: #fff7ed; color: #ea580c; }
+
         @keyframes gnetSlideIn {
           from { opacity: 0; transform: translateY(16px) scale(0.97); }
           to   { opacity: 1; transform: translateY(0) scale(1); }

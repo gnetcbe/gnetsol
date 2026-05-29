@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
- function getTransporter() {
+function getTransporter() {
   return nodemailer.createTransport({
     host: process.env.CHAT_SMTP_HOST || "mail.gnet.in",
     port: Number(process.env.CHAT_SMTP_PORT) || 465,
@@ -142,7 +142,7 @@ ${chatText}
           parts: [{ text: systemPrompt || "You are a helpful assistant for G-Net Solutions." }],
         },
         contents,
-        generationConfig: { maxOutputTokens: 300, temperature: 0.75 },
+        generationConfig: { maxOutputTokens: 600, temperature: 0.75 },
       }),
     });
 
