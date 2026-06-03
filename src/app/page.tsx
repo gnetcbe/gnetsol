@@ -86,10 +86,10 @@ const Page = () => {
             priceRange: '₹₹',
             address: {
               '@type': 'PostalAddress',
-              streetAddress: 'Your Street Address Here',
+              streetAddress: 'Lakshmi Nagar, Thaneer Pandal,V.K. Road, Peelamedu,(Near TIDEL Park)',
               addressLocality: 'Coimbatore',
               addressRegion: 'Tamil Nadu',
-              postalCode: 'Your PIN Code',
+              postalCode: '641004',
               addressCountry: 'IN',
             },
             geo: {

@@ -101,6 +101,75 @@ export const metadata: Metadata = {
 }
 
 /* =====================
+   SCHEMA DATA
+===================== */
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.g-netsolutions.com/#business",
+      "name": "G-Net Solutions",
+      "url": "https://www.g-netsolutions.com",
+      "logo": "https://g-netsolutions.com/logo.png",
+      "image": "https://g-netsolutions.com/logo.png",
+      "description": "G-Net Solutions is a leading web development company in Coimbatore offering website design, software development, SEO, and IT services across Tamil Nadu.",
+      "telephone": "+91-9751959300",
+      "email": "info@g-netsolutions.com",
+      "foundingDate": "2001",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lakshmi Nagar, Thaneer Pandal, V.K. Road, Peelamedu",
+        "addressLocality": "Coimbatore",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "641004",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 11.0168,
+        "longitude": 76.9558
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/people/G-Net-Solutions-Coimbatore-Pvt-Ltd/100070495715164/",
+        "https://www.linkedin.com/company/g-net-solutions-coimbatore-private-ltd/",
+        "https://x.com/gnetcoimbatore",
+        "https://www.instagram.com/"
+      ],
+      "hasMap": "https://maps.google.com/?q=G-Net+Solutions+Coimbatore",
+      "areaServed": {
+        "@type": "City",
+        "name": "Coimbatore"
+      },
+      "priceRange": "$$"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.g-netsolutions.com/#website",
+      "url": "https://www.g-netsolutions.com",
+      "name": "G-Net Solutions",
+      "publisher": {
+        "@id": "https://www.g-netsolutions.com/#business"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.g-netsolutions.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+
+/* =====================
    ROOT LAYOUT
 ===================== */
 
@@ -111,6 +180,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+      </head>
 
       {/* Google Analytics */}
       <Script

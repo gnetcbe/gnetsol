@@ -75,8 +75,10 @@ const Page = () => {
             logo: 'https://www.g-netsolutions.com/logo.png',
             address: {
               '@type': 'PostalAddress',
+              streetAddress: 'Lakshmi Nagar, Thaneer Pandal,V.K. Road, Peelamedu,(Near TIDEL Park)',
               addressLocality: 'Coimbatore',
               addressRegion: 'Tamil Nadu',
+              postalCode: '641004',
               addressCountry: 'IN',
             },
             sameAs: [
