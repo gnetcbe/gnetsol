@@ -63,11 +63,7 @@ export default function PressReleaseClient({ posts }: any) {
               <span className="pr-stat-label">Total Releases</span>
             </div>
             <div className="pr-stat-divider" />
-            <div className="pr-stat">
-              <span className="pr-stat-num">{generalCount}</span>
-              <span className="pr-stat-label">News Articles</span>
-            </div>
-            <div className="pr-stat-divider" />
+             
             <div className="pr-stat">
               <span className="pr-stat-dot" />
               <span className="pr-stat-label pr-stat-live">Live Updates</span>
