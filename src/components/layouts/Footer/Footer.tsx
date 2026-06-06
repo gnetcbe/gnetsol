@@ -32,6 +32,7 @@ const Footer = () => {
                     <Link href="/website-maintenance">Website Maintenance and Support</Link>
                     <Link href="/web-hosting">Web Hosting and Domain Names</Link>
                     <Link href="/blog">Blog</Link>
+                     <Link href="/press-release">Press Releases</Link>
                     <Link href="/chatbot">Chatbot</Link>
                     <Link href="/faq">FAQ</Link>
                   </div>

@@ -12,7 +12,7 @@ const Hero = () => {
             <Col lg={9} className="m-auto text-center">
               <div className="inner-main-heading">
                 <h1>
-Press Release </h1>
+Press Releases </h1>
                 <div className="breadcrumbs-pages">
                   <ul>
                     <li>
@@ -22,7 +22,7 @@ Press Release </h1>
                       <FaAngleRight className="fa-solid" />
                     </li>
                     <li>
-Press Release List</li>
+Latest Press Releases</li>
                   </ul>
                 </div>
               </div>
