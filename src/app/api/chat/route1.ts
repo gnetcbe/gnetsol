@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-const CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
-const CLAUDE_MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
 function getTransporter() {
   return nodemailer.createTransport({
@@ -18,22 +17,6 @@ function getTransporter() {
       rejectUnauthorized: false,
     },
   } as nodemailer.TransportOptions);
-}
-
-// Gemini-style history item used by the existing frontend
-interface GeminiHistoryItem {
-  role: string; // "user" | "model"
-  parts: { text: string }[];
-}
-
-// Converts the frontend's Gemini-shaped history into Claude's message format
-function toClaudeMessages(history: GeminiHistoryItem[], latestMessage: string) {
-  const converted = (history || []).map((item) => ({
-    role: item.role === "model" ? "assistant" : "user",
-    content: item.parts?.map((p) => p.text).join("\n") || "",
-  }));
-  converted.push({ role: "user", content: latestMessage });
-  return converted;
 }
 
 export async function POST(req: NextRequest) {
@@ -132,48 +115,47 @@ ${chatText}
       return NextResponse.json({ success: true });
     }
 
-    // ── Normal Claude chat ───────────────────────────────────────────
+    // ── Normal Gemini chat ─────────────────────────────────────────
     const { message, systemPrompt, history = [] } = body;
 
     if (!message || typeof message !== "string") {
       return NextResponse.json({ reply: "Invalid request." }, { status: 400 });
     }
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json({
         reply: "AI service temporarily unavailable. Please contact us at +91-9751959300 😊",
       });
     }
 
-    const messages = toClaudeMessages(history, message);
+    const contents = [
+      ...history,
+      { role: "user", parts: [{ text: message }] },
+    ];
 
-    const claudeRes = await fetch(CLAUDE_API_URL, {
+    const geminiRes = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: CLAUDE_MODEL,
-        max_tokens: 600,
-        temperature: 0.75,
-        system: systemPrompt || "You are a helpful assistant for G-Net Solutions.",
-        messages,
+        system_instruction: {
+          parts: [{ text: systemPrompt || "You are a helpful assistant for G-Net Solutions." }],
+        },
+        contents,
+        generationConfig: { maxOutputTokens: 600, temperature: 0.75 },
       }),
     });
 
-    if (!claudeRes.ok) {
-      console.error("Claude API error:", await claudeRes.text());
+    if (!geminiRes.ok) {
+      console.error("Gemini API error:", await geminiRes.text());
       return NextResponse.json({
         reply: "I'm having trouble right now. Please contact us at +91-9751959300 or info@g-netsolutions.com 😊",
       });
     }
 
-    const data = await claudeRes.json();
+    const data = await geminiRes.json();
     const reply =
-      data?.content?.find((block: { type: string }) => block.type === "text")?.text ||
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
       "I couldn't find an answer. Please contact us at info@g-netsolutions.com 😊";
 
     return NextResponse.json({ reply });
