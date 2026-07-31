@@ -9,7 +9,7 @@ const EcommerceGrowthSolutions = dynamic(() => import('./components/EcommerceGro
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'E-Commerce Website Development Company in Coimbatore | G-Net Solutions',
+  title: 'E-Commerce Website Development Company in Coimbatore | Shopify, WooCommerce & BigCommerce | G-Net Solutions',
   description:
     'G-Net Solutions offers professional e-commerce website development services in Coimbatore including online store setup, payment gateway integration, and growth-driven e-commerce solutions across Tamil Nadu.',
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'E-Commerce Website Development Company in Coimbatore | G-Net Solutions',
+    title: 'E-Commerce Website Development Company in Coimbatore | Shopify, WooCommerce & BigCommerce | G-Net Solutions',
     description:
       'Custom e-commerce website development and growth solutions by G-Net Solutions, Coimbatore, Tamil Nadu.',
     // ✅ correct slug + www
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'E-Commerce Website Development Company in Coimbatore | G-Net Solutions',
+    title: 'E-Commerce Website Development Company in Coimbatore | Shopify, WooCommerce & BigCommerce | G-Net Solutions',
     description:
       'Build and grow your online store with expert e-commerce solutions from G-Net Solutions in Coimbatore.',
   },

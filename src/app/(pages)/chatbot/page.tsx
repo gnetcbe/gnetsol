@@ -8,7 +8,7 @@ const Chatbot = dynamic(() => import('./components/Chatbot'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'AI Chatbot Development Company in Coimbatore | G-Net Solutions',
+  title: 'AI Chatbot Development Services | WhatsApp, Website & Business Automation | G-Net Solutions',
   description:
     'Top AI chatbot development company in Coimbatore. We build WhatsApp chatbots, website chatbots, and automation solutions to boost customer engagement, leads, and support across Tamil Nadu.',
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'AI Chatbot Development Company in Coimbatore | G-Net Solutions',
+    title: 'AI Chatbot Development Services | WhatsApp, Website & Business Automation | G-Net Solutions',
     description:
       'Build powerful AI chatbots for WhatsApp, websites, and automation. Improve customer support and generate leads 24/7.',
     // ✅ www added
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Chatbot Development Company in Coimbatore | G-Net Solutions',
+    title: 'AI Chatbot Development Services | WhatsApp, Website & Business Automation | G-Net Solutions',
     description:
       'Smart AI chatbot solutions for automation, customer support, and lead generation in Coimbatore.',
   },

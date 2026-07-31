@@ -37,12 +37,7 @@ export const metadata: Metadata = {
   verification: {
     google: "h7TLFkSSKDHBPjP2OkeIwneV-YMs3599lTHVx9UqZDI",
   },
-
-  title: {
-    default: 'Web Development Company in Coimbatore | G-Net Solutions',
-    template: '%s | G-Net Solutions',
-  },
-
+ 
   description:
     'G-Net Solutions is a leading web development company in Coimbatore offering website design, SEO, digital marketing, hosting, email services, and IT solutions across Tamil Nadu.',
 

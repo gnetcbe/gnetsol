@@ -15,7 +15,7 @@ const RecentWorks = dynamic(() => import('./components/RecentWorks'))
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   // ✅ Keyword first
-  title: 'IT & Web Development Company in Coimbatore | About G-Net Solutions',
+  title: 'About G-Net Solutions | 25+ Years of IT & Web Development Experience',
   description:
     'G-Net Solutions is a trusted IT and web development company in Coimbatore with 25+ years of experience delivering website development, software solutions, digital marketing, and IT services across Tamil Nadu.',
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'IT & Web Development Company in Coimbatore | About G-Net Solutions',
+    title: 'About G-Net Solutions | 25+ Years of IT & Web Development Experience',
     description:
       'Discover G-Net Solutions – your trusted partner for web development, software, and digital marketing services in Coimbatore, Tamil Nadu.',
     // ✅ www added
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IT & Web Development Company in Coimbatore | About G-Net Solutions',
+    title: 'About G-Net Solutions | 25+ Years of IT & Web Development Experience',
     description:
       'Know more about G-Net Solutions, a leading IT and web development company in Coimbatore with 25+ years of experience.',
   },

@@ -11,7 +11,7 @@ const KeyTakeawaysPage = dynamic(() => import('./components/KeyTakeawaysPage'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Domain Registration & Web Hosting Services in Coimbatore | G-Net Solutions',
+  title: 'Best Web Hosting Services in Coimbatore | Domain Registration & Hosting | G-Net Solutions',
   description:
     'G-Net Solutions provides domain registration, web hosting, email hosting, and web services in Coimbatore. Reliable, secure, and scalable hosting solutions with expert support across Tamil Nadu.',
   keywords: [

@@ -10,7 +10,7 @@ const PricingFactors = dynamic(() => import('./components/PricingFactors'))
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Website Maintenance Services in Coimbatore | G-Net Solutions',
+  title: 'Website Maintenance Services in Coimbatore | Website Support & Security Updates | G-Net Solutions',
   description:
     'G-Net Solutions provides professional website maintenance services in Coimbatore including updates, security monitoring, backups, performance optimization, and technical support across Tamil Nadu.',
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Website Maintenance Services in Coimbatore | G-Net Solutions',
+    title: 'Website Maintenance Services in Coimbatore | Website Support & Security Updates | G-Net Solutions',
     description:
       'Reliable website maintenance and support services in Coimbatore to keep your website secure, updated, and performing at its best.',
     // ✅ www added
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Maintenance Services in Coimbatore | G-Net Solutions',
+    title: 'Website Maintenance Services in Coimbatore | Website Support & Security Updates | G-Net Solutions',
     description:
       'Professional website maintenance, updates, and support by G-Net Solutions in Coimbatore.',
   },

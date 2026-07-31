@@ -9,7 +9,7 @@ const DesignProcessPage = dynamic(() => import('./components/DesignProcessPage')
 
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
-  title: 'Website Development Company in Coimbatore | G-Net Solutions',
+  title: 'Web Development Company in Coimbatore | Custom Website Design Services | G-Net Solutions',
   description:
     'G-Net Solutions is a leading website development company in Coimbatore offering custom web development, responsive design, eCommerce solutions, and CMS development across Tamil Nadu.',
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Website Development Company in Coimbatore | G-Net Solutions',
+    title: 'Web Development Company in Coimbatore | Custom Website Design Services | G-Net Solutions',
     description:
       'Professional website development services including custom design, eCommerce, CMS, and responsive websites in Coimbatore, Tamil Nadu.',
     // ✅ www added
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Website Development Company in Coimbatore | G-Net Solutions',
+    title: 'Web Development Company in Coimbatore | Custom Website Design Services | G-Net Solutions',
     description:
       'Custom website development and responsive web solutions by G-Net Solutions in Coimbatore.',
   },

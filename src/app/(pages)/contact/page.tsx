@@ -12,7 +12,7 @@ const ContactArea = dynamic(() => import('./components/ContactArea'))
 /* ✅ SEO METADATA */
 export const metadata: Metadata = {
   // ✅ Keyword first
-  title: 'Contact Web Development Company in Coimbatore | G-Net Solutions',
+  title: 'Contact Web Development & IT Services Company in Coimbatore | G-Net Solutions',
   description:
     'Get in touch with G-Net Solutions, a leading web development company in Coimbatore. Contact us for website development, digital marketing, software solutions, and IT services via phone, email, or visit our office.',
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: 'Contact Web Development Company in Coimbatore | G-Net Solutions',
+    title: 'Contact Web Development & IT Services Company in Coimbatore | G-Net Solutions',
     description:
       'Reach G-Net Solutions for professional IT, web development, and digital marketing services in Coimbatore, Tamil Nadu.',
     // ✅ www added
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Web Development Company in Coimbatore | G-Net Solutions',
+    title: 'Contact Web Development & IT Services Company in Coimbatore | G-Net Solutions',
     description:
       'Contact G-Net Solutions in Coimbatore for web development, software, and digital marketing services.',
   },
